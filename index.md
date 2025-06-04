@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "VELDA"
-  text: Cloud computing made simple
+  text: Cloud-powered development, simplified for everyone
   image:
     src: /logos.png
     alt: Velda
@@ -16,20 +16,20 @@ hero:
       text: Open playground
       link: https://novahub.dev
     - theme: alt
-      text: Read the doc
+      text: Read the docs
       link: https://doc.velda.io
 
 features:
   - title: Instantly from dev to prod
-    details: Instantly scale your workload from your dev-workstation to the compute cluster. All you need is to prefix your commandline with vrun, we will work on the rest.
-  - title: Save compute cost by up to 90%
-    details: Never need to provision powerful workstations or GPUs for every developers. Velda help you allocate the right compute resources for every workload.
+    details: Instantly scale your workload from your development workstation to the compute cluster. All you need to do is prefix your command line with vrun—we'll handle the rest.
+  - title: Save compute costs by up to 90%
+    details: No need to provision powerful workstations or GPUs for every developer. Velda helps you allocate the right compute resources for every workload.
   - title: Works with most frameworks & cloud providers
-    details: AWS, Google Cloud, on-prem, or Velda hosted(coming soon), the choice is yours. Plus, there's almost no restriction on what library / tool you use.
+    details: AWS, Google Cloud, on-prem, or Velda-hosted (coming soon)—the choice is yours. Plus, there are almost no restrictions on what library or tool you use.
 ---
 
 ## Watch Velda in Action
 
 [![Watch the demo](https://img.youtube.com/vi/fr58LREZ6vQ/0.jpg)](https://youtu.be/fr58LREZ6vQ)
 
-[Book a demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) now! We offer free cloud service set-up for early customers, with limited spots.
+[Book a demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) now! We offer free cloud service setup for early customers, with limited spots.
