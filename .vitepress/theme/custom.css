@@ -1,0 +1,12 @@
+/* Custom VitePress CSS */
+:root {
+  --vp-c-brand-1: #1B8696;
+  /*--vp-c-text-1: #1B8696;*/
+}
+
+/* Tile font style */
+.title, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
+  font-family: 'Oswald', Arial, sans-serif;
+  font-weight: 700;
+  color: var(--vp-c-brand-1)
+}
