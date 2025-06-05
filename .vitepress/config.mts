@@ -10,5 +10,22 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Contact us', link: '/contact' }
     ],
+
+    sidebar: [
+      {
+        text: 'Docs',
+        items: [
+          { text: 'Why Velda', link: '/intro' },
+          { text: 'Connect to Velda Instance', link: '/connect' },
+          { text: 'Run workloads', link: '/run' }
+        ]
+      }
+    ],
+    /*
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+    ]
+    */
   }
 })

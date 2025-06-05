@@ -29,8 +29,8 @@ const members = [
       Our Team
     </template>
     <template #lead>
-      Velda is inspired by industrial experts with over 10 year experience on distributed system, cloud computing.
-      It's boot-straped with sufficient funding to power your use-cases.
+        Velda is inspired by industry experts with over 10 years of experience in distributed systems and cloud computing.
+        <br/>We're bootstrapped with sufficient funding to power your use cases.
     </template>
   </VPTeamPageTitle>
   <VPTeamMembers :members />
@@ -39,8 +39,18 @@ const members = [
       Contact us
     </template>
     <template #lead>
-      <p><a href="mailto:contact@velda.io">Email us</a></p>
-      <a href="https://calendar.app.google/xJC6qMwzQ6UdAFVs5">Book a free consultation</a>
+        <ul>
+            <li>
+                <a href="mailto:contact@velda.io">
+                    📧 Email us at <strong>contact@velda.io</strong>
+                </a>
+            </li>
+            <li>
+                <a href="https://calendar.app.google/xJC6qMwzQ6UdAFVs5" target="_blank" rel="noopener">
+                    📅 Book a <strong>free consultation</strong>
+                </a>
+            </li>
+        </ul>
     </template>
   </VPTeamPageTitle>
 </VPTeamPage>

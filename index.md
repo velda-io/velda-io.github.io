@@ -4,32 +4,39 @@ layout: home
 
 hero:
   name: "VELDA"
-  text: Cloud-powered development, simplified for everyone
+  text: Supercharge your development with seamless cloud power
   image:
     src: /logos.png
     alt: Velda
   actions:
     - theme: brand
-      text: Book a demo
+      text: Book a free demo
       link: https://calendar.app.google/xJC6qMwzQ6UdAFVs5
     - theme: alt
-      text: Open playground
+      text: Try our playground
       link: https://novahub.dev
     - theme: alt
-      text: Read the docs
-      link: https://doc.velda.io
+      text: Explore docs
+      link: intro
 
 features:
-  - title: Instantly from dev to prod
-    details: Instantly scale your workload from your development workstation to the compute cluster. All you need to do is prefix your command line with vrun—we'll handle the rest.
-  - title: Save compute costs by up to 90%
-    details: No need to provision powerful workstations or GPUs for every developer. Velda helps you allocate the right compute resources for every workload.
-  - title: Works with most frameworks & cloud providers
-    details: AWS, Google Cloud, on-prem, or Velda-hosted (coming soon)—the choice is yours. Plus, there are almost no restrictions on what library or tool you use.
+  - title: Scale on demand, in seconds
+    details: "Access unlimited computing power right from your development environment. Just prefix your command with vrun and instantly tap into powerful cloud resources—when you need them, where you need them."
+  - title: Cut computing costs by up to 90%
+    details: "Say goodbye to expensive, always-on workstations. Velda dynamically allocates resources exactly when needed, eliminating waste and dramatically reducing your infrastructure costs."
+  - title: Your tools, your cloud, zero friction
+    details: "Deploy on AWS, Google Cloud, on-premises, or Velda-hosted infrastructure (coming soon). Use any framework, library, or tool with consistent environments across your entire team."
 ---
 
-## Watch Velda in Action
+## Discover the Velda advantage
 
+Velda transforms how developers build and scale applications by removing the barriers between development and cloud computing. No more waiting for resources, fighting with configurations, or losing time to infrastructure management.
+
+### See the magic in action
+
+Watch this one-minute demo to see how Velda seamlessly extends your development environment:
 [![Watch the demo](https://img.youtube.com/vi/fr58LREZ6vQ/0.jpg)](https://youtu.be/fr58LREZ6vQ)
 
-[Book a demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) now! We offer free cloud service setup for early customers, with limited spots.
+### Start your journey today
+
+Experience the development platform that leading teams are already using to ship faster. [Book your personalized demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) and get free cluster setup as an early adopter—limited spots available.
