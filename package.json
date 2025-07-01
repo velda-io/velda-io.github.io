@@ -1,11 +1,18 @@
 {
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "esbuild": ">=0.25.0",
+    "tailwindcss": "^4.1.11",
     "vitepress": "^1.6.3"
   },
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/vite": "^4.1.11",
+    "postcss": "^8.5.6"
   }
 }

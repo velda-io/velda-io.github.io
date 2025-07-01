@@ -4,6 +4,7 @@ import './custom.css'
 import { inBrowser } from 'vitepress'
 import CookieBanner from './CookieBanner.tsx'
 import { h } from 'vue'
+import Animations from '../components/Animations.vue'
 
 declare global {
   interface Window {
@@ -19,6 +20,7 @@ export default {
         })
   },
   enhanceApp({ router, app }) {
+    app.component('Animations', Animations)
     if (inBrowser) {
       app.component('CookieBanner', CookieBanner)
     }

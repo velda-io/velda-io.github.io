@@ -33,6 +33,9 @@ features:
 Velda transforms how developers build and scale applications by removing the barriers between development and cloud computing. No more waiting for resources, fighting with configurations, or losing time to infrastructure management.
 
 ### See the magic in action
+<Animations />
+
+### Video
 
 Watch this one-minute demo to see how Velda seamlessly extends your development environment:
 [![Watch the demo](https://img.youtube.com/vi/fr58LREZ6vQ/0.jpg)](https://youtu.be/fr58LREZ6vQ)
