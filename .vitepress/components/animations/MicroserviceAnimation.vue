@@ -4,17 +4,8 @@
 
         <!-- Bottom row: Terminal / Browser -->
         <div ref="userPanel" class="w-full max-w-2xl">
-            <div v-if="!isBrowserVisible" ref="terminalWindow" class="terminal-window">
-                <div class="terminal-header">
-                    <div class="header-dots">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
-                    </div>
-                    <div class="flex-grow text-center text-xs text-gray-300">bash</div>
-                </div>
-                <div ref="terminalContent"
-                    class="terminal-font terminal-content rounded-md p-3 text-sm h-64 overflow-y-auto"></div>
+            <div v-if="!isBrowserVisible">
+                <Terminal ref="terminal" height="16rem" />
             </div>
 
             <div v-else ref="browserWindow" class="browser-window">
@@ -89,28 +80,27 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { sleep } from '../../utils/animationUtils';
+import { cancelAllTrackedPromises, sleep } from '../../utils/animationUtils';
+import Terminal from '../../components/Terminal.vue';
 
 // --- Template Refs ---
 const animationWrapper = ref(null);
 const svgContainer = ref(null);
 const apiServerMachine = ref(null);
 const frontendMachine = ref(null);
-const terminalWindow = ref(null);
-const terminalContent = ref(null);
+const terminal = ref(null);
 const browserWindow = ref(null);
 const browserUrl = ref(null);
 const userPanel = ref(null);
 
 // --- Reactive State ---
 const isBrowserVisible = ref(false);
-let animationTimeouts = [];
 let resizeObserver = null;
 
 const commands = [
     { cmd: "vrun -P cpu-4 -s apiserver ./start-apiserver.sh --port 8000 &", action: provisionApiServer },
     { cmd: "vrun -P cpu-4 -s frontend ./start-frontend.sh --apiserver=apiserver:8000 &", action: provisionFrontend }
-];
+ ];
 
 // --- Core Animation Functions ---
 
@@ -129,22 +119,20 @@ async function startAnimation() {
         await typeCommand(cmd);
         await action();
     }
-    await sleep(2000);
     addTerminalOutput('~ $ ', 'text-blue-400', true);
+    await sleep(2000);
     if (props.onComplete) {
         props.onComplete();
     }
 };
 
 const stopAnimation = () => {
+    cancelAllTrackedPromises();
     resetState();
 };
 
 function resetState() {
-    animationTimeouts.forEach(clearTimeout);
-    animationTimeouts = [];
-
-    if (terminalContent.value) terminalContent.value.innerHTML = '';
+    if (terminal.value) terminal.value.clear();
     if (svgContainer.value) svgContainer.value.innerHTML = '';
 
     isBrowserVisible.value = false;
@@ -152,34 +140,18 @@ function resetState() {
     [apiServerMachine.value, frontendMachine.value].forEach(machine => {
         if (machine) machine.classList.remove('active', 'provisioning');
     });
-
 }
 
 async function typeCommand(command) {
-    if (!terminalContent.value) return;
-    const prompt = document.createElement('p');
-    prompt.className = 'text-green-800';
-    prompt.innerHTML = `~ $ <span class="text-green-800"></span><span class="typing-caret"></span>`;
-    terminalContent.value.appendChild(prompt);
-    scrollToBottom();
-
-    const commandSpan = prompt.querySelector('span');
-    const caret = prompt.querySelector('.typing-caret');
-    for (let i = 0; i < command.length; i++) {
-        commandSpan.textContent += command.charAt(i);
-        await sleep(30);
+    if (terminal.value) {
+        await terminal.value.sendCommand(command);
     }
-    if (caret) caret.style.display = 'none';
-
 }
 
 function addTerminalOutput(text, className = 'text-gray-400', noNewLine = false) {
-    if (!terminalContent.value) return;
-    const p = document.createElement('p');
-    p.className = `${className} ${noNewLine ? '' : 'whitespace-pre-wrap'}`;
-    p.textContent = text;
-    terminalContent.value.appendChild(p);
-    scrollToBottom();
+    if (terminal.value) {
+        terminal.value.sendLine(text, className, noNewLine);
+    }
 }
 
 async function provisionApiServer() {
@@ -251,8 +223,8 @@ function drawLines() {
 }
 
 function scrollToBottom() {
-    if (terminalContent.value) {
-        terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
+    if (terminal.value) {
+        terminal.value.scrollTop = terminal.value.scrollHeight;
     }
 }
 

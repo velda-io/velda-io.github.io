@@ -3,6 +3,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Velda",
   description: "A VitePress Site",
+  srcExclude: [
+    "examples/**",
+  ],
   themeConfig: {
     logo: "/logos.png",
     siteTitle: 'VELDA',
