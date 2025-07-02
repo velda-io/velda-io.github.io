@@ -27,52 +27,23 @@
 
         <!-- Top row: Machines -->
         <div class="machine-stack">
-            <div ref="apiServerMachine" class="machine">
-                <div class="machine-header">
-                    <span class="machine-name">apiserver</span>
-                    <div class="status-light"></div>
-                </div>
-                <div class="machine-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
-                        <rect x="7" y="7" width="10" height="10" rx="1" ry="1"></rect>
-                        <line x1="9" y1="2" x2="9" y2="6"></line>
-                        <line x1="15" y1="2" x2="15" y2="6"></line>
-                        <line x1="9" y1="18" x2="9" y2="22"></line>
-                        <line x1="15" y1="18" x2="15" y2="22"></line>
-                        <line x1="2" y1="9" x2="6" y2="9"></line>
-                        <line x1="2" y1="15" x2="6" y2="15"></line>
-                        <line x1="18" y1="9" x2="22" y2="9"></line>
-                        <line x1="18" y1="15" x2="22" y2="15"></line>
-                    </svg>
-                    <p class="font-semibold text-sm">4 CPUs</p>
-                    <p class="text-xs">Port: 8000</p>
-                </div>
-            </div>
-            <div ref="frontendMachine" class="machine">
-                <div class="machine-header">
-                    <span class="machine-name">frontend</span>
-                    <div class="status-light"></div>
-                </div>
-                <div class="machine-content">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
-                        <rect x="7" y="7" width="10" height="10" rx="1" ry="1"></rect>
-                        <line x1="9" y1="2" x2="9" y2="6"></line>
-                        <line x1="15" y1="2" x2="15" y2="6"></line>
-                        <line x1="9" y1="18" x2="9" y2="22"></line>
-                        <line x1="15" y1="18" x2="15" y2="22"></line>
-                        <line x1="2" y1="9" x2="6" y2="9"></line>
-                        <line x1="2" y1="15" x2="6" y2="15"></line>
-                        <line x1="18" y1="9" x2="22" y2="9"></line>
-                        <line x1="18" y1="15" x2="22" y2="15"></line>
-                    </svg>
-                    <p class="font-semibold text-sm">4 CPUs</p>
-                    <p class="text-xs">Connects to apiserver:8000</p>
-                </div>
-            </div>
+            <Machine
+                ref="apiServerMachine"
+                title="apiserver"
+                hardware="4 CPUs"
+                :status="apiServerStatus"
+            >
+                <p class="text-xs">Port: 8000</p>
+            </Machine>
+            
+            <Machine
+                ref="frontendMachine"
+                title="frontend"
+                hardware="4 CPUs"
+                :status="frontendStatus"
+            >
+                <p class="text-xs">Connects to apiserver:8000</p>
+            </Machine>
         </div>
 
     </div>
@@ -82,6 +53,7 @@
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { cancelAllTrackedPromises, sleep } from '../../utils/animationUtils';
 import Terminal from '../../components/Terminal.vue';
+import Machine from './Machine.vue';
 
 // --- Template Refs ---
 const animationWrapper = ref(null);
@@ -95,6 +67,8 @@ const userPanel = ref(null);
 
 // --- Reactive State ---
 const isBrowserVisible = ref(false);
+const apiServerStatus = ref('');
+const frontendStatus = ref('');
 let resizeObserver = null;
 
 const commands = [
@@ -136,10 +110,8 @@ function resetState() {
     if (svgContainer.value) svgContainer.value.innerHTML = '';
 
     isBrowserVisible.value = false;
-
-    [apiServerMachine.value, frontendMachine.value].forEach(machine => {
-        if (machine) machine.classList.remove('active', 'provisioning');
-    });
+    apiServerStatus.value = '';
+    frontendStatus.value = '';
 }
 
 async function typeCommand(command) {
@@ -156,26 +128,24 @@ function addTerminalOutput(text, className = 'text-gray-400', noNewLine = false)
 
 async function provisionApiServer() {
     if (!apiServerMachine.value) return;
-    apiServerMachine.value.classList.add('provisioning');
+    apiServerStatus.value = 'provisioning';
     drawLines();
     addTerminalOutput('INFO: Provisioning "apiserver"...', 'text-yellow-400');
 
     await sleep(1500);
-    apiServerMachine.value.classList.remove('provisioning');
-    apiServerMachine.value.classList.add('active');
+    apiServerStatus.value = 'active';
     drawLines();
     addTerminalOutput('SUCCESS: apiserver is listening on port 8000.', 'text-green-400');
 }
 
 async function provisionFrontend() {
     if (!frontendMachine.value) return;
-    frontendMachine.value.classList.add('provisioning');
+    frontendStatus.value = 'provisioning';
     drawLines();
     addTerminalOutput('INFO: Provisioning "frontend"...', 'text-yellow-400');
 
     await sleep(1500);
-    frontendMachine.value.classList.remove('provisioning');
-    frontendMachine.value.classList.add('active');
+    frontendStatus.value = 'active';
     drawLines();
     addTerminalOutput('SUCCESS: Frontend available.', 'text-green-400');
     showBrowser();
@@ -205,9 +175,14 @@ function drawLines() {
     const termX = termRect.left - wrapperRect.left + termRect.width;
     const termY = termRect.top - wrapperRect.top + termRect.height / 2;
 
-    [apiServerMachine.value, frontendMachine.value].forEach(machine => {
-        if (machine && (machine.classList.contains('active') || machine.classList.contains('provisioning'))) {
-            const machineRect = machine.getBoundingClientRect();
+    const machines = [
+        { ref: apiServerMachine.value, status: apiServerStatus.value },
+        { ref: frontendMachine.value, status: frontendStatus.value }
+    ];
+
+    machines.forEach(({ ref, status }) => {
+        if (ref && (status === 'active' || status === 'provisioning')) {
+            const machineRect = ref.$el.getBoundingClientRect();
             const machineX = machineRect.left - wrapperRect.left;
             const machineY = machineRect.top - wrapperRect.top + machineRect.height / 2;
 
@@ -373,6 +348,7 @@ defineExpose({
 
 .machine-stack {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;

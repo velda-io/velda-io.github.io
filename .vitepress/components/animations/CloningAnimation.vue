@@ -12,23 +12,22 @@
 
             <!-- Template Machine -->
             <div class="flex flex-col items-center gap-4">
-                <div ref="templateMachine" class="machine active w-full max-w-xs md:max-w-none md:w-72"
-                    :class="{ 'cloning-effect': isCloning }">
-                    <div class="machine-chassis rounded-lg p-4 flex flex-col">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-lg font-bold text-white">Pytorch ML Template</span>
-                            <div class="status-light"></div>
-                        </div>
-                        <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
-                            <p class="text-gray-300 text-sm font-semibold min-h-[2rem]">Base Dependencies:</p>
-                            <ul class="text-xs text-gray-400 list-disc list-inside mt-1">
-                                <li>torch==1.12.1</li>
-                                <li>pandas==1.4.2</li>
-                                <li>matplotlib==3.5.2</li>
-                            </ul>
-                        </div>
+                <Machine
+                    ref="templateMachine"
+                    title="Pytorch ML Template"
+                    status="active"
+                    class="w-full max-w-xs md:max-w-none md:w-72"
+                    :class="{ 'cloning-effect': isCloning }"
+                >
+                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                        <p class="text-gray-300 text-sm font-semibold min-h-[2rem]">Base Dependencies:</p>
+                        <ul class="text-xs text-gray-400 list-disc list-inside mt-1">
+                            <li>torch==1.12.1</li>
+                            <li>pandas==1.4.2</li>
+                            <li>matplotlib==3.5.2</li>
+                        </ul>
                     </div>
-                </div>
+                </Machine>
                 <button ref="cloneButton" class="clone-button" style="cursor: default;" tabindex="-1"
                     aria-disabled="true">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 20 20"
@@ -45,47 +44,43 @@
             <!-- Cloned Instances Stack -->
             <div class="flex flex-col w-full lg:w-auto justify-around lg:justify-start gap-8">
                 <!-- Instance 1 (Alice) -->
-                <div v-if="clones.alice.visible" ref="instance1"
-                    class="machine w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
-                    :class="{ 'active': clones.alice.active }">
-                    <div class="machine-chassis rounded-lg p-4 flex flex-col">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-lg font-bold text-white">Data Analysis (Alice)</span>
-                            <div class="status-light"></div>
-                        </div>
-                        <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
-                            <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.alice.command }}
-                            </p>
-                            <ul class="text-xs text-gray-400 list-disc list-inside min-h-[4.5rem]">
-                                <li v-for="dep in clones.alice.deps" :key="dep"
-                                    :class="{ 'text-yellow-400 font-bold': dep.includes('scikit-learn') }">{{ dep }}
-                                </li>
-                            </ul>
-                        </div>
+                <Machine 
+                    v-if="clones.alice.visible"
+                    ref="instance1"
+                    title="Data Analysis (Alice)"
+                    :status="clones.alice.active ? 'active' : ''"
+                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
+                >
+                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                        <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.alice.command }}
+                        </p>
+                        <ul class="text-xs text-gray-400 list-disc list-inside min-h-[4.5rem]">
+                            <li v-for="dep in clones.alice.deps" :key="dep"
+                                :class="{ 'text-yellow-400 font-bold': dep.includes('scikit-learn') }">{{ dep }}
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </Machine>
                 <div v-else class="w-full max-w-xs md:max-w-none md:w-80" style="min-height: 188px;"></div>
 
                 <!-- Instance 2 (Bob) -->
-                <div v-if="clones.bob.visible" ref="instance2"
-                    class="machine w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
-                    :class="{ 'active': clones.bob.active }">
-                    <div class="machine-chassis rounded-lg p-4 flex flex-col">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-lg font-bold text-white">PyTorch Research (Bob)</span>
-                            <div class="status-light"></div>
-                        </div>
-                        <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
-                            <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.bob.command }}
-                            </p>
-                            <ul class="text-xs text-gray-400 list-disc list-inside">
-                                <li v-for="dep in clones.bob.deps" :key="dep"
-                                    :class="{ 'text-yellow-400 font-bold': dep.includes('torch==2.0.0') }">{{ dep }}
-                                </li>
-                            </ul>
-                        </div>
+                <Machine
+                    v-if="clones.bob.visible"
+                    ref="instance2"
+                    title="PyTorch Research (Bob)"
+                    :status="clones.bob.active ? 'active' : ''"
+                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
+                >
+                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                        <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.bob.command }}
+                        </p>
+                        <ul class="text-xs text-gray-400 list-disc list-inside">
+                            <li v-for="dep in clones.bob.deps" :key="dep"
+                                :class="{ 'text-yellow-400 font-bold': dep.includes('torch==2.0.0') }">{{ dep }}
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </Machine>
                 <div v-else class="w-full max-w-xs md:max-w-none md:w-80" style="min-height: 188px;"></div>
             </div>
 
@@ -96,6 +91,7 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
 import { sleep, cancelAllTrackedPromises } from '../../utils/animationUtils';
+import Machine from './Machine.vue';
 
 // Define props
 const props = defineProps({
@@ -300,33 +296,6 @@ defineExpose({ startAnimation, cancelAnimation });
     /* Ensure long commands wrap */
 }
 
-.machine {
-    transition: all 0.5s ease-in-out;
-    z-index: 10;
-    position: relative;
-}
-
-.machine-chassis {
-    background-color: #374151;
-    border-top: 2px solid #4b5563;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-    min-height: 188px;
-    /* Pre-allocate space for 4th dependency */
-}
-
-.status-light {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #4B5563;
-    transition: background-color 0.5s, box-shadow 0.5s;
-}
-
-.machine.active .status-light {
-    background-color: #10B981;
-    box-shadow: 0 0 8px #10B981;
-}
-
 .clone-button {
     display: inline-flex;
     align-items: center;
@@ -338,20 +307,6 @@ defineExpose({ startAnimation, cancelAnimation });
     font-weight: 500;
     transition: transform 0.1s ease-in-out;
     border: none;
-}
-
-.machine.cloning-effect {
-    animation: cloning-pulse 0.5s ease-out;
-}
-
-@keyframes cloning-pulse {
-    0% {
-        box-shadow: 0 0 0 0px rgba(79, 70, 229, 0.7);
-    }
-
-    100% {
-        box-shadow: 0 0 0 25px rgba(79, 70, 229, 0);
-    }
 }
 
 .mouse-cursor {
