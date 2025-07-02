@@ -211,7 +211,7 @@ function runCommandInTerminal() {
             setTimeout(streamLine, Math.random() * 200 + delay);
         } else {
             setTimeout(() => {
-                terminalContent.value.innerHTML += `<p class="text-yellow-800 mt-2">[system] Training complete. Releasing GPU instance...</p>`;
+                terminalContent.value.innerHTML += `<p class="text-yellow-800 mt-2">Training complete. Releasing GPU instance...</p>`;
                 terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
                 deactivateTrainingMachine();
                 setTimeout(() => {
@@ -249,6 +249,7 @@ onBeforeUnmount(() => {
     font-family: 'Inter', sans-serif;
     color: var(--vp-c-text);
     padding: 2rem;
+    padding-bottom: 0;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
     width: 100%;

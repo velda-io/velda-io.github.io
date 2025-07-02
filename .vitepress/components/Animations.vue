@@ -17,11 +17,13 @@
 </template>
 
 <script>
+import CloningAnimation from './animations/CloningAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
 
 export default {
     components: {
         ProvisionAnimation,
+        CloningAnimation,
     },
     data() {
         return {
@@ -32,12 +34,17 @@ export default {
                     description: 'In a single command, you can spin up a new machine with everything same as your current environment.',
                     component: 'ProvisionAnimation',
                 },
+                {
+                    title: 'Onboard in Seconds',
+                    description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a template.',
+                    component: 'CloningAnimation',
+                }
             ],
             interval: null,
         };
     },
     mounted() {
-        this.interval = setInterval(this.nextSlide, 5000);
+        //this.interval = setInterval(this.nextSlide, 5000);
     },
     beforeDestroy() {
         clearInterval(this.interval);
