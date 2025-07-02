@@ -6,28 +6,17 @@
         <Terminal ref="terminal" class="w-full" height="16rem" />
 
         <!-- Machine Stack -->
-        <div class="flex flex-row w-full md:flex-col md:w-auto md:justify-start gap-8">
+        <div class="machine-stack">
             <!-- Machine 1 -->
-            <Machine
-                ref="machine1"
-                title="Primary"
-                status="active"
-                hardware="CPU"
-                class="w-full max-w-xs md:max-w-none md:w-52"
-            />
+            <Machine ref="machine1" title="Primary" status="active" hardware="CPU"
+                class="w-full max-w-xs md:max-w-none md:w-52" />
 
             <!-- Machine 2 -->
-            <Machine
-                :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }"
-                ref="machine2"
-                title="Training"
-                :status="trainingMachineStatus"
-                hardware="GPU"
-                class="w-full max-w-xs md:max-w-none md:w-52 transition-all duration-500"
-                :class="{
+            <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2" title="Training"
+                :status="trainingMachineStatus" hardware="GPU"
+                class="w-full max-w-xs md:max-w-none md:w-52 transition-all duration-500" :class="{
                     'opacity-0 scale-90': trainingMachineStatus === ''
-                }"
-            >
+                }">
                 <template v-if="isProvisioning">
                     <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
                 </template>
@@ -43,7 +32,7 @@
 import { ref, onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
 import Terminal from '../Terminal.vue';
 import Machine from './Machine.vue';
-import { sleep, cancelAllTrackedPromises } from '../../utils/animationUtils';
+import { createAnimationTracker } from '../../utils/animationUtils';
 
 // Define props
 const props = defineProps({
@@ -51,10 +40,6 @@ const props = defineProps({
         type: Function,
         required: false,
         default: null
-    },
-    isActive: {
-        type: Boolean,
-        default: false
     }
 });
 
@@ -71,6 +56,9 @@ const isProvisioning = ref(false);
 const isTrainingActive = ref(false);
 const isTrainingDeactivated = ref(false);
 const trainingMachineStatus = ref(''); // New reactive state for machine status
+
+// Create an animation tracker for this component
+const animator = createAnimationTracker();
 
 // Track all animation timeouts and intervals
 let resizeObserver;
@@ -110,11 +98,12 @@ async function drawLines() {
  */
 async function startAnimation() {
     // Cancel any ongoing animation first
-    cancelAnimation();
+    stopAnimation();
+    resetAnimation();
 
     if (!terminal.value) return;
     const command = "vrun -P gpu ./train_model.sh";
-    await terminal.value.sendCommand(command);
+    await terminal.value.sendCommand(animator, command);
 
     showTrainingMachine.value = true;
 
@@ -123,7 +112,7 @@ async function startAnimation() {
     isProvisioning.value = true;
     trainingMachineStatus.value = 'provisioning';
 
-    await sleep(1000);
+    await animator.sleep(1000);
     isProvisioning.value = false;
     isTrainingActive.value = true;
     trainingMachineStatus.value = 'active';
@@ -161,34 +150,38 @@ async function runCommandInTerminal() {
     async function streamLine() {
         if (lineIndex < outputLines.length) {
             const line = outputLines[lineIndex];
-            const className = line.startsWith('Epoch') ? 'text-blue-400' : 'text-yellow-800';
+            const className = line.startsWith('Epoch') ? 'app-info' : 'system';
             terminal.value.sendLine(line, className);
             lineIndex++;
 
             const delay = lineIndex < 3 ? 200 : 350;
-            await sleep(Math.random() * 200 + delay);
+            await animator.sleep(Math.random() * 200 + delay);
             await streamLine();
         } else {
-            await sleep(400);
-            terminal.value.sendLine('Training complete. Releasing GPU instance...', 'text-yellow-800 mt-2');
+            await animator.sleep(400);
+            terminal.value.sendLine('Training complete. Releasing GPU instance...', 'system');
             deactivateTrainingMachine();
-            await sleep(500);
-            terminal.value.sendLine('$ ready', 'text-green-800 mt-2');
+            await animator.sleep(500);
+            terminal.value.sendLine('$ ready', 'input');
 
             // Animation has completed, call onComplete if provided
-            await sleep(2000);
+            await animator.sleep(2000);
             if (props.onComplete) {
                 props.onComplete();
             }
         }
     }
 
-    await sleep(100);
+    await animator.sleep(100);
     await streamLine();
 }
 
-function cancelAnimation() {
+function stopAnimation() {
+    animator.cancelAll(); // Cancel all tracked promises for this component
 
+}
+
+function resetAnimation() {
     // Reset state
     showTrainingMachine.value = false;
     isProvisioning.value = false;
@@ -201,19 +194,6 @@ function cancelAnimation() {
     // Redraw lines to remove any existing connections
     drawLines();
 }
-/**
- * Resets the animation state
- */
-function resetAnimation() {
-    cancelAnimation();
-}
-
-// Watch for isActive prop changes and cancel animation when slide is no longer active
-watch(() => props.isActive, (isActive) => {
-    if (!isActive) {
-        cancelAnimation();
-    }
-}, { immediate: true });
 
 onMounted(() => {
     // Initial setup
@@ -230,10 +210,10 @@ onBeforeUnmount(() => {
     if (resizeObserver && animationWrapper.value) {
         resizeObserver.unobserve(animationWrapper.value);
     }
-    cancelAnimation();
+    stopAnimation();
 });
 
-defineExpose({ startAnimation, cancelAnimation });
+defineExpose({ startAnimation, stopAnimation });
 </script>
 
 <style scoped>
@@ -288,5 +268,13 @@ defineExpose({ startAnimation, cancelAnimation });
     /* Changed to gray-500 for better visibility */
     stroke-width: 2;
     transition: all 0.5s ease-in-out;
+}
+
+.machine-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
 }
 </style>

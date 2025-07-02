@@ -1,15 +1,15 @@
 <template>
-    <div :class="['machine', { 'active': status === 'active', 'provisioning': status === 'provisioning' }]"
+    <div :class="['machine', status]"
         :ref="machineRef">
         <div class="machine-header">
-            <span class="machine-name text-gray-300">{{ title }}</span>
-            <div class="status-light"></div>
+            <span>
+                <div v-if="status !== 'nostatus'" class="status-light"></div>
+                <span class="machine-name text-gray-300">{{ title }}</span>
+            </span>
+            <span class="machine-hardware text-gray-300">{{ hardware }}</span>
         </div>
         <div class="machine-content">
-            <template v-if="$slots.icon">
-                <slot name="icon"></slot>
-            </template>
-            <template v-else-if="status === 'provisioning'">
+            <template v-if="status === 'provisioning'">
                 <svg class="animate-spin h-12 w-12 text-amber-400" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -44,7 +44,7 @@
             <template v-if="hardware">
                 <p class="font-semibold text-sm">{{ hardware }}</p>
             </template>
-            <slot></slot>
+            <slot class="w-full" ></slot>
         </div>
     </div>
 </template>
@@ -60,7 +60,7 @@ const props = defineProps({
     status: {
         type: String,
         default: '',
-        validator: (value) => ['', 'active', 'provisioning', 'error', 'inactive'].includes(value)
+        validator: (value) => ['', 'active', 'provisioning', 'error', 'inactive', 'nostatus'].includes(value)
     },
     hardware: {
         type: String,
@@ -81,8 +81,8 @@ defineExpose({
     background-color: #1F2937;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    width: 240px;
-    height: 150px;
+    width: 250px;
+    height: 170px;
     display: flex;
     flex-direction: column;
     border-top: 3px solid #4B5563;
@@ -96,6 +96,12 @@ defineExpose({
     opacity: 1;
     transform: scale(1);
     border-top-color: #F59E0B;
+}
+
+.machine.nostatus {
+    opacity: 1;
+    transform: scale(1);
+    border-top-color: #4B5563;
 }
 
 .machine.active {
@@ -127,12 +133,19 @@ defineExpose({
     font-size: 1rem;
 }
 
+.machine-hardware {
+    font-weight: 300;
+    font-size: 0.7rem;
+}
+
 .status-light {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background-color: #4B5563;
     transition: background-color 0.5s, box-shadow 0.5s;
+    display: inline-block;
+    margin-right: 0.5rem;
 }
 
 .machine.provisioning .status-light {

@@ -1,3 +1,6 @@
+---
+layout: false
+---
 <script setup>
 import { ref } from 'vue';
 import Animations from '../.vitepress/components/Animations.vue';
@@ -9,18 +12,25 @@ async function toggleAllAnimations() {
     isAnimationRunning.value = !isAnimationRunning.value;
     console.log(animationRefs);
     await animationRefs.forEach(async ref => {
+        const waits = [];
         if (ref) {
             if (isAnimationRunning.value && ref.startAnimation) {
-                await ref.startAnimation();
-            } else if (!isAnimationRunning.value && ref.cancelAnimation) {
-                ref.cancelAnimation();
+                waits.push(ref.startAnimation());
+            } else if (!isAnimationRunning.value && ref.stopAnimation) {
+                ref.stopAnimation();
             }
         }
+        await Promise.allSettled(waits);
     });
 }
 
-async function restartAnim(sender) {
-    await sender.startAnimation();
+function restartAnim(index) {
+    return async function() {
+        const ref = animationRefs[index];
+        if (ref) {
+            await ref.startAnimation();
+        }
+    }
 }
 const animations = Animations.data();
 </script>
@@ -41,7 +51,9 @@ This page includes all animations one by one for easy reference.
 <div v-for="(animation, index) in animations.animations" :key="index" class="animation-container">
     <h3 class="animation-title">{{ animation.title }}</h3>
     <p class="animation-description">{{ animation.description }}</p>
-    <component :is="animation.component" :ref="el => { if (el) animationRefs[index] = el; }" :onComplete="restartAnim"/>
+    <div class="animation-box">
+    <component :is="animation.component" :ref="el => { if (el) animationRefs[index] = el; }" :onComplete="restartAnim(index)"/>
+    </div>
 </div>
 
 <style>
@@ -68,6 +80,12 @@ This page includes all animations one by one for easy reference.
     border-radius: 0.5rem;
     background-color: var(--vp-c-bg-secondary);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.animation-box {
+    width: 956px;
+    height: 448px;
+    overflow: hidden;
 }
 
 .animation-title {

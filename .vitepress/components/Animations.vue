@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { cancelledError } from '../utils/animationUtils';
+import { CancelledError } from '../utils/animationUtils';
 import CloningAnimation from './animations/CloningAnimation.vue';
 import MicroserviceAnimation from './animations/MicroserviceAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
@@ -79,8 +79,8 @@ export default {
         async startCurrentAnimation() {
             // Cancel all animations first
             this.animationRefs.forEach(ref => {
-                if (ref && ref.cancelAnimation) {
-                    ref.cancelAnimation();
+                if (ref && ref.stopAnimation) {
+                    ref.stopAnimation();
                 }
             });
 
@@ -90,7 +90,7 @@ export default {
                 try {
                     await currentAnimation.startAnimation();
                 } catch (error) {
-                    if (error != cancelledError) {
+                    if (!(error instanceof CancelledError)) {
                         // Log the error if it's not a cancellation
                         console.error('Error starting animation:', error);
                     }

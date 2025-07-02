@@ -16,7 +16,6 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
-import { sleep } from '../utils/animationUtils';
 
 // --- Template Refs ---
 const terminalWindow = ref(null);
@@ -40,7 +39,7 @@ const props = defineProps({
  * @param {string} command - The command to type
  * @param {number} typingSpeed - Milliseconds between each character
  */
-async function sendCommand(command, typingSpeed = 30) {
+async function sendCommand(animator, command, typingSpeed = 30) {
     if (!terminalContent.value) return;
     
     const prompt = document.createElement('p');
@@ -54,20 +53,30 @@ async function sendCommand(command, typingSpeed = 30) {
     
     for (let i = 0; i < command.length; i++) {
         commandSpan.textContent += command.charAt(i);
-        await sleep(typingSpeed);
+        await animator.sleep(typingSpeed);
     }
     
     if (caret) caret.style.display = 'none';
     return true;
 }
 
+const typeMap = {
+    'system': 'text-yellow-800',
+    'app-info': 'text-blue-400',
+    'input': 'text-green-800',
+}
 /**
  * Adds a line of output to the terminal
  * @param {string} text - The text to add
+ * @param {string|null} type - Optional type for the text (not used in this version)
  * @param {string} className - CSS class name for styling the text
  * @param {boolean} noNewLine - If true, doesn't add a newline
  */
-function sendLine(text, className = 'text-gray-400', noNewLine = false) {
+function sendLine(text, type=null, className = 'text-gray-400', noNewLine = false) {
+    if (type && typeMap[type]) {
+        className = typeMap[type];
+    }
+
     if (!terminalContent.value) return;
     
     const p = document.createElement('p');
@@ -127,7 +136,6 @@ defineExpose({
     width: 100%;
     max-width: 42rem;
     z-index: 10;
-    flex-shrink: 0;
 }
 
 .typing-caret {

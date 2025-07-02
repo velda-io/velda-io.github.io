@@ -27,21 +27,11 @@
 
         <!-- Top row: Machines -->
         <div class="machine-stack">
-            <Machine
-                ref="apiServerMachine"
-                title="apiserver"
-                hardware="4 CPUs"
-                :status="apiServerStatus"
-            >
+            <Machine ref="apiServerMachine" title="apiserver" hardware="4 CPUs" :status="apiServerStatus">
                 <p class="text-xs">Port: 8000</p>
             </Machine>
-            
-            <Machine
-                ref="frontendMachine"
-                title="frontend"
-                hardware="4 CPUs"
-                :status="frontendStatus"
-            >
+
+            <Machine ref="frontendMachine" title="frontend" hardware="4 CPUs" :status="frontendStatus">
                 <p class="text-xs">Connects to apiserver:8000</p>
             </Machine>
         </div>
@@ -51,7 +41,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { cancelAllTrackedPromises, sleep } from '../../utils/animationUtils';
+import { createAnimationTracker } from '../../utils/animationUtils';
 import Terminal from '../../components/Terminal.vue';
 import Machine from './Machine.vue';
 
@@ -71,10 +61,13 @@ const apiServerStatus = ref('');
 const frontendStatus = ref('');
 let resizeObserver = null;
 
+// Create an animation tracker for this component
+const animator = createAnimationTracker();
+
 const commands = [
     { cmd: "vrun -P cpu-4 -s apiserver ./start-apiserver.sh --port 8000 &", action: provisionApiServer },
     { cmd: "vrun -P cpu-4 -s frontend ./start-frontend.sh --apiserver=apiserver:8000 &", action: provisionFrontend }
- ];
+];
 
 // --- Core Animation Functions ---
 
@@ -86,6 +79,7 @@ const props = defineProps({
     },
 });
 async function startAnimation() {
+    stopAnimation();
     resetState();
     await nextTick();
     for (let i = 0; i < commands.length; i++) {
@@ -93,16 +87,15 @@ async function startAnimation() {
         await typeCommand(cmd);
         await action();
     }
-    addTerminalOutput('~ $ ', 'text-blue-400', true);
-    await sleep(2000);
+    addTerminalOutput('~ $ ', 'input', true);
+    await animator.sleep(2000);
     if (props.onComplete) {
         props.onComplete();
     }
 };
 
-const stopAnimation = () => {
-    cancelAllTrackedPromises();
-    resetState();
+function stopAnimation() {
+    animator.cancelAll();
 };
 
 function resetState() {
@@ -116,13 +109,13 @@ function resetState() {
 
 async function typeCommand(command) {
     if (terminal.value) {
-        await terminal.value.sendCommand(command);
+        await terminal.value.sendCommand(animator, command);
     }
 }
 
-function addTerminalOutput(text, className = 'text-gray-400', noNewLine = false) {
+function addTerminalOutput(text, type=null, noNewLine = false) {
     if (terminal.value) {
-        terminal.value.sendLine(text, className, noNewLine);
+        terminal.value.sendLine(text, type, noNewLine=noNewLine);
     }
 }
 
@@ -130,24 +123,24 @@ async function provisionApiServer() {
     if (!apiServerMachine.value) return;
     apiServerStatus.value = 'provisioning';
     drawLines();
-    addTerminalOutput('INFO: Provisioning "apiserver"...', 'text-yellow-400');
+    addTerminalOutput('INFO: Provisioning "apiserver"...', 'system');
 
-    await sleep(1500);
+    await animator.sleep(1500);
     apiServerStatus.value = 'active';
     drawLines();
-    addTerminalOutput('SUCCESS: apiserver is listening on port 8000.', 'text-green-400');
+    addTerminalOutput('Apiserver is listening on port 8000.', 'app-info');
 }
 
 async function provisionFrontend() {
     if (!frontendMachine.value) return;
     frontendStatus.value = 'provisioning';
     drawLines();
-    addTerminalOutput('INFO: Provisioning "frontend"...', 'text-yellow-400');
+    addTerminalOutput('INFO: Provisioning "frontend"...', 'system');
 
-    await sleep(1500);
+    await animator.sleep(1500);
     frontendStatus.value = 'active';
     drawLines();
-    addTerminalOutput('SUCCESS: Frontend available.', 'text-green-400');
+    addTerminalOutput('Frontend is available on port 80.', 'app-info');
     showBrowser();
 }
 

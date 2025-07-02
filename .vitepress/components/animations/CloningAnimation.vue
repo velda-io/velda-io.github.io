@@ -12,14 +12,9 @@
 
             <!-- Template Machine -->
             <div class="flex flex-col items-center gap-4">
-                <Machine
-                    ref="templateMachine"
-                    title="Pytorch ML Template"
-                    status="active"
-                    class="w-full max-w-xs md:max-w-none md:w-72"
-                    :class="{ 'cloning-effect': isCloning }"
-                >
-                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                <Machine ref="templateMachine" title="Pytorch ML Template" status="nostatus"
+                    class="w-full max-w-xs md:max-w-none md:w-72" :class="{ 'cloning-effect': isCloning }">
+                    <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="text-gray-300 text-sm font-semibold min-h-[2rem]">Base Dependencies:</p>
                         <ul class="text-xs text-gray-400 list-disc list-inside mt-1">
                             <li>torch==1.12.1</li>
@@ -44,14 +39,9 @@
             <!-- Cloned Instances Stack -->
             <div class="flex flex-col w-full lg:w-auto justify-around lg:justify-start gap-8">
                 <!-- Instance 1 (Alice) -->
-                <Machine 
-                    v-if="clones.alice.visible"
-                    ref="instance1"
-                    title="Data Analysis (Alice)"
-                    :status="clones.alice.active ? 'active' : ''"
-                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
-                >
-                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                <Machine v-if="clones.alice.visible" ref="instance1" title="Data Analysis (Alice)" status="nostatus"
+                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500">
+                    <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.alice.command }}
                         </p>
                         <ul class="text-xs text-gray-400 list-disc list-inside min-h-[4.5rem]">
@@ -64,14 +54,10 @@
                 <div v-else class="w-full max-w-xs md:max-w-none md:w-80" style="min-height: 188px;"></div>
 
                 <!-- Instance 2 (Bob) -->
-                <Machine
-                    v-if="clones.bob.visible"
-                    ref="instance2"
-                    title="PyTorch Research (Bob)"
-                    :status="clones.bob.active ? 'active' : ''"
-                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500"
-                >
-                    <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
+                <Machine ref="instance2" title="PyTorch Research (Bob)"
+                    :status="clones.bob.active ? 'nostatus' : ''"
+                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500">
+                    <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.bob.command }}
                         </p>
                         <ul class="text-xs text-gray-400 list-disc list-inside">
@@ -81,7 +67,6 @@
                         </ul>
                     </div>
                 </Machine>
-                <div v-else class="w-full max-w-xs md:max-w-none md:w-80" style="min-height: 188px;"></div>
             </div>
 
         </div>
@@ -90,7 +75,7 @@
 
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
-import { sleep, cancelAllTrackedPromises } from '../../utils/animationUtils';
+import { createAnimationTracker } from '../../utils/animationUtils';
 import Machine from './Machine.vue';
 
 // Define props
@@ -100,10 +85,6 @@ const props = defineProps({
         required: false,
         default: null
     },
-    isActive: {
-        type: Boolean,
-        default: false
-    }
 });
 
 // --- Template Refs ---
@@ -123,19 +104,22 @@ const clones = reactive({
 const baseDeps = ['torch==1.12.1', 'pandas==1.4.2', 'matplotlib==3.5.2'];
 const cursorPosition = ref({ x: -100, y: -100 }); // Start off-screen
 
+// Create an animation tracker for this component
+const animator = createAnimationTracker();
+
 /**
  * Handles the logic for the simulated click.
  */
 async function handleCloneClick() {
     isCloning.value = true;
 
-        // Show Bob's instance
-        clones.bob.visible = true;
-        clones.bob.deps = [...baseDeps];
-        await sleep(500); // Wait for visibility transition
-        clones.bob.active = true;
-        isCloning.value = false;
-        await sleep(2000); // Wait before modifying
+    // Show Bob's instance
+    clones.bob.visible = true;
+    clones.bob.deps = [...baseDeps];
+    await animator.sleep(500); // Wait for visibility transition
+    clones.bob.active = true;
+    isCloning.value = false;
+    await animator.sleep(2000); // Wait before modifying
 }
 
 /**
@@ -146,17 +130,17 @@ async function modifyInstances() {
         instance.command = ''; // Reset command before typing
         for (let i = 0; i < command.length; i++) {
             instance.command += command.charAt(i);
-            await sleep(30);
+            await animator.sleep(30);
         }
     };
     // Modify Alice's instance
     await sendCommand(clones.alice, '$ pip install scikit-learn');
-    await sleep(500);
+    await animator.sleep(500);
     clones.alice.deps.push('scikit-learn==1.0.2');
-    await sleep(1000);
+    await animator.sleep(1000);
     // Modify Bob's instance
     await sendCommand(clones.bob, '$ pip install --upgrade torch')
-    await sleep(500);
+    await animator.sleep(500);
     const tfIndex = clones.bob.deps.findIndex(d => d.startsWith('torch=='));
     if (tfIndex !== -1) {
         clones.bob.deps[tfIndex] = 'torch==2.0.0';
@@ -168,6 +152,12 @@ async function modifyInstances() {
  * Resets the animation to its initial state.
  */
 function resetAnimation() {
+
+    // Reset cursor position
+    if (cursor.value) {
+        cursor.value.style.opacity = '0';
+        cursorPosition.value = { x: -100, y: -100 };
+    }
     clones.alice = { visible: true, active: true, command: '', deps: [...baseDeps] };
     clones.bob = { visible: false, active: false, command: '', deps: [] };
 }
@@ -177,7 +167,7 @@ function resetAnimation() {
  */
 async function startAnimation() {
     // Cancel any ongoing animations first
-    cancelAnimation();
+    stopAnimation();
 
     resetAnimation();
 
@@ -190,7 +180,7 @@ async function startAnimation() {
     cursor.value.style.transition = 'none';
     cursorPosition.value = { x: 80, y: wrapperRect.height - 80 };
 
-    await sleep(100);
+    await animator.sleep(100);
     // Make cursor visible after a brief delay and re-enable transition
     if (cursor.value) {
         cursor.value.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, transform 0.1s ease-in-out';
@@ -203,28 +193,25 @@ async function startAnimation() {
     const targetY = buttonRect.top - wrapperRect.top + buttonRect.height / 2;
 
     // Animate cursor to button
-    await sleep(500);
+    await animator.sleep(500);
     cursorPosition.value = { x: targetX, y: targetY };
 
     // Wait for cursor to arrive
-    await sleep(1000);
+    await animator.sleep(1000);
     // Add click effect
     cursor.value.style.transform = 'scale(0.8)';
     cloneButton.value.style.transform = 'scale(0.95)';
 
     // Remove click effect and trigger the main logic
-    await sleep(150);
+    await animator.sleep(150);
     cursor.value.style.transform = 'scale(1)';
     cloneButton.value.style.transform = 'scale(1)';
 
-    // Hide cursor after a delay
-    await sleep(1000);
-    if (cursor.value) cursor.value.style.opacity = '0';
-
     await handleCloneClick();
+    if (cursor.value) cursor.value.style.opacity = '0';
     await modifyInstances();
 
-    await sleep(2500);
+    await animator.sleep(2500);
     if (props.onComplete) {
         props.onComplete();
     }
@@ -233,23 +220,10 @@ async function startAnimation() {
 /**
  * Cancels all ongoing animations and resets state
  */
-function cancelAnimation() {
+function stopAnimation() {
     // Clear all timeouts
-    cancelAllTrackedPromises();
-
-    // Reset cursor position
-    if (cursor.value) {
-        cursor.value.style.opacity = '0';
-        cursorPosition.value = { x: -100, y: -100 };
-    }
+    animator.cancelAll();
 }
-
-// Watch for isActive prop changes and cancel animation when slide is no longer active
-watch(() => props.isActive, (isActive) => {
-    if (!isActive) {
-        cancelAnimation();
-    }
-}, { immediate: true });
 
 onMounted(() => {
     resetAnimation(); // Set initial state
@@ -257,11 +231,11 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-    cancelAnimation();
+    stopAnimation();
 });
 
 // Export methods for external use
-defineExpose({ startAnimation, cancelAnimation });
+defineExpose({ startAnimation, stopAnimation });
 </script>
 
 <style scoped>
