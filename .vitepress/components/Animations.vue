@@ -19,12 +19,14 @@
 
 <script>
 import CloningAnimation from './animations/CloningAnimation.vue';
+import MicroserviceAnimation from './animations/MicroserviceAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
 
 export default {
     components: {
         ProvisionAnimation,
         CloningAnimation,
+        MicroserviceAnimation,
     },
     props: {
         onAnimationComplete: {
@@ -46,31 +48,34 @@ export default {
                     title: 'Onboard in Seconds',
                     description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a template.',
                     component: 'CloningAnimation',
+                },
+                {
+                    title: 'Microservices in Seconds',
+                    description: 'Easily spin up new microservices with a single command.',
+                    component: 'MicroserviceAnimation',
                 }
             ],
             interval: null,
             animationRefs: [], // Store references to animation components
         };
     },
-    mounted() {
+    async mounted() {
         // Start the initial animation for the first slide
-        this.$nextTick(() => {
-            this.startCurrentAnimation();
-        });
+        await this.$nextTick();
+        await this.startCurrentAnimation();
     },
     watch: {
-        currentIndex() {
+        async currentIndex() {
             // When currentIndex changes, start the animation for the current slide
-            this.$nextTick(() => {
-                this.startCurrentAnimation();
-            });
+            await this.$nextTick();
+            await this.startCurrentAnimation();
         }
     },
     beforeDestroy() {
         clearInterval(this.interval);
     },
     methods: {
-        startCurrentAnimation() {
+        async startCurrentAnimation() {
             // Cancel all animations first
             this.animationRefs.forEach(ref => {
                 if (ref && ref.cancelAnimation) {
@@ -80,8 +85,8 @@ export default {
 
             // Start the current animation
             const currentAnimation = this.animationRefs[this.currentIndex];
-            if (currentAnimation && currentAnimation.startAutomation) {
-                currentAnimation.startAutomation();
+            if (currentAnimation && currentAnimation.startAnimation) {
+                await currentAnimation.startAnimation();
             }
         },
         handleAnimationComplete() {

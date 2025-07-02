@@ -179,7 +179,7 @@ async function drawLines() {
 /**
  * Starts the entire automated animation sequence.
  */
-function startAutomation() {
+async function startAnimation() {
     // Cancel any ongoing animation first
     cancelAnimation();
 
@@ -349,8 +349,7 @@ onBeforeUnmount(() => {
     cancelAnimation();
 });
 
-// Export startAutomation and cancelAnimation for external use
-defineExpose({ startAutomation, cancelAnimation });
+defineExpose({ startAnimation, cancelAnimation });
 </script>
 
 <style scoped>

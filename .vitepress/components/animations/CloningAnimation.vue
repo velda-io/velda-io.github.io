@@ -56,7 +56,7 @@
                         <div class="machine-content flex-grow flex flex-col text-left p-2 bg-black/20 rounded-md">
                             <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.alice.command }}
                             </p>
-                            <ul class="text-xs text-gray-400 list-disc list-inside min-h-[5.5rem]">
+                            <ul class="text-xs text-gray-400 list-disc list-inside min-h-[4.5rem]">
                                 <li v-for="dep in clones.alice.deps" :key="dep"
                                     :class="{ 'text-yellow-400 font-bold': dep.includes('scikit-learn') }">{{ dep }}
                                 </li>
@@ -148,36 +148,39 @@ function handleCloneClick() {
     }
 }
 
+async function sleep(ms) {
+    return new Promise(resolve => setTrackedTimeout(resolve, ms));
+}
 /**
  * Modifies the dependencies of the cloned instances.
  */
-function modifyInstances() {
-    // Modify Alice's instance
-    clones.alice.command = '$ pip install scikit-learn';
-    setTrackedTimeout(() => {
-        clones.alice.deps.push('scikit-learn==1.0.2');
-    }, 800);
-
-    // Modify Bob's instance
-    setTrackedTimeout(() => {
-        clones.bob.command = '$ pip install --upgrade torch';
-        setTrackedTimeout(() => {
-            const tfIndex = clones.bob.deps.findIndex(d => d.startsWith('torch=='));
-            if (tfIndex !== -1) {
-                clones.bob.deps[tfIndex] = 'torch==2.0.0';
-            }
-        }, 800);
-    }, 1500);
-
-    // Finish and reset
-    setTrackedTimeout(() => {
-        animationStage = 'reset';
-
-        // Trigger animation complete callback if provided
-        if (props.onComplete) {
-            props.onComplete();
+async function modifyInstances() {
+    async function sendCommand (instance, command) {
+        instance.command = ''; // Reset command before typing
+        for (let i = 0; i < command.length; i++) {
+            instance.command += command.charAt(i);
+            await sleep(30);
         }
-    }, 3500);
+    };
+    // Modify Alice's instance
+    await sendCommand(clones.alice, '$ pip install scikit-learn');
+    await sleep(500);
+    clones.alice.deps.push('scikit-learn==1.0.2');
+    await sleep(1000);
+    // Modify Bob's instance
+    await sendCommand(clones.bob, '$ pip install --upgrade torch')
+    await sleep(500);
+    const tfIndex = clones.bob.deps.findIndex(d => d.startsWith('torch=='));
+    if (tfIndex !== -1) {
+        clones.bob.deps[tfIndex] = 'torch==2.0.0';
+    }
+
+    await sleep(2500);
+    animationStage = 'reset';
+    if (props.onComplete) {
+        // Trigger the onComplete callback if provided
+        props.onComplete();
+    }
 }
 
 /**
@@ -189,10 +192,10 @@ function resetAnimation() {
     animationStage = 'cloneBob';
 }
 
-/**
+/*
  * Simulates a user clicking the clone button.
  */
-async function startAutomation() {
+async function startAnimation() {
     // Cancel any ongoing animations first
     cancelAnimation();
 
@@ -293,7 +296,7 @@ onBeforeUnmount(() => {
 });
 
 // Export methods for external use
-defineExpose({ startAutomation, cancelAnimation });
+defineExpose({ startAnimation, cancelAnimation });
 </script>
 
 <style scoped>
@@ -310,11 +313,11 @@ defineExpose({ startAutomation, cancelAnimation });
     display: flex;
     align-items: center;
     overflow: hidden;
-    /* Hide cursor when it's outside */
 }
 
 .cloning-animation-wrapper :deep(p),
-:deep(ul) {
+.cloning-animation-wrapper :deep(ul),
+.cloning-animation-wrapper :deep(li) {
     margin: 0;
     padding: 0;
     line-height: normal;
