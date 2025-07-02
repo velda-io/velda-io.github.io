@@ -95,6 +95,7 @@
 
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
+import { sleep, cancelAllTrackedPromises } from '../../utils/animationUtils';
 
 // Define props
 const props = defineProps({
@@ -126,36 +127,26 @@ const clones = reactive({
 const baseDeps = ['torch==1.12.1', 'pandas==1.4.2', 'matplotlib==3.5.2'];
 const cursorPosition = ref({ x: -100, y: -100 }); // Start off-screen
 
-let animationTimeouts = [];
-let animationStage = 'cloneBob'; // 'cloneBob', 'modifyAll', 'reset'
-
 /**
  * Handles the logic for the simulated click.
  */
-function handleCloneClick() {
+async function handleCloneClick() {
     isCloning.value = true;
 
-    if (animationStage === 'cloneBob') {
         // Show Bob's instance
         clones.bob.visible = true;
         clones.bob.deps = [...baseDeps];
-        setTrackedTimeout(() => {
-            clones.bob.active = true;
-            isCloning.value = false;
-            animationStage = 'modifyAll';
-            setTrackedTimeout(modifyInstances, 2000); // Wait before modifying
-        }, 500);
-    }
+        await sleep(500); // Wait for visibility transition
+        clones.bob.active = true;
+        isCloning.value = false;
+        await sleep(2000); // Wait before modifying
 }
 
-async function sleep(ms) {
-    return new Promise(resolve => setTrackedTimeout(resolve, ms));
-}
 /**
  * Modifies the dependencies of the cloned instances.
  */
 async function modifyInstances() {
-    async function sendCommand (instance, command) {
+    async function sendCommand(instance, command) {
         instance.command = ''; // Reset command before typing
         for (let i = 0; i < command.length; i++) {
             instance.command += command.charAt(i);
@@ -175,12 +166,6 @@ async function modifyInstances() {
         clones.bob.deps[tfIndex] = 'torch==2.0.0';
     }
 
-    await sleep(2500);
-    animationStage = 'reset';
-    if (props.onComplete) {
-        // Trigger the onComplete callback if provided
-        props.onComplete();
-    }
 }
 
 /**
@@ -189,7 +174,6 @@ async function modifyInstances() {
 function resetAnimation() {
     clones.alice = { visible: true, active: true, command: '', deps: [...baseDeps] };
     clones.bob = { visible: false, active: false, command: '', deps: [] };
-    animationStage = 'cloneBob';
 }
 
 /*
@@ -199,13 +183,10 @@ async function startAnimation() {
     // Cancel any ongoing animations first
     cancelAnimation();
 
-    if (!cloneButton.value || !animationWrapper.value || !cursor.value) return;
-
-    if (animationStage === 'reset') {
-        resetAnimation();
-    }
+    resetAnimation();
 
     await nextTick(); // Ensure DOM is updated before getting positions
+    if (!cloneButton.value || !animationWrapper.value || !cursor.value) return;
 
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
 
@@ -213,13 +194,12 @@ async function startAnimation() {
     cursor.value.style.transition = 'none';
     cursorPosition.value = { x: 80, y: wrapperRect.height - 80 };
 
+    await sleep(100);
     // Make cursor visible after a brief delay and re-enable transition
-    setTrackedTimeout(() => {
-        if (cursor.value) {
-            cursor.value.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, transform 0.1s ease-in-out';
-            cursor.value.style.opacity = '1';
-        }
-    }, 100);
+    if (cursor.value) {
+        cursor.value.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, transform 0.1s ease-in-out';
+        cursor.value.style.opacity = '1';
+    }
 
     // Get button position relative to the wrapper
     const buttonRect = cloneButton.value.getBoundingClientRect();
@@ -227,32 +207,31 @@ async function startAnimation() {
     const targetY = buttonRect.top - wrapperRect.top + buttonRect.height / 2;
 
     // Animate cursor to button
-    setTrackedTimeout(() => {
-        cursorPosition.value = { x: targetX, y: targetY };
+    await sleep(500);
+    cursorPosition.value = { x: targetX, y: targetY };
 
-        // Wait for cursor to arrive
-        setTrackedTimeout(() => {
-            // Add click effect
-            cursor.value.style.transform = 'scale(0.8)';
-            cloneButton.value.style.transform = 'scale(0.95)';
+    // Wait for cursor to arrive
+    await sleep(1000);
+    // Add click effect
+    cursor.value.style.transform = 'scale(0.8)';
+    cloneButton.value.style.transform = 'scale(0.95)';
 
-            // Remove click effect and trigger the main logic
-            setTrackedTimeout(() => {
-                cursor.value.style.transform = 'scale(1)';
-                cloneButton.value.style.transform = 'scale(1)';
-                handleCloneClick();
-            }, 150);
+    // Remove click effect and trigger the main logic
+    await sleep(150);
+    cursor.value.style.transform = 'scale(1)';
+    cloneButton.value.style.transform = 'scale(1)';
 
-            // Hide cursor after a delay
-            setTrackedTimeout(() => {
-                if (cursor.value) cursor.value.style.opacity = '0';
-                // Reset position for next loop
-                setTrackedTimeout(() => {
-                    cursorPosition.value = { x: -100, y: -100 };
-                }, 500);
-            }, 1000);
-        }, 1000); // Time for cursor to move
-    }, 500); // Time to wait before moving cursor
+    // Hide cursor after a delay
+    await sleep(1000);
+    if (cursor.value) cursor.value.style.opacity = '0';
+
+    await handleCloneClick();
+    await modifyInstances();
+
+    await sleep(2500);
+    if (props.onComplete) {
+        props.onComplete();
+    }
 }
 
 /**
@@ -260,8 +239,7 @@ async function startAnimation() {
  */
 function cancelAnimation() {
     // Clear all timeouts
-    animationTimeouts.forEach(clearTimeout);
-    animationTimeouts = [];
+    cancelAllTrackedPromises();
 
     // Reset cursor position
     if (cursor.value) {
@@ -269,15 +247,6 @@ function cancelAnimation() {
         cursorPosition.value = { x: -100, y: -100 };
     }
 }
-
-function setTrackedTimeout(fn, delay = 0) {
-    const timeoutId = setTimeout(() => {
-        fn();
-        animationTimeouts = animationTimeouts.filter(id => id !== timeoutId);
-    }, delay);
-    animationTimeouts.push(timeoutId);
-    return timeoutId;
-};
 
 // Watch for isActive prop changes and cancel animation when slide is no longer active
 watch(() => props.isActive, (isActive) => {

@@ -114,6 +114,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick, watch } from 'vue';
+import { sleep, cancelAllTrackedPromises } from '../../utils/animationUtils';
 
 // Define props
 const props = defineProps({
@@ -144,14 +145,12 @@ const isTrainingDeactivated = ref(false);
 
 // Track all animation timeouts and intervals
 let resizeObserver;
-let animationTimeouts = [];
-let typingInterval = null;
 
 /**
  * Draws connecting lines from machines to the terminal.
  */
 async function drawLines() {
-    // Wait for the next DOM update cycle to ensure elements are rendered
+    // Wait for the next DOM update to ensure elements are rendered
     await nextTick();
     if (!svgContainer.value || !terminalWindow.value || !machine1.value || !animationWrapper.value) return;
 
@@ -191,51 +190,49 @@ async function startAnimation() {
     const commandSpan = terminalContent.value.querySelector('#typed-command');
     const caret = terminalContent.value.querySelector('.typing-caret');
 
-    typingInterval = setInterval(() => {
-        if (i < command.length) {
-            commandSpan.textContent += command.charAt(i);
-            i++;
-        } else {
-            clearInterval(typingInterval);
-            typingInterval = null;
-            if (caret) caret.style.display = 'none';
-            setTrackedTimeout(provisionNewMachine, 200);
+    async function typeCommand() {
+        for (const char of command) {
+            commandSpan.textContent += char;
+            await sleep(50);
         }
-    }, 50);
+        if (caret) caret.style.display = 'none';
+        await sleep(200);
+        await provisionNewMachine();
+    }
+
+    await typeCommand();
 }
 
 /**
  * Creates and animates a new machine.
  */
-function provisionNewMachine() {
+async function provisionNewMachine() {
     showTrainingMachine.value = true;
 
+    await nextTick();
     // Use nextTick to ensure the element is in the DOM before we try to animate it
-    nextTick(() => {
-        isProvisioning.value = true;
-    });
+    isProvisioning.value = true;
 
-    setTrackedTimeout(() => {
-        isProvisioning.value = false;
-        isTrainingActive.value = true;
-        drawLines();
-        runCommandInTerminal();
-    }, 1000);
+    await sleep(1000);
+    isProvisioning.value = false;
+    isTrainingActive.value = true;
+    await drawLines();
+    await runCommandInTerminal();
 }
 
 /**
  * Deactivates the training machine visually.
  */
-function deactivateTrainingMachine() {
+async function deactivateTrainingMachine() {
     isTrainingActive.value = false;
     isTrainingDeactivated.value = true;
-    drawLines();
+    await drawLines();
 }
 
 /**
  * Simulates running the command output in the central terminal.
  */
-function runCommandInTerminal() {
+async function runCommandInTerminal() {
     const outputLines = [
         "Initializing GPU... OK",
         "Found 1 compatible device: NVIDIA A100",
@@ -249,7 +246,7 @@ function runCommandInTerminal() {
 
     let lineIndex = 0;
 
-    function streamLine() {
+    async function streamLine() {
         if (lineIndex < outputLines.length) {
             const line = outputLines[lineIndex];
             const p = document.createElement('p');
@@ -260,38 +257,30 @@ function runCommandInTerminal() {
             lineIndex++;
 
             const delay = lineIndex < 3 ? 200 : 350;
-            setTrackedTimeout(streamLine, Math.random() * 200 + delay);
+            await sleep(Math.random() * 200 + delay);
+            await streamLine();
         } else {
-            setTrackedTimeout(() => {
-                terminalContent.value.innerHTML += `<p class="text-yellow-800 mt-2">Training complete. Releasing GPU instance...</p>`;
-                terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
-                deactivateTrainingMachine();
-                setTrackedTimeout(() => {
-                    terminalContent.value.innerHTML += `<p class="text-green-800 mt-2">$ ready</p>`;
-                    terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
+            await sleep(400);
+            terminalContent.value.innerHTML += `<p class="text-yellow-800 mt-2">Training complete. Releasing GPU instance...</p>`;
+            terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
+            deactivateTrainingMachine();
+            await sleep(500);
+            terminalContent.value.innerHTML += `<p class="text-green-800 mt-2">$ ready</p>`;
+            terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
 
-                    // Animation has completed, call onComplete if provided
-                    setTrackedTimeout(() => {
-                        if (props.onComplete) {
-                            props.onComplete();
-                        }
-                    }, 2000);
-                }, 500);
-            }, 400);
+            // Animation has completed, call onComplete if provided
+            await sleep(2000);
+            if (props.onComplete) {
+                props.onComplete();
+            }
         }
     }
 
-    setTrackedTimeout(streamLine, 100);
+    await sleep(100);
+    await streamLine();
 }
 
 function cancelAnimation() {
-    // Clear all timeouts and intervals
-    animationTimeouts.forEach(timeout => clearTimeout(timeout));
-    if (typingInterval) {
-        clearInterval(typingInterval);
-        typingInterval = null;
-    }
-    animationTimeouts = [];
 
     // Reset state
     showTrainingMachine.value = false;
@@ -307,16 +296,6 @@ function cancelAnimation() {
     // Redraw lines to remove any existing connections
     drawLines();
 }
-
-function setTrackedTimeout(callback, delay) {
-    const timeoutId = setTimeout(() => {
-        callback();
-        animationTimeouts = animationTimeouts.filter(id => id !== timeoutId);
-    }, delay);
-    animationTimeouts.push(timeoutId);
-    return timeoutId;
-}
-
 /**
  * Resets the animation state
  */
