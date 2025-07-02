@@ -60,12 +60,12 @@
                       <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
                   </template>
                   <template v-else-if="isTrainingDeactivated">   
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm0 0c0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4-4 1.791-4 4z"></path><path d="M12 12c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 0c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm0 0c0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path><path d="M12 12c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 0c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path></svg>
                     <p class="text-sm font-semibold mt-2">Deactivated</p>
                   </template>
                   <!-- Active/Inactive State -->
                   <template v-else>
-                      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm0 0c0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4-4 1.791-4 4z"></path><path d="M12 12c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 0c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4 4-1.791 4-4zm0 0c0 2.209 1.791 4 4 4s4-1.791 4-4-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path><path d="M12 12c-2.209 0-4 1.791-4 4s1.791 4 4 4 4-1.791 4-4-1.791-4-4-4zm0 0c2.209 0 4-1.791 4-4s-1.791-4-4-4-4 1.791-4 4 1.791 4 4 4z"></path></svg>
                       <p class="text-sm font-semibold mt-2">GPU</p>
                   </template>
               </div>
@@ -83,6 +83,15 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 
+// Define props
+const props = defineProps({
+  onComplete: {
+    type: Function,
+    required: false,
+    default: null
+  }
+});
+
 // --- Template Refs ---
 const svgContainer = ref(null);
 const terminalWindow = ref(null);
@@ -98,6 +107,7 @@ const isTrainingActive = ref(false);
 const isTrainingDeactivated = ref(false);
 
 let resizeObserver;
+let animationTimeout;
 
 /**
  * Draws connecting lines from machines to the terminal.
@@ -215,8 +225,18 @@ function runCommandInTerminal() {
                 terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
                 deactivateTrainingMachine();
                 setTimeout(() => {
-                     terminalContent.value.innerHTML += `<p class="text-green-800 mt-2">$ ready</p>`;
-                     terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
+                    terminalContent.value.innerHTML += `<p class="text-green-800 mt-2">$ ready</p>`;
+                    terminalContent.value.scrollTop = terminalContent.value.scrollHeight;
+                    
+                    // Animation has completed, call onComplete if provided
+                    setTimeout(() => {
+                        if (props.onComplete) {
+                            props.onComplete();
+                        } else {
+                            // Reset animation for next cycle
+                            resetAnimation();
+                        }
+                    }, 1000);
                 }, 500);
             }, 800);
         }
@@ -225,10 +245,27 @@ function runCommandInTerminal() {
     setTimeout(streamLine, 100);
 }
 
+/**
+ * Resets the animation state
+ */
+function resetAnimation() {
+    showTrainingMachine.value = false;
+    isProvisioning.value = false;
+    isTrainingActive.value = false;
+    isTrainingDeactivated.value = false;
+    
+    if (terminalContent.value) {
+        terminalContent.value.innerHTML = '';
+    }
+    
+    // Restart animation after reset
+    animationTimeout = setTimeout(startAutomation, 2000);
+}
+
 onMounted(() => {
     // Initial setup
     drawLines();
-    setTimeout(startAutomation, 2000);
+    // Don't start animation automatically - will be triggered by parent
 
     // Redraw lines on window resize
     resizeObserver = new ResizeObserver(drawLines);
@@ -241,7 +278,11 @@ onBeforeUnmount(() => {
     if (resizeObserver && animationWrapper.value) {
         resizeObserver.unobserve(animationWrapper.value);
     }
+    clearTimeout(animationTimeout);
 });
+
+// Export startAutomation for external use
+defineExpose({ startAutomation });
 </script>
 
 <style scoped>

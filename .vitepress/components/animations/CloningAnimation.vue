@@ -77,6 +77,15 @@
 <script setup>
 import { ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue';
 
+// Define props
+const props = defineProps({
+  onComplete: {
+    type: Function,
+    required: false,
+    default: null
+  }
+});
+
 // --- Template Refs ---
 const templateMachine = ref(null);
 const instance1 = ref(null);
@@ -141,7 +150,14 @@ function modifyInstances() {
     // Finish and reset
     animationTimeout = setTimeout(() => {
         animationStage = 'reset';
-        animationTimeout = setTimeout(runFullAutomation, 3000); // Wait before resetting
+        
+        // Trigger animation complete callback if provided
+        if (props.onComplete) {
+            props.onComplete();
+        } else {
+            // Otherwise continue with automatic looping
+            animationTimeout = setTimeout(startAutomation, 3000); 
+        }
     }, 3500);
 }
 
@@ -157,7 +173,7 @@ function resetAnimation() {
 /**
  * Simulates a user clicking the clone button.
  */
-async function runFullAutomation() {
+async function startAutomation() {
     if (!cloneButton.value || !animationWrapper.value || !cursor.value) return;
 
     if (animationStage === 'reset') {
@@ -218,13 +234,15 @@ async function runFullAutomation() {
 
 onMounted(() => {
     resetAnimation(); // Set initial state
-    // Start the animation automatically
-    animationTimeout = setTimeout(runFullAutomation, 2000);
+    // Don't start animation automatically - will be triggered by parent
 });
 
 onBeforeUnmount(() => {
     clearTimeout(animationTimeout);
 });
+
+// Export startAutomation for external use
+defineExpose({ startAutomation });
 </script>
 
 <style scoped>

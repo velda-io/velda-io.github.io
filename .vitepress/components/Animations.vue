@@ -5,7 +5,9 @@
                 <div class="carousel-slide" v-for="(animation, index) in animations" :key="index">
                     <h3 class="animation-title">{{ animation.title }}</h3>
                     <p class="animation-description">{{ animation.description }}</p>
-                    <component :is="animation.component" />
+                    <component :is="animation.component" 
+                              :onComplete="handleAnimationComplete"
+                              :ref="el => { if (el) animationRefs[index] = el; }" />
                 </div>
             </div>
         </div>
@@ -25,6 +27,13 @@ export default {
         ProvisionAnimation,
         CloningAnimation,
     },
+    props: {
+        onAnimationComplete: {
+            type: Function,
+            required: false,
+            default: null
+        }
+    },
     data() {
         return {
             currentIndex: 0,
@@ -41,15 +50,39 @@ export default {
                 }
             ],
             interval: null,
+            animationRefs: [], // Store references to animation components
         };
     },
     mounted() {
-        //this.interval = setInterval(this.nextSlide, 5000);
+        // Start the initial animation for the first slide
+        this.$nextTick(() => {
+            this.startCurrentAnimation();
+        });
+    },
+    watch: {
+        currentIndex() {
+            // When currentIndex changes, start the animation for the current slide
+            this.$nextTick(() => {
+                this.startCurrentAnimation();
+            });
+        }
     },
     beforeDestroy() {
         clearInterval(this.interval);
     },
     methods: {
+        startCurrentAnimation() {
+            const currentAnimation = this.animationRefs[this.currentIndex];
+            if (currentAnimation && currentAnimation.startAutomation) {
+                currentAnimation.startAutomation();
+            }
+        },
+        handleAnimationComplete() {
+            this.nextSlide();
+            if (this.onAnimationComplete) {
+                this.onAnimationComplete();
+            }
+        },
         nextSlide() {
             this.currentIndex = (this.currentIndex + 1) % this.animations.length;
         },
