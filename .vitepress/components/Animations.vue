@@ -20,6 +20,7 @@
 <script>
 import { CancelledError } from '../utils/animationUtils';
 import CloningAnimation from './animations/CloningAnimation.vue';
+import CustomizeAnimation from './animations/CustomizeAnimation.vue';
 import MicroserviceAnimation from './animations/MicroserviceAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
 
@@ -27,6 +28,7 @@ export default {
     components: {
         ProvisionAnimation,
         CloningAnimation,
+        CustomizeAnimation,
         MicroserviceAnimation,
     },
     props: {
@@ -41,14 +43,19 @@ export default {
             currentIndex: 0,
             animations: [
                 {
-                    title: 'Scale in Seconds',
-                    description: 'In a single command, you can spin up a new machine with everything same as your current environment.',
+                    title: 'Provision machines in Seconds',
+                    description: 'In a single command, you can spin up a new machine with everything same as your current environment. Only allocate the resources when you need them.',
                     component: 'ProvisionAnimation',
                 },
                 {
                     title: 'Onboard in Seconds',
                     description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a template.',
                     component: 'CloningAnimation',
+                },
+                {
+                    title: 'Customize without affecting others',
+                    description: 'Customize your instance, test new packages, without breaking others. All changes are local to your instance, but vrun sessions will get consistent state.',
+                    component: 'CustomizeAnimation',
                 },
                 {
                     title: 'Microservices in Seconds',

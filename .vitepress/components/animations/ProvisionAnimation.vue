@@ -8,7 +8,7 @@
         <!-- Machine Stack -->
         <div class="machine-stack">
             <!-- Machine 1 -->
-            <Machine ref="machine1" title="Primary" status="active" hardware="CPU"
+            <Machine ref="machine1" title="Workspace(IDE)" status="active" hardware="CPU"
                 class="w-full max-w-xs md:max-w-none md:w-52" />
 
             <!-- Machine 2 -->
