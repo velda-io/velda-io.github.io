@@ -8,7 +8,7 @@
                 <Terminal ref="terminal" height="16rem" />
             </div>
 
-            <div v-else ref="browserWindow" class="browser-window">
+            <div v-else class="browser-window">
                 <div class="browser-header">
                     <div class="header-dots">
                         <div class="dot dot-red"></div>
@@ -19,8 +19,8 @@
                 <div class="browser-address-bar">
                     <span ref="browserUrl"></span>
                 </div>
-                <div class="browser-content">
-                    <p>🚀 Frontend Loaded!</p>
+                <div ref="browserPage" class="browser-content">
+                    <p v-if="browserPageVisible">🚀 Frontend Loaded!</p>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
             </Machine>
 
             <Machine ref="frontendMachine" title="frontend" hardware="4 CPUs" :status="frontendStatus">
-                <p class="text-xs">Connects to apiserver:8000</p>
+                <p class="text-xs">Connected to apiserver:8000</p>
             </Machine>
         </div>
 
@@ -51,9 +51,10 @@ const svgContainer = ref(null);
 const apiServerMachine = ref(null);
 const frontendMachine = ref(null);
 const terminal = ref(null);
-const browserWindow = ref(null);
+const browserPage = ref(null);
 const browserUrl = ref(null);
 const userPanel = ref(null);
+const browserPageVisible = ref(false);
 
 // --- Reactive State ---
 const isBrowserVisible = ref(false);
@@ -101,10 +102,12 @@ function stopAnimation() {
 function resetState() {
     if (terminal.value) terminal.value.clear();
     if (svgContainer.value) svgContainer.value.innerHTML = '';
+    if (browserUrl.value) browserUrl.value.textContent = '';
 
     isBrowserVisible.value = false;
     apiServerStatus.value = '';
     frontendStatus.value = '';
+    browserPageVisible.value = false;
 }
 
 async function typeCommand(command) {
@@ -141,6 +144,7 @@ async function provisionFrontend() {
     frontendStatus.value = 'active';
     drawLines();
     addTerminalOutput('Frontend is available on port 80.', 'app-info');
+    await animator.sleep(500);
     showBrowser();
 }
 
@@ -148,10 +152,16 @@ async function showBrowser() {
     isBrowserVisible.value = true;
     await nextTick(); // Wait for the DOM to update
     if (browserUrl.value) {
-        browserUrl.value.textContent = 'http://80-frontend-alice.velda.internal';
+        const url = 'http://80-frontend-alice.velda.internal';
+        for (let i = 0; i < url.length; i++) {
+            browserUrl.value.textContent += url.charAt(i);
+            await animator.sleep(30); // Simulate typing effect
+        }
     }
-    if (browserWindow.value) {
-        browserWindow.value.animate([
+    await animator.sleep(300);
+    browserPageVisible.value = true;
+    if (browserPage.value) {
+        browserPage.value.animate([
             { opacity: 0, transform: 'translateY(10px)' },
             { opacity: 1, transform: 'translateY(0)' }
         ], { duration: 400, easing: 'ease-out' });
