@@ -307,7 +307,6 @@ defineExpose({
     overflow: hidden;
 }
 
-.terminal-header,
 .browser-header {
     display: flex;
     align-items: center;
@@ -344,7 +343,6 @@ defineExpose({
     border-color: var(--vp-c-brand);
 }
 
-.terminal-content,
 .browser-content {
     background-color: white;
     border: 2px solid var(--vp-c-border);

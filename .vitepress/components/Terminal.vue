@@ -96,11 +96,23 @@ function scrollToBottom() {
     }
 }
 
+/**
+ * Gets the bounding client rect of the terminal window
+ * @returns {DOMRect|null} - The bounding client rect or null
+ */
+function getBoundingClientRect() {
+    if (terminalWindow.value) {
+        return terminalWindow.value.getBoundingClientRect();
+    }
+    return null;
+}
+
 // --- Expose API ---
 defineExpose({
     sendCommand,
     sendLine,
-    clear
+    clear,
+    getBoundingClientRect
 });
 </script>
 
@@ -113,7 +125,7 @@ defineExpose({
     background-color: #1F2937;
     border-radius: 0.5rem;
     width: 100%;
-    max-width: 700px;
+    max-width: 42rem;
     z-index: 10;
     flex-shrink: 0;
 }
