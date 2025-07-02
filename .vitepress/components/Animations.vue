@@ -5,9 +5,8 @@
                 <div class="carousel-slide" v-for="(animation, index) in animations" :key="index">
                     <h3 class="animation-title">{{ animation.title }}</h3>
                     <p class="animation-description">{{ animation.description }}</p>
-                    <component :is="animation.component" 
-                              :onComplete="handleAnimationComplete"
-                              :ref="el => { if (el) animationRefs[index] = el; }" />
+                    <component :is="animation.component" :onComplete="handleAnimationComplete"
+                        :isActive="currentIndex === index" :ref="el => { if (el) animationRefs[index] = el; }" />
                 </div>
             </div>
         </div>
@@ -72,6 +71,14 @@ export default {
     },
     methods: {
         startCurrentAnimation() {
+            // Cancel all animations first
+            this.animationRefs.forEach(ref => {
+                if (ref && ref.cancelAnimation) {
+                    ref.cancelAnimation();
+                }
+            });
+
+            // Start the current animation
             const currentAnimation = this.animationRefs[this.currentIndex];
             if (currentAnimation && currentAnimation.startAutomation) {
                 currentAnimation.startAutomation();
@@ -87,7 +94,9 @@ export default {
             this.currentIndex = (this.currentIndex + 1) % this.animations.length;
         },
         goToSlide(index) {
-            this.currentIndex = index;
+            if (index !== this.currentIndex) {
+                this.currentIndex = index;
+            }
         },
     },
 };
