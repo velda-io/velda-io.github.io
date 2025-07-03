@@ -77,11 +77,20 @@ defineExpose({
 </script>
 
 <style scoped>
+
+.machine.single {
+    max-width: 250px;
+}
 .machine {
     background-color: #1F2937;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
+    @media (max-width: 768px) {
+        max-width: calc(50% - 36px); /* Account for 24px padding on each side plus some gap space */
+    }
+    min-width: 140px;
     height: 170px;
     display: flex;
     flex-direction: column;
@@ -130,7 +139,11 @@ defineExpose({
 
 .machine-name {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 10px); /* Allow space for status light */
 }
 
 .machine-hardware {
@@ -183,6 +196,8 @@ defineExpose({
     justify-content: center;
     gap: 0.25rem;
     color: #9CA3AF;
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .machine-content svg {

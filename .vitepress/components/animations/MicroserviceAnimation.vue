@@ -2,38 +2,42 @@
     <div ref="animationWrapper" class="animation-wrapper">
         <svg ref="svgContainer" class="connection-svg"></svg>
 
-        <!-- Bottom row: Terminal / Browser -->
-        <div ref="userPanel" class="w-full max-w-2xl">
-            <div v-if="!isBrowserVisible">
-                <Terminal ref="terminal" height="16rem" />
-            </div>
+        <div class="flex flex-col lg:flex-row w-full gap-4 justify-between">
+            <!-- Left/Top: Terminal / Browser -->
+            <div ref="userPanel" class="w-full">
+                <div v-if="!isBrowserVisible">
+                    <Terminal ref="terminal" height="16rem" />
+                </div>
 
-            <div v-else class="browser-window">
-                <div class="browser-header">
-                    <div class="header-dots">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
+                <div v-else class="browser-window">
+                    <div class="browser-header">
+                        <div class="header-dots">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                    </div>
+                    <div class="browser-address-bar">
+                        <span ref="browserUrl"></span>
+                    </div>
+                    <div ref="browserPage" class="browser-content">
+                        <p v-if="browserPageVisible">🚀 Frontend Loaded!</p>
                     </div>
                 </div>
-                <div class="browser-address-bar">
-                    <span ref="browserUrl"></span>
-                </div>
-                <div ref="browserPage" class="browser-content">
-                    <p v-if="browserPageVisible">🚀 Frontend Loaded!</p>
-                </div>
             </div>
-        </div>
 
-        <!-- Top row: Machines -->
-        <div class="machine-stack">
-            <Machine ref="apiServerMachine" title="apiserver" hardware="4 CPUs" :status="apiServerStatus">
-                <p class="text-xs">Port: 8000</p>
-            </Machine>
+            <!-- Right/Bottom: Machines -->
+            <div class="machine-stack w-full flex md:flex-col flex-row flex-wrap justify-center items-center gap-3">
+                <Machine ref="apiServerMachine" title="apiserver" hardware='CPU' :status="apiServerStatus"
+                    class="flex-grow flex-shrink-0">
+                    <p class="text-xs">Port: 8000</p>
+                </Machine>
 
-            <Machine ref="frontendMachine" title="frontend" hardware="4 CPUs" :status="frontendStatus">
-                <p class="text-xs">Connected to apiserver:8000</p>
-            </Machine>
+                <Machine ref="frontendMachine" title="frontend" hardware="CPU" :status="frontendStatus"
+                    class="flex-grow flex-shrink-0">
+                    <p class="text-xs">Connected to apiserver:8000</p>
+                </Machine>
+            </div>
         </div>
 
     </div>
@@ -174,9 +178,20 @@ function drawLines() {
     svgContainer.value.innerHTML = '';
     const termRect = userPanel.value.getBoundingClientRect();
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
-
-    const termX = termRect.left - wrapperRect.left + termRect.width;
-    const termY = termRect.top - wrapperRect.top + termRect.height / 2;
+    const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint in Tailwind is 1024px
+    
+    // Calculate terminal connection point based on screen size
+    let termX, termY;
+    
+    if (isLargeScreen) {
+        // On large screens, connect from the right side of terminal
+        termX = termRect.left - wrapperRect.left + termRect.width;
+        termY = termRect.top - wrapperRect.top + termRect.height / 2;
+    } else {
+        // On small screens, connect from the bottom of terminal
+        termX = termRect.left - wrapperRect.left + termRect.width / 2;
+        termY = termRect.top - wrapperRect.top + termRect.height;
+    }
 
     const machines = [
         { ref: apiServerMachine.value, status: apiServerStatus.value },
@@ -186,8 +201,17 @@ function drawLines() {
     machines.forEach(({ ref, status }) => {
         if (ref && (status === 'active' || status === 'provisioning')) {
             const machineRect = ref.$el.getBoundingClientRect();
-            const machineX = machineRect.left - wrapperRect.left;
-            const machineY = machineRect.top - wrapperRect.top + machineRect.height / 2;
+            let machineX, machineY;
+            
+            if (isLargeScreen) {
+                // On large screens, connect to the left side of machines
+                machineX = machineRect.left - wrapperRect.left;
+                machineY = machineRect.top - wrapperRect.top + machineRect.height / 2;
+            } else {
+                // On small screens, connect to the top of machines
+                machineX = machineRect.left - wrapperRect.left + machineRect.width / 2;
+                machineY = machineRect.top - wrapperRect.top;
+            }
 
             const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
             line.setAttribute('class', 'connection-line');
@@ -213,6 +237,11 @@ onMounted(() => {
             setTimeout(drawLines, 50);
         });
         resizeObserver.observe(animationWrapper.value);
+        
+        // Also listen for window resize events to handle breakpoint changes
+        window.addEventListener('resize', () => {
+            setTimeout(drawLines, 50);
+        });
     }
 });
 
@@ -220,6 +249,9 @@ onBeforeUnmount(() => {
     if (resizeObserver && animationWrapper.value) {
         resizeObserver.unobserve(animationWrapper.value);
     }
+    window.removeEventListener('resize', () => {
+        setTimeout(drawLines, 50);
+    });
     stopAnimation();
 });
 
@@ -255,15 +287,6 @@ defineExpose({
     flex-shrink: 0;
 }
 
-.typing-caret {
-    display: inline-block;
-    width: 8px;
-    height: 1.2em;
-    background-color: #A5B4FC;
-    animation: blink 1s step-end infinite;
-    vertical-align: bottom;
-}
-
 @keyframes blink {
     50% {
         opacity: 0;
@@ -273,7 +296,7 @@ defineExpose({
 .animation-wrapper {
     font-family: 'Inter', sans-serif;
     color: var(--vp-c-text);
-    padding: 2rem;
+    padding: 0.75rem;
     padding-bottom: 0;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
@@ -281,8 +304,10 @@ defineExpose({
     min-height: 480px;
     margin: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .browser-header {
@@ -350,12 +375,12 @@ defineExpose({
 
 .machine-stack {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
     width: 100%;
-    margin-bottom: 1rem;
+    padding: 1rem 0;
 }
 
 .machine {

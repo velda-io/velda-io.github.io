@@ -125,15 +125,17 @@ export default {
 <style>
 .animation-carousel {
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
+    padding: 0.5rem;
     background: var(--vp-c-bg);
     border-radius: 10px;
     border: 1px solid var(--vp-c-divider);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.03);
-
     background-color: var(--vp-c-bg);
     border-radius: 0.75rem;
-    border: 1px solid var(--vp-c-divider);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .carousel-container {
@@ -182,16 +184,18 @@ export default {
 }
 
 .animation-title {
-    margin-top: 1.5rem;
-    font-size: 1.25rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
+    padding: 0 0.5rem;
 }
 
 p.animation-description {
-    margin: 0.5rem 0 1.5rem 0;
+    margin: 0.5rem 0 1rem 0;
     color: var(--vp-c-text-2);
-    font-size: 1rem;
-    max-width: 600px;
+    font-size: 0.9rem;
+    max-width: 100%;
+    padding: 0 1rem;
     margin-left: auto;
     margin-right: auto;
 }

@@ -2,28 +2,30 @@
     <div ref="animationWrapper" class="provisioning-animation-wrapper">
         <svg ref="svgContainer" class="connection-svg"></svg>
 
-        <!-- Central Terminal -->
-        <Terminal ref="terminal" class="w-full" height="16rem" />
+        <div class="flex flex-col lg:flex-row w-full gap-4 justify-between">
+            <!-- Central Terminal - always at top on mobile, left on desktop -->
+            <Terminal ref="terminal" class="w-full lg:w-1/2 self-center" height="16rem" />
 
-        <!-- Machine Stack -->
-        <div class="machine-stack">
-            <!-- Machine 1 -->
-            <Machine ref="machine1" title="Workspace(IDE)" status="active" hardware="CPU"
-                class="w-full max-w-xs md:max-w-none md:w-52" />
+            <!-- Machine Stack - right side on desktop, bottom on mobile -->
+            <div class="machine-stack w-full lg:w-1/2 flex flex-row flex-wrap justify-center items-center gap-3">
+                <!-- Machine 1 -->
+                <Machine ref="machine1" title="IDE" status="active" hardware="CPU"
+                    class="flex-grow flex-shrink-0" />
 
-            <!-- Machine 2 -->
-            <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2" title="Training"
-                :status="trainingMachineStatus" hardware="GPU"
-                class="w-full max-w-xs md:max-w-none md:w-52 transition-all duration-500" :class="{
-                    'opacity-0 scale-90': trainingMachineStatus === ''
-                }">
-                <template v-if="isProvisioning">
-                    <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
-                </template>
-                <template v-else-if="isTrainingDeactivated">
-                    <p class="text-sm font-semibold mt-2">Deactivated</p>
-                </template>
-            </Machine>
+                <!-- Machine 2 -->
+                <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2" title="Training"
+                    :status="trainingMachineStatus" hardware="GPU"
+                    class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
+                        'opacity-0 scale-90': trainingMachineStatus === ''
+                    }">
+                    <template v-if="isProvisioning">
+                        <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
+                    </template>
+                    <template v-else-if="isTrainingDeactivated">
+                        <p class="text-sm font-semibold mt-2">Deactivated</p>
+                    </template>
+                </Machine>
+            </div>
         </div>
     </div>
 </template>
@@ -73,22 +75,54 @@ async function drawLines() {
 
     svgContainer.value.innerHTML = ''; // Clear existing lines
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
-    const terminalRect = terminal.value.getBoundingClientRect();
+    const terminalRect = terminal.value.$el.getBoundingClientRect();
+    const terminalEl = terminal.value.$el;
+    const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint in Tailwind is 1024px
 
-    const termX = terminalRect.left - wrapperRect.left + terminalRect.width / 2;
-    const termY = terminalRect.top - wrapperRect.top + terminalRect.height / 2;
+    // Calculate terminal connection point - on large screens it's right side, on small screens it's bottom
+    let termX, termY;
+
+    if (isLargeScreen) {
+        // On large screens, connect from the right side of terminal
+        termX = terminalRect.left - wrapperRect.left + terminalRect.width;
+        termY = terminalRect.top - wrapperRect.top + terminalRect.height / 2;
+    } else {
+        // On small screens, connect from the bottom of terminal
+        termX = terminalRect.left - wrapperRect.left + terminalRect.width / 2;
+        termY = terminalRect.top - wrapperRect.top + terminalRect.height;
+    }
 
     // Access the $el property to get the actual DOM element
     const m1Rect = machine1.value.$el.getBoundingClientRect();
-    const m1X = m1Rect.left - wrapperRect.left + m1Rect.width / 2;
-    const m1Y = m1Rect.top - wrapperRect.top + m1Rect.height / 2;
+    let m1X, m1Y;
+
+    if (isLargeScreen) {
+        // On large screens, connect to the left side of machines
+        m1X = m1Rect.left - wrapperRect.left;
+        m1Y = m1Rect.top - wrapperRect.top + m1Rect.height / 2;
+    } else {
+        // On small screens, connect to the top of machines
+        m1X = m1Rect.left - wrapperRect.left + m1Rect.width / 2;
+        m1Y = m1Rect.top - wrapperRect.top;
+    }
+    
     svgContainer.value.innerHTML += `<line class="connection-line" x1="${m1X}" y1="${m1Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
 
     // Check for machine2's ref and if it's active
     if (machine2.value && isTrainingActive.value) {
         const m2Rect = machine2.value.$el.getBoundingClientRect();
-        const m2X = m2Rect.left - wrapperRect.left + m2Rect.width / 2;
-        const m2Y = m2Rect.top - wrapperRect.top + m2Rect.height / 2;
+        let m2X, m2Y;
+        
+        if (isLargeScreen) {
+            // On large screens, connect to the left side of machines
+            m2X = m2Rect.left - wrapperRect.left;
+            m2Y = m2Rect.top - wrapperRect.top + m2Rect.height / 2;
+        } else {
+            // On small screens, connect to the top of machines
+            m2X = m2Rect.left - wrapperRect.left + m2Rect.width / 2;
+            m2Y = m2Rect.top - wrapperRect.top;
+        }
+        
         svgContainer.value.innerHTML += `<line class="connection-line" x1="${m2X}" y1="${m2Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
     }
 }
@@ -204,12 +238,16 @@ onMounted(() => {
     if (animationWrapper.value) {
         resizeObserver.observe(animationWrapper.value);
     }
+    
+    // Also listen for window resize events to handle breakpoint changes
+    window.addEventListener('resize', drawLines);
 });
 
 onBeforeUnmount(() => {
     if (resizeObserver && animationWrapper.value) {
         resizeObserver.unobserve(animationWrapper.value);
     }
+    window.removeEventListener('resize', drawLines);
     stopAnimation();
 });
 
@@ -220,7 +258,7 @@ defineExpose({ startAnimation, stopAnimation });
 .provisioning-animation-wrapper {
     font-family: 'Inter', sans-serif;
     color: var(--vp-c-text);
-    padding: 2rem;
+    padding: 0.75rem;
     padding-bottom: 0;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
@@ -228,7 +266,9 @@ defineExpose({ startAnimation, stopAnimation });
     min-height: 480px;
     margin: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .provisioning-animation-wrapper :deep(p) {
@@ -272,9 +312,12 @@ defineExpose({ startAnimation, stopAnimation });
 
 .machine-stack {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 8px;
+    gap: 16px;
+    padding: 1rem 0;
 }
 </style>

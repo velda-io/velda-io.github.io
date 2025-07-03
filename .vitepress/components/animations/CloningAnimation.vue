@@ -8,12 +8,12 @@
             </svg>
         </div>
 
-        <div class="flex flex-col lg:flex-row justify-center items-center w-full gap-16">
+        <div class="flex flex-col lg:flex-row justify-center items-center w-full gap-8">
 
             <!-- Template Machine -->
-            <div class="flex flex-col items-center gap-4">
-                <Machine ref="templateMachine" title="Pytorch ML Template" status="nostatus"
-                    class="w-full max-w-xs md:max-w-none md:w-72" :class="{ 'cloning-effect': isCloning }">
+            <div class="flex flex-col items-center w-full gap-4">
+                <Machine ref="templateMachine" title="Pytorch ML Template" status="nostatus" class="single"
+                    :class="{ 'cloning-effect': isCloning }">
                     <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="text-gray-300 text-sm font-semibold min-h-[2rem]">Base Dependencies:</p>
                         <ul class="text-xs text-gray-400 list-disc list-inside mt-1">
@@ -37,10 +37,10 @@
             </div>
 
             <!-- Cloned Instances Stack -->
-            <div class="flex flex-col w-full lg:w-auto justify-around lg:justify-start gap-8">
+            <div class="flex md:flex-col flex-row flex-wrap w-full justify-center gap-3 lg:gap-6">
                 <!-- Instance 1 (Alice) -->
-                <Machine ref="instance1" title="Data Analysis (Alice)" :status="clones.alice.active ? 'nostatus' : ''"
-                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500">
+                <Machine ref="instance1" title="Alice" :status="clones.alice.active ? 'nostatus' : ''"
+                    class="flex-grow flex-shrink-0 transition-all duration-500">
                     <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.alice.command }}
                         </p>
@@ -53,8 +53,8 @@
                 </Machine>
 
                 <!-- Instance 2 (Bob) -->
-                <Machine ref="instance2" title="PyTorch Research (Bob)" :status="clones.bob.active ? 'nostatus' : ''"
-                    class="w-full max-w-xs md:max-w-none md:w-80 transition-all duration-500">
+                <Machine ref="instance2" title="Bob" :status="clones.bob.active ? 'nostatus' : ''"
+                    class="flex-grow flex-shrink-0 transition-all duration-500">
                     <div class="machine-content w-full flex flex-col text-left p-2 bg-black/20 rounded-md">
                         <p class="terminal-font text-xs text-green-400 mb-1 min-h-[2rem]">{{ clones.bob.command }}
                         </p>
@@ -265,7 +265,7 @@ defineExpose({ startAnimation, stopAnimation });
 .cloning-animation-wrapper {
     font-family: 'Inter', sans-serif;
     color: var(--vp-c-text);
-    padding: 2rem;
+    padding: 0.75rem;
     padding-bottom: 0;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
@@ -273,8 +273,10 @@ defineExpose({ startAnimation, stopAnimation });
     min-height: 480px;
     margin: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .cloning-animation-wrapper :deep(p),
