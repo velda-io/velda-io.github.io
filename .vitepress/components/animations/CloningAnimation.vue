@@ -231,6 +231,7 @@ async function startAnimation() {
         if (cursor.value) cursor.value.style.opacity = '0';
         await animator.sleep(2000);
     } else {
+        await animator.sleep(1000);
         await modifyInstances();
         await animator.sleep(2000);
     }

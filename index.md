@@ -19,24 +19,10 @@ hero:
       text: Explore docs
       link: intro
 
-features:
-  - title: Scale on demand, in seconds
-    details: "Access unlimited computing power right from your development environment. Just prefix your command with vrun and instantly tap into powerful cloud resources—when you need them, where you need them."
-  - title: Cut computing costs by up to 90%
-    details: "Say goodbye to expensive, always-on workstations. Velda dynamically allocates resources exactly when needed, eliminating waste and dramatically reducing your infrastructure costs."
-  - title: Your tools, your cloud, zero friction
-    details: "Deploy on AWS, Google Cloud, on-premises, or Velda-hosted infrastructure (coming soon). Use any framework, library, or tool with consistent environments across your entire team."
 ---
-
-## Discover the Velda advantage
-
-Velda transforms how developers build and scale applications by removing the barriers between development and cloud computing. No more waiting for resources, fighting with configurations, or losing time to infrastructure management.
-
-### See the magic in action
 <Animations />
 
-### Video
-
+## Discover the Velda advantage
 Watch this one-minute demo to see how Velda seamlessly extends your development environment:
 [![Watch the demo](https://img.youtube.com/vi/fr58LREZ6vQ/0.jpg)](https://youtu.be/fr58LREZ6vQ)
 

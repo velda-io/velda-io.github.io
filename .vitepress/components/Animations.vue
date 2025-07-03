@@ -44,22 +44,22 @@ export default {
             animations: [
                 {
                     title: 'Provision machines in Seconds',
-                    description: 'In a single command, you can spin up a new machine with everything same as your current environment. Only allocate the resources when you need them.',
+                    description: 'In a single command, you can spin up a new machine with everything same as your current environment that runs the command.',
                     component: 'ProvisionAnimation',
                 },
                 {
                     title: 'Onboard in Seconds',
-                    description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a template.',
+                    description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a customizable template.',
                     component: 'CloningAnimation',
                 },
                 {
-                    title: 'Customize without affecting others',
-                    description: 'Customize your instance, test new packages, without breaking others. All changes are local to your instance, but vrun sessions will get consistent state.',
+                    title: 'Change without affecting others',
+                    description: 'Change your instance, test new packages, without breaking others. Use any tools you like to manage your environment.',
                     component: 'CustomizeAnimation',
                 },
                 {
                     title: 'Microservices in Seconds',
-                    description: 'Easily spin up new microservices with a single command.',
+                    description: 'Easily spin up new microservices with multiple machines with a single command.',
                     component: 'MicroserviceAnimation',
                 }
             ],
@@ -187,9 +187,12 @@ export default {
     font-weight: 600;
 }
 
-.animation-description {
+p.animation-description {
     margin: 0.5rem 0 1.5rem 0;
     color: var(--vp-c-text-2);
     font-size: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 </style>

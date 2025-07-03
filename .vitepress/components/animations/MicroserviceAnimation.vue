@@ -145,14 +145,14 @@ async function provisionFrontend() {
     drawLines();
     addTerminalOutput('Frontend is available on port 80.', 'app-info');
     await animator.sleep(500);
-    showBrowser();
+    await showBrowser();
 }
 
 async function showBrowser() {
     isBrowserVisible.value = true;
     await nextTick(); // Wait for the DOM to update
     if (browserUrl.value) {
-        const url = 'http://80-frontend-alice.velda.internal';
+        const url = 'https://80-frontend-alice.velda.internal';
         for (let i = 0; i < url.length; i++) {
             browserUrl.value.textContent += url.charAt(i);
             await animator.sleep(30); // Simulate typing effect
@@ -328,11 +328,10 @@ defineExpose({
     overflow-wrap: break-word;
     padding: 0.75rem;
     overflow-y: auto;
-    height: 160px;
 }
 
 .browser-content {
-    height: 5rem;
+    height: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
