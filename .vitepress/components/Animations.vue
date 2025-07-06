@@ -21,6 +21,7 @@
 import { CancelledError } from '../utils/animationUtils';
 import CloningAnimation from './animations/CloningAnimation.vue';
 import CustomizeAnimation from './animations/CustomizeAnimation.vue';
+import EfficiencyComparison from './animations/EfficiencyComparison.vue';
 import MicroserviceAnimation from './animations/MicroserviceAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
 import RayAnimation from './animations/RayAnimation.vue';
@@ -33,6 +34,7 @@ export default {
         CustomizeAnimation,
         MicroserviceAnimation,
         RayAnimation,
+        EfficiencyComparison,
     },
     props: {
         onAnimationComplete: {
@@ -49,6 +51,11 @@ export default {
                     title: 'Provision machines in Seconds',
                     description: 'In a single command, you can spin up a new machine with everything same as your current environment that runs the command.',
                     component: 'ProvisionAnimation',
+                },
+                {
+                    title: 'Easier way to save',
+                    description: 'Velda maximizes your resource efficiency by only allocating the resources you need with no overhead on engineering',
+                    component: 'EfficiencyComparison',
                 },
                 {
                     title: 'Onboard in Seconds',
@@ -69,7 +76,7 @@ export default {
                     title: 'Easier way to process data',
                     description: 'Setup distributed data pipelines with most frameworks, e.g. Ray, Dask, Spark, or anything you like.',
                     component: 'RayAnimation',
-                }
+                },
             ],
             interval: null,
             animationRefs: [], // Store references to animation components
