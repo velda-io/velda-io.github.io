@@ -1,5 +1,5 @@
 <template>
-    <div :class="['machine', status]"
+    <div :class="['machine', status, { 'multi-machine': multiMachine }]"
         :ref="machineRef">
         <div class="machine-header">
             <span>
@@ -65,6 +65,10 @@ const props = defineProps({
     hardware: {
         type: String,
         default: ''
+    },
+    multiMachine: {
+        type: Boolean,
+        default: false
     }
 });
 
@@ -99,7 +103,38 @@ defineExpose({
     opacity: 0;
     transform: scale(0.9);
     z-index: 5;
+    position: relative;
 }
+
+/* Multi-machine effect with multiple border layers - bottom right only */
+.machine.multi-machine {
+    position: relative;
+}
+
+.machine.multi-machine::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    width: 80%;
+    height: 80%;
+    border-right: 2px solid rgba(75, 85, 99, 0.4);
+    border-bottom: 2px solid rgba(75, 85, 99, 0.4);
+    z-index: -1;
+}
+
+.machine.multi-machine::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    width: 90%;
+    height: 90%;
+    border-right: 2px solid rgba(75, 85, 99, 0.6);
+    border-bottom: 2px solid rgba(75, 85, 99, 0.6);
+    z-index: -1;
+}
+
 
 .machine.provisioning {
     opacity: 1;

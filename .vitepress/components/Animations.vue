@@ -23,6 +23,8 @@ import CloningAnimation from './animations/CloningAnimation.vue';
 import CustomizeAnimation from './animations/CustomizeAnimation.vue';
 import MicroserviceAnimation from './animations/MicroserviceAnimation.vue';
 import ProvisionAnimation from './animations/ProvisionAnimation.vue';
+import RayAnimation from './animations/RayAnimation.vue';
+
 
 export default {
     components: {
@@ -30,6 +32,7 @@ export default {
         CloningAnimation,
         CustomizeAnimation,
         MicroserviceAnimation,
+        RayAnimation,
     },
     props: {
         onAnimationComplete: {
@@ -61,6 +64,11 @@ export default {
                     title: 'Microservices in Seconds',
                     description: 'Easily spin up new microservices with multiple machines with a single command.',
                     component: 'MicroserviceAnimation',
+                },
+                {
+                    title: 'Easier way to process data',
+                    description: 'Setup distributed data pipelines with most frameworks, e.g. Ray, Dask, Spark, or anything you like.',
+                    component: 'RayAnimation',
                 }
             ],
             interval: null,
