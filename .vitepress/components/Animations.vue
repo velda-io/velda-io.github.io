@@ -53,7 +53,7 @@ export default {
                     component: 'ProvisionAnimation',
                 },
                 {
-                    title: 'Easier way to save',
+                    title: 'Maximize your savings',
                     description: 'Velda maximizes your resource efficiency by only allocating the resources you need with no overhead on engineering',
                     component: 'EfficiencyComparison',
                 },
@@ -69,7 +69,7 @@ export default {
                 },
                 {
                     title: 'Microservices in Seconds',
-                    description: 'Easily spin up new microservices with multiple machines with a single command.',
+                    description: 'Easily spin up new microservices with multiple machines with a few commands.',
                     component: 'MicroserviceAnimation',
                 },
                 {

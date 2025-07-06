@@ -2,7 +2,7 @@
     <div class="efficiency-comparison">
         <div class="comparison-container">
             <div class="comparison-header">
-                <div class="header-cell"></div>
+                <div class="header-cell scenario"></div>
                 <div class="header-cell velda">
                     <div class="logo-container">
                         <span class="logo-text">Velda</span>
@@ -276,7 +276,7 @@ async function startAnimation() {
  * Stops any ongoing animation
  */
 function stopAnimation() {
-    animator.cancel();
+    animator.cancelAll();
 }
 
 // Expose methods to parent component
@@ -295,6 +295,7 @@ onMounted(() => {
 
 <style scoped>
 .efficiency-comparison {
+    text-align: left;
     width: 100%;
     padding: 1rem;
     background-color: var(--vp-c-bg);
@@ -319,7 +320,7 @@ onMounted(() => {
 
 @media (max-width: 640px) {
     .comparison-header {
-        grid-template-columns: minmax(80px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -360,7 +361,8 @@ onMounted(() => {
 
 @media (max-width: 640px) {
     .comparison-row {
-        grid-template-columns: minmax(80px, 1fr) minmax(80px, 1fr) minmax(80px, 1fr);
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
     }
 }
 
@@ -384,6 +386,7 @@ onMounted(() => {
 @media (max-width: 640px) {
     .scenario-title {
         padding: 0.5rem;
+        grid-column: 1 / -1;
     }
 
     .scenario-title span {
@@ -413,6 +416,9 @@ onMounted(() => {
 @media (max-width: 640px) {
     .metric-cell {
         padding: 0.5rem;
+    }
+    .header-cell.scenario {
+        display: none;
     }
 }
 
