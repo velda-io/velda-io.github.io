@@ -12,7 +12,7 @@ head:
       content: VELDA - Supercharge your development
   - - meta
     - property: og:description
-      content: Redefine how compute resources(e.g. GPUs) can be accessed. Book your personalized demo today.
+      content: Redefine how compute resources(e.g. GPUs) can be accessed through a personalized HPC cluster. Stop spending on GPUs when they're inactive, or scale your application like your machine has unbounded power. Book your personalized demo today.
   - - meta
     - property: og:image
       content: https://velda.io/og-preview.png
