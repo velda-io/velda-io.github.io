@@ -137,11 +137,14 @@
                     <div class="scenario-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <rect x="3" y="7" width="18" height="10" rx="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7 7v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M8 12h8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 8v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="3" y="7" width="18" height="10" rx="2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7 7v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M7 17v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M8 12h8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 8v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
                     <span>Process data via multi-processing</span>
@@ -198,15 +201,6 @@
                     <div class="resource-bar" style="width: 10%;"></div>
                     <div class="resource-bar" style="width: 10%;"></div>
                     <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="efficiency-indicator negative time-indicator">
-                        <div class="time-block longer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                        </div>
-                    </div>
                 </div>
                 <div class="metric-cell traditional">
                     <div class="resource-bar" style="width: 10%;"></div>
@@ -215,22 +209,25 @@
                     <div class="resource-bar" style="width: 10%;"></div>
                     <div class="resource-bar" style="width: 10%;"></div>
                     <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="efficiency-indicator negative time-indicator">
-                        <div class="time-block longer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                    <div class="efficiency-indicator negative engineering-indicator">
+                        <div class="eng-effort more">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eng" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
+                                <path
+                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                                </path>
                             </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eng" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
+                                <path
+                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                                </path>
                             </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-eng" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
+                                <path
+                                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                                </path>
                             </svg>
                         </div>
                     </div>
@@ -302,6 +299,12 @@ onMounted(() => {
     border-radius: 10px;
 }
 
+@media (max-width: 640px) {
+    .efficiency-comparison {
+        padding: 0.5rem;
+    }
+}
+
 .comparison-container {
     width: 100%;
     max-width: 900px;
@@ -321,6 +324,8 @@ onMounted(() => {
 @media (max-width: 640px) {
     .comparison-header {
         grid-template-columns: 1fr 1fr;
+        padding: 0.3rem 0;
+        /* reduced padding */
     }
 }
 
@@ -364,6 +369,11 @@ onMounted(() => {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
     }
+
+    .resource-bar {
+        height: 16px;
+        /* reduced from 24px for mobile */
+    }
 }
 
 .comparison-row:hover {
@@ -385,12 +395,21 @@ onMounted(() => {
 
 @media (max-width: 640px) {
     .scenario-title {
-        padding: 0.5rem;
+        padding: 0;
         grid-column: 1 / -1;
+        min-height: unset;
+        /* remove any minimum height */
+        margin-bottom: 0;
+        /* remove any margin */
     }
 
     .scenario-title span {
         font-size: 0.8rem;
+    }
+
+    .scenario-icon svg {
+        width: 1rem;
+        height: 1rem;
     }
 }
 
@@ -415,10 +434,35 @@ onMounted(() => {
 
 @media (max-width: 640px) {
     .metric-cell {
-        padding: 0.5rem;
+        padding: 0.5rem 0.5rem 0.5rem;
+        /* reduced padding */
+        margin-bottom: 0;
+        /* remove margin */
     }
+
     .header-cell.scenario {
         display: none;
+    }
+
+    .header-cell {
+        padding: 0.25rem 0.5rem;
+        /* reduced padding */
+    }
+
+    .efficiency-indicator {
+        margin-top: 0.25rem;
+        /* reduced margin */
+    }
+
+    .time-indicator,
+    .engineering-indicator {
+        margin-top: 4px;
+        /* reduced from 8px */
+    }
+
+    .logo-text {
+        font-size: 0.9rem;
+        margin-top: 0.1rem;
     }
 }
 
@@ -487,6 +531,15 @@ onMounted(() => {
     font-weight: 500;
 }
 
+@media (max-width: 640px) {
+    .efficiency-indicator {
+        margin-top: 0.25rem;
+        /* reduced margin */
+        font-size: 0.7rem;
+        /* smaller font size */
+    }
+}
+
 .efficiency-indicator.negative {
     color: #ef4444;
 }
@@ -497,11 +550,28 @@ onMounted(() => {
     margin-right: 0.25rem;
 }
 
+@media (max-width: 640px) {
+    .efficiency-indicator svg {
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-right: 0.15rem;
+    }
+}
+
 .time-indicator,
 .engineering-indicator {
     margin-top: 8px;
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 640px) {
+
+    .time-indicator,
+    .engineering-indicator {
+        margin-top: 4px;
+        /* reduced from 8px */
+    }
 }
 
 .time-block {

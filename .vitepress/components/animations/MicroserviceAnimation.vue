@@ -298,7 +298,6 @@ defineExpose({
     color: var(--vp-c-text);
     padding: 0.75rem;
     padding-bottom: 0;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
     width: 100%;
     min-height: 480px;

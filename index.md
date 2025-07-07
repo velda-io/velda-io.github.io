@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "VELDA"
-  text: Supercharge your development with seamless cloud power
+  text: Supercharge your development
   image:
     src: /logos.png
     alt: Velda
@@ -24,7 +24,17 @@ hero:
 
 ## Discover the Velda advantage
 Watch this one-minute demo to see how Velda seamlessly extends your development environment:
-[![Watch the demo](https://img.youtube.com/vi/fr58LREZ6vQ/0.jpg)](https://youtu.be/fr58LREZ6vQ)
+<div style="max-width: 720px; box-sizing: border-box;">
+  <iframe
+    width="100%"
+    src="https://www.youtube.com/embed/fr58LREZ6vQ"
+    title="Velda Demo"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="display: block; border: none; aspect-ratio: 16/9;"
+  ></iframe>
+</div>
 
 ### Start your journey today
 

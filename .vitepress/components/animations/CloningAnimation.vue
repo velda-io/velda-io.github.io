@@ -182,13 +182,14 @@ async function startAnimation() {
     if (!cloneButton.value || !animationWrapper.value || !cursor.value) return;
     if (!props.showCustomize) {
 
-        const wrapperRect = animationWrapper.value.getBoundingClientRect();
+        let wrapperRect = animationWrapper.value.getBoundingClientRect();
 
         // Set initial cursor position to bottom left without transition
         cursor.value.style.transition = 'none';
         cursorPosition.value = { x: 80, y: wrapperRect.height - 80 };
+        await animator.sleep(400);
+        wrapperRect = animationWrapper.value.getBoundingClientRect();
 
-        await animator.sleep(100);
         // Make cursor visible after a brief delay and re-enable transition
         if (cursor.value) {
             cursor.value.style.transition = 'top 1s ease-in-out, left 1s ease-in-out, transform 0.1s ease-in-out';
@@ -200,8 +201,6 @@ async function startAnimation() {
         const targetX = buttonRect.left - wrapperRect.left + buttonRect.width / 2;
         const targetY = buttonRect.top - wrapperRect.top + buttonRect.height / 2;
 
-        // Animate cursor to button
-        await animator.sleep(500);
         cursorPosition.value = { x: targetX, y: targetY };
 
         // Wait for cursor to arrive
@@ -267,7 +266,6 @@ defineExpose({ startAnimation, stopAnimation });
     color: var(--vp-c-text);
     padding: 0.75rem;
     padding-bottom: 0;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
     width: 100%;
     min-height: 480px;

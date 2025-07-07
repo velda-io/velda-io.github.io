@@ -1,7 +1,9 @@
 <template>
     <div class="animation-carousel">
-        <div class="carousel-container">
-            <div class="carousel-slides" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+        <div class="carousel-container" @touchstart="handleTouchStart" @touchmove="handleTouchMove"
+            @touchend="handleTouchEnd">
+            <div class="carousel-slides"
+                :style="{ transform: `translateX(calc(-${currentIndex * 100}% + ${swipeOffset}px))` }">
                 <div class="carousel-slide" v-for="(animation, index) in animations" :key="index">
                     <h3 class="animation-title">{{ animation.title }}</h3>
                     <p class="animation-description">{{ animation.description }}</p>
@@ -46,35 +48,39 @@ export default {
     data() {
         return {
             currentIndex: 0,
+            touchStartX: 0,
+            touchCurrentX: 0,
+            swipeOffset: 0,
+            isSwiping: false,
             animations: [
                 {
-                    title: 'Provision machines in Seconds',
-                    description: 'In a single command, you can spin up a new machine with everything same as your current environment that runs the command.',
+                    title: 'Get compute, no setup',
+                    description: 'Access powerful compute resources instantly with consistent environments, all in a single command.',
                     component: 'ProvisionAnimation',
                 },
                 {
                     title: 'Maximize your savings',
-                    description: 'Velda maximizes your resource efficiency by only allocating the resources you need with no overhead on engineering',
+                    description: 'Eliminate wasted compute resources while maintaining productivity. Allocate only what you need.',
                     component: 'EfficiencyComparison',
                 },
                 {
-                    title: 'Onboard in Seconds',
-                    description: 'Onboard a new user, or create a new individualized instance in seconds by cloning from a customizable template.',
+                    title: 'Onboard in seconds',
+                    description: 'Bring new users or create instances in seconds with customizable templates.',
                     component: 'CloningAnimation',
                 },
                 {
-                    title: 'Change without affecting others',
-                    description: 'Change your instance, test new packages, without breaking others. Use any tools you like to manage your environment.',
+                    title: 'Change without disruption',
+                    description: 'Test new packages or make changes without impacting others. Use your favorite tools to manage environments.',
                     component: 'CustomizeAnimation',
                 },
                 {
-                    title: 'Microservices in Seconds',
-                    description: 'Easily spin up new microservices with multiple machines with a few commands.',
+                    title: 'Microservices made easy',
+                    description: 'Launch new microservices across multiple machines effortlessly with just a few commands.',
                     component: 'MicroserviceAnimation',
                 },
                 {
-                    title: 'Easier way to process data',
-                    description: 'Setup distributed data pipelines with most frameworks, e.g. Ray, Dask, Spark, or anything you like.',
+                    title: 'Simplify data processing',
+                    description: 'Set up distributed data pipelines with popular frameworks like Ray, Dask, Spark, and more.',
                     component: 'RayAnimation',
                 },
             ],
@@ -104,6 +110,45 @@ export default {
         clearInterval(this.interval);
     },
     methods: {
+        handleTouchStart(event) {
+            this.touchStartX = event.touches[0].clientX;
+            this.touchCurrentX = this.touchStartX;
+            this.isSwiping = true;
+        },
+
+        handleTouchMove(event) {
+            if (!this.isSwiping) return;
+
+            this.touchCurrentX = event.touches[0].clientX;
+            const deltaX = this.touchCurrentX - this.touchStartX;
+
+            // Limit the swipe distance
+            const maxSwipe = window.innerWidth * 0.5;
+            if (Math.abs(deltaX) <= maxSwipe) {
+                this.swipeOffset = deltaX;
+            }
+        },
+
+        handleTouchEnd() {
+            if (!this.isSwiping) return;
+
+            const deltaX = this.touchCurrentX - this.touchStartX;
+            const threshold = window.innerWidth * 0.2; // 20% of screen width
+
+            if (deltaX < -threshold) {
+                // Swipe left - go to next slide
+                this.nextSlide();
+            } else if (deltaX > threshold) {
+                // Swipe right - go to previous slide
+                const prevIndex = (this.currentIndex - 1 + this.animations.length) % this.animations.length;
+                this.goToSlide(prevIndex);
+            }
+
+            // Reset swipe state
+            this.isSwiping = false;
+            this.swipeOffset = 0;
+        },
+
         async startCurrentAnimation() {
             // Cancel all animations first
             this.animationRefs.forEach(ref => {
@@ -179,11 +224,14 @@ export default {
 
 .carousel-slides {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+    touch-action: pan-y;
 }
 
 .carousel-slide {
     flex: 0 0 100%;
+    user-select: none;
 }
 
 .animation-video {
@@ -223,6 +271,7 @@ export default {
 }
 
 p.animation-description {
+    line-height: normal;
     margin: 0.5rem 0 1rem 0;
     color: var(--vp-c-text-2);
     font-size: 0.9rem;
@@ -230,5 +279,16 @@ p.animation-description {
     padding: 0 1rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: 640px) {
+    p.animation-description {
+        color: var(--vp-c-text-2);
+        font-size: 0.9rem;
+        max-width: 100%;
+        padding: 0 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 </style>

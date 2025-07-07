@@ -40,10 +40,6 @@
                 </Machine>
             </div>
         </div>
-
-        <div class="autoscaler-footer text-center text-gray-500 text-sm mt-4">
-            Autoscaler integrations coming soon
-        </div>
     </div>
 </template>
 
@@ -267,7 +263,8 @@ async function runRayWorkload() {
     await terminal.value.sendCommand(animator, command);
     const workloadOutput = [
         "Running Ray workload ...",
-        "Result: 42",
+        "Processed 50,000 tasks",
+        "Result: 1234567890",
     ];
 
     await streamOutputToTerminal(workloadOutput);
@@ -339,7 +336,6 @@ defineExpose({ startAnimation, stopAnimation });
     color: var(--vp-c-text);
     padding: 0.75rem;
     padding-bottom: 0;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     position: relative;
     width: 100%;
     min-height: 480px;
@@ -404,12 +400,5 @@ defineExpose({ startAnimation, stopAnimation });
     width: 100%;
     gap: 16px;
     padding: 1rem 0;
-}
-
-.autoscaler-footer {
-    margin-top: 1rem;
-    font-size: 0.875rem;
-    color: #6B7280; /* Tailwind gray-500 */
-    text-align: center;
 }
 </style>
