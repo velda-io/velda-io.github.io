@@ -211,8 +211,8 @@ export default {
     background-color: var(--vp-c-bg);
     border-radius: 0.75rem;
     width: 100%;
-    max-width: 100%;
     overflow: hidden;
+    max-width: 956px;
 }
 
 .carousel-container {
@@ -232,12 +232,6 @@ export default {
 .carousel-slide {
     flex: 0 0 100%;
     user-select: none;
-}
-
-.animation-video {
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 .carousel-dots {
