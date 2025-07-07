@@ -2,6 +2,42 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
+# SEO and LinkedIn/Social media preview metadata
+head:
+  - - meta
+    - name: description
+      content: Velda - Supercharge your development with accessible compute power as you need.
+  - - meta
+    - property: og:title
+      content: VELDA - Supercharge your development
+  - - meta
+    - property: og:description
+      content: Redefine how compute resources(e.g. GPUs) can be accessed. Book your personalized demo today.
+  - - meta
+    - property: og:image
+      content: https://velda.io/og-preview.png
+  - - meta
+    - property: og:url
+      content: https://velda.io/
+  - - meta
+    - property: og:type
+      content: website
+  - - meta
+    - name: twitter:card
+      content: summary_large_image
+  - - meta
+    - name: twitter:title
+      content: VELDA - Supercharge your development
+  - - meta
+    - name: twitter:description
+      content: Experience the development platform that leading teams are already using to ship faster.
+  - - meta
+    - name: twitter:image
+      content: https://velda.io/logos.png
+  - - link
+    - rel: canonical
+      href: https://velda.io
+
 hero:
   name: "VELDA"
   text: Supercharge your development
