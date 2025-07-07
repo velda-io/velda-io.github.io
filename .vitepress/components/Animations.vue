@@ -88,7 +88,13 @@ export default {
         await this.startCurrentAnimation();
     },
     watch: {
-        async currentIndex() {
+        async currentIndex(newIndex, oldIndex) {
+            if (newIndex !== oldIndex && window.gtag) {
+                const slideTitle = this.animations[newIndex].title;
+                window.gtag('event', 'view_slide', {
+                    'slide_title': slideTitle,
+                });
+            }
             // When currentIndex changes, start the animation for the current slide
             await this.$nextTick();
             await this.startCurrentAnimation();
@@ -126,10 +132,21 @@ export default {
             }
         },
         nextSlide() {
-            this.currentIndex = (this.currentIndex + 1) % this.animations.length;
+            const nextIndex = (this.currentIndex + 1) % this.animations.length;
+            if (window.gtag) {
+                window.gtag('event', 'autoplay_slide', {
+                    'slide_title': this.animations[nextIndex].title
+                });
+            }
+            this.currentIndex = nextIndex;
         },
         goToSlide(index) {
             if (index !== this.currentIndex) {
+                if (window.gtag) {
+                    window.gtag('event', 'select_slide', {
+                        'slide_title': this.animations[index].title
+                    });
+                }
                 this.currentIndex = index;
             }
         },
