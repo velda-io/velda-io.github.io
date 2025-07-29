@@ -29,7 +29,7 @@
             <!-- Right/Bottom: Machines -->
             <div class="machine-stack w-full flex md:flex-col flex-row flex-wrap justify-center items-center gap-3">
                 <Machine ref="apiServerMachine" title="apiserver" hardware='CPU' :status="apiServerStatus"
-                    class="flex-grow flex-shrink-0">
+                    :multi-machine="true" class="flex-grow flex-shrink-0">
                     <p class="text-xs">Port: 8000</p>
                 </Machine>
 
@@ -70,8 +70,8 @@ let resizeObserver = null;
 const animator = createAnimationTracker();
 
 const commands = [
-    { cmd: "vrun -P cpu-4 -s apiserver ./start-apiserver.sh --port 8000 &", action: provisionApiServer },
-    { cmd: "vrun -P cpu-4 -s frontend ./start-frontend.sh --apiserver=apiserver:8000 &", action: provisionFrontend }
+    { cmd: "# Start a load-balanced apiserver\nfor ((i=0;i<5;++i)); do\n vrun -s apiserver --new-session \\\n  ./start-apiserver.sh &\ndone", action: provisionApiServer },
+    { cmd: "vrun -s frontend ./start-frontend.sh \\\n  --apiserver=apiserver:8000 &", action: provisionFrontend }
 ];
 
 // --- Core Animation Functions ---
@@ -120,9 +120,9 @@ async function typeCommand(command) {
     }
 }
 
-function addTerminalOutput(text, type=null, noNewLine = false) {
+function addTerminalOutput(text, type = null, noNewLine = false) {
     if (terminal.value) {
-        terminal.value.sendLine(text, type, noNewLine=noNewLine);
+        terminal.value.sendLine(text, type, noNewLine = noNewLine);
     }
 }
 
@@ -179,10 +179,10 @@ function drawLines() {
     const termRect = userPanel.value.getBoundingClientRect();
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
     const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint in Tailwind is 1024px
-    
+
     // Calculate terminal connection point based on screen size
     let termX, termY;
-    
+
     if (isLargeScreen) {
         // On large screens, connect from the right side of terminal
         termX = termRect.left - wrapperRect.left + termRect.width;
@@ -202,7 +202,7 @@ function drawLines() {
         if (ref && (status === 'active' || status === 'provisioning')) {
             const machineRect = ref.$el.getBoundingClientRect();
             let machineX, machineY;
-            
+
             if (isLargeScreen) {
                 // On large screens, connect to the left side of machines
                 machineX = machineRect.left - wrapperRect.left;
@@ -237,7 +237,7 @@ onMounted(() => {
             setTimeout(drawLines, 50);
         });
         resizeObserver.observe(animationWrapper.value);
-        
+
         // Also listen for window resize events to handle breakpoint changes
         window.addEventListener('resize', () => {
             setTimeout(drawLines, 50);

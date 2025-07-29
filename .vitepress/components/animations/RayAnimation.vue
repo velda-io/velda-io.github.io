@@ -225,7 +225,7 @@ async function createHeadNode() {
  * Creates the Ray worker node.
  */
 async function createWorkerNode() {
-    const command = "for ((i=0;i<5;i++)); do vrun -s ray-worker ray start --address=ray-head:6379; done";
+    const command = "for ((i=0;i<5;i++)); do\n vrun -s ray-worker \\\n   ray start --address=ray-head:6379;\ndone";
     await terminal.value.sendCommand(animator, command);
 
     showWorkerNode.value = true;
@@ -259,7 +259,7 @@ async function createWorkerNode() {
  * Runs a sample Ray workload.
  */
 async function runRayWorkload() {
-    const command = "RAY_ADDRESS=ray://ray-head:10001 python ray_workload.py";
+    const command = "RAY_ADDRESS=ray://ray-head:10001 ./ray_workload.py";
     await terminal.value.sendCommand(animator, command);
     const workloadOutput = [
         "Running Ray workload ...",

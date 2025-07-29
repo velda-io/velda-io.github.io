@@ -44,15 +44,18 @@ async function sendCommand(animator, command, typingSpeed = 30) {
     
     const prompt = document.createElement('p');
     prompt.className = 'text-green-800';
-    prompt.innerHTML = `~ $ <span class="text-green-800"></span><span class="typing-caret"></span>`;
+    prompt.innerHTML = `<pre class="text-green-800">$ </pre><span class="typing-caret"></span>`;
     terminalContent.value.appendChild(prompt);
     scrollToBottom();
 
-    const commandSpan = prompt.querySelector('span');
+    const commandSpan = prompt.querySelector('pre');
     const caret = prompt.querySelector('.typing-caret');
     
     for (let i = 0; i < command.length; i++) {
         commandSpan.textContent += command.charAt(i);
+        if (command.charAt(i) === '\n') {
+            commandSpan.textContent += '> ';
+        }
         await animator.sleep(typingSpeed);
     }
     
