@@ -32,7 +32,10 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/velda-io/velda' }
-    ]
+    ],
+    footer: {
+      copyright: 'Copyright © 2025 Velda Inc'
+    }
   },
   cleanUrls: true,
 })

@@ -12,7 +12,12 @@
 .title, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
   font-family: 'Oswald', Arial, sans-serif;
   font-weight: 700;
-  color: var(--vp-c-brand-1)
+  color: var(--vp-c-brand-1);
+}
+
+.VPNavBarTitle .title {
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
 }
 
 .cookie-banner {
