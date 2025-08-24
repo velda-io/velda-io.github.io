@@ -54,12 +54,21 @@ hero:
     - theme: alt
       text: Book a demo
       link: https://calendar.app.google/xJC6qMwzQ6UdAFVs5
+features:
+- title: Develop on Velda
+  details: Instantly onboard new developers from templates. Use your favorite IDEs with powerful AI agents, or immediately start from web.
+- title: Scale in seconds
+  details: With a simple vrun prefix, run your workload with the compute power you need. Your data and environment are always in sync.
+- title: Save $$$
+  details: Save by only provisioning the compute resource you need, and eliminate setup work required to scale.
 
 ---
+
+## Explore how Velda accelerates your development
 <Animations />
 
-## Discover the Velda advantage
-Watch this one-minute demo to see how Velda seamlessly extends your development environment:
+## See Velda in action
+Watch this one-minute demo to see how Velda act in action.
 <div style="max-width: 720px; box-sizing: border-box;">
   <iframe
     width="100%"

@@ -33,5 +33,6 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/velda-io/velda' }
     ]
-  }
+  },
+  cleanUrls: true,
 })
