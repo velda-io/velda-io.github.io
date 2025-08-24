@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "Velda",
-  description: "A VitePress Site",
+  description: "Velda site",
   srcExclude: [
     "examples/**",
   ],
@@ -11,7 +11,9 @@ export default defineConfig({
     siteTitle: 'VELDA',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Contact us', link: '/contact' }
+      { text: 'Getting Started', link: '/comparison' },
+      { text: 'Docs', link: '/intro' },
+      { text: 'About us', link: '/contact' }
     ],
 
     sidebar: [
@@ -24,11 +26,9 @@ export default defineConfig({
         ]
       }
     ],
-    /*
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/velda-io/velda' }
     ]
-    */
   }
 })
