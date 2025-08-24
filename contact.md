@@ -23,7 +23,6 @@ const members = [
 ]
 </script>
 
-<VPTeamPage>
   <VPTeamPageTitle>
     <template #title>
       Our Team
@@ -50,7 +49,20 @@ const members = [
                     📅 Book a <strong>free consultation</strong>
                 </a>
             </li>
+            <li>
+              <a href="https://github.com/velda-io/velda">
+                <img class="icon" src="https://api.iconify.design/simple-icons/github.svg" />Star us on GitHub
+              </a>
+            </li>
         </ul>
     </template>
   </VPTeamPageTitle>
-</VPTeamPage>
+
+  <style scoped>
+.icon {
+  display: inline;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px
+}
+</style>

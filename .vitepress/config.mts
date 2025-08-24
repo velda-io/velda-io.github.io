@@ -14,7 +14,6 @@ export default defineConfig({
       { text: 'Sign-in', link: 'https://novahub.dev' , noIcon: true },
       { text: 'Getting Started', link: '/comparison' },
       { text: 'Docs', link: '/intro' },
-      { text: 'About us', link: '/contact' }
     ],
 
     sidebar: [
@@ -25,6 +24,9 @@ export default defineConfig({
           { text: 'Connect to Velda Instance', link: '/connect' },
           { text: 'Run workloads', link: '/run' }
         ]
+      }, {
+        text: 'About us',
+        link: '/contact',
       }
     ],
 
