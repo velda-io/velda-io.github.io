@@ -73,6 +73,10 @@ const CheckIcon = defineComponent({
   transition: all 0.3s ease;
   border-left: 4px solid var(--vp-c-border);
   border-right: 4px solid var(--vp-c-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .pricing-card.featured {
@@ -155,6 +159,7 @@ const CheckIcon = defineComponent({
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  flex-grow: 1;
 }
 
 .feature-item {
@@ -169,6 +174,7 @@ const CheckIcon = defineComponent({
 }
 
 .card-footer {
+  margin-top: auto;
   text-align: center;
 }
 

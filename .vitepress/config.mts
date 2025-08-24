@@ -11,6 +11,7 @@ export default defineConfig({
     siteTitle: 'VELDA',
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Sign-in', link: 'https://novahub.dev' , noIcon: true },
       { text: 'Getting Started', link: '/comparison' },
       { text: 'Docs', link: '/intro' },
       { text: 'About us', link: '/contact' }

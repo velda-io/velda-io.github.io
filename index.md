@@ -40,20 +40,20 @@ head:
 
 hero:
   name: "VELDA"
-  text: Supercharge your development
+  text: Develop without limits
   image:
     src: /logos.png
     alt: Velda
   actions:
     - theme: brand
-      text: Book a free demo
-      link: https://calendar.app.google/xJC6qMwzQ6UdAFVs5
+      text: Get started
+      link: comparison
     - theme: alt
-      text: Try our playground
+      text: Go to console
       link: https://novahub.dev
     - theme: alt
-      text: Explore docs
-      link: intro
+      text: Book a demo
+      link: https://calendar.app.google/xJC6qMwzQ6UdAFVs5
 
 ---
 <Animations />

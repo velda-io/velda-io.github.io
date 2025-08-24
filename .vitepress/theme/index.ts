@@ -8,6 +8,7 @@ import Animations from '../components/Animations.vue'
 import PricingCard from '../components/PricingCard.vue'
 import FeatureComparison from '../components/FeatureComparison.vue'
 import CallToAction from '../components/CallToAction.vue'
+import Comparison from './comparison.vue'
 import setupGA from './ga'
 
 declare global {
@@ -31,6 +32,7 @@ export default {
     if (inBrowser) {
       app.component('CookieBanner', CookieBanner)
     }
+    app.component('Comparison', Comparison)
     setupGA(router)
   }
 }
