@@ -9,7 +9,7 @@ head:
       content: Velda - Supercharge your development with accessible compute power as you need.
   - - meta
     - property: og:title
-      content: VELDA - Supercharge your development
+      content: VELDA - Develop without limits
   - - meta
     - property: og:description
       content: Redefine how compute resources(e.g. GPUs) can be accessed through a personalized HPC cluster. Stop spending on GPUs when they're inactive, or scale your application like your machine has unbounded power. Book your personalized demo today.
@@ -56,11 +56,11 @@ hero:
       link: https://calendly.com/velda-io/30min
 features:
 - title: Develop on Velda
-  details: Instantly onboard new developers from templates. Use your favorite IDEs with powerful AI agents, or immediately start from web.
+  details: Instantly onboard new developers from templates. Use your favorite IDEs, or directly connect from the browser in VS-code.
 - title: Scale in seconds
-  details: With a simple vrun prefix, run your workload with the compute power you need. Your data and environment are always in sync.
+  details: With a vrun prefix, run your workload with the compute power you need, like running locally. Your data and environment are always in sync.
 - title: Save $$$
-  details: Save by only provisioning the compute resource you need, and eliminate setup work required to scale.
+  details: Only provision the compute resource you use. No extra setup work required to scale.
 
 ---
 

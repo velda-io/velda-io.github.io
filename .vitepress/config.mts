@@ -31,6 +31,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
+      { icon: 'linkedin', link: 'https://www.linkedin.com/company/velda-io/' },
       { icon: 'github', link: 'https://github.com/velda-io/velda' }
     ],
     footer: {

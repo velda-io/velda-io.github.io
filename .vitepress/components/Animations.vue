@@ -86,12 +86,19 @@ export default {
             ],
             interval: null,
             animationRefs: [], // Store references to animation components
+            isVisible: false, // Track visibility state
+            intersectionObserver: null, // Store the observer instance
         };
     },
     async mounted() {
-        // Start the initial animation for the first slide
+        // Set up intersection observer to track visibility
+        this.setupIntersectionObserver();
+
+        // Start the initial animation for the first slide only if visible
         await this.$nextTick();
-        await this.startCurrentAnimation();
+        if (this.isVisible) {
+            await this.startCurrentAnimation();
+        }
     },
     watch: {
         async currentIndex(newIndex, oldIndex) {
@@ -101,15 +108,55 @@ export default {
                     'slide_title': slideTitle,
                 });
             }
-            // When currentIndex changes, start the animation for the current slide
+            // When currentIndex changes, start the animation for the current slide only if visible
             await this.$nextTick();
-            await this.startCurrentAnimation();
+            if (this.isVisible) {
+                await this.startCurrentAnimation();
+            }
         }
     },
     beforeDestroy() {
         clearInterval(this.interval);
+        // Clean up intersection observer
+        if (this.intersectionObserver) {
+            this.intersectionObserver.disconnect();
+        }
     },
     methods: {
+        setupIntersectionObserver() {
+            // Create intersection observer with different thresholds
+            this.intersectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const visibilityRatio = entry.intersectionRatio;
+
+                    // Start animation when at least 50% visible
+                    if (visibilityRatio >= 0.5 && !this.isVisible) {
+                        this.isVisible = true;
+                        this.startCurrentAnimation();
+                    }
+                    // Stop animation when less than 10% visible
+                    else if (visibilityRatio < 0.1 && this.isVisible) {
+                        this.isVisible = false;
+                        this.stopAllAnimations();
+                    }
+                });
+            }, {
+                threshold: [0, 0.1, 0.5, 1.0] // Watch for different visibility levels
+            });
+
+            // Start observing the component
+            this.intersectionObserver.observe(this.$el);
+        },
+
+        stopAllAnimations() {
+            // Stop all currently running animations
+            this.animationRefs.forEach(ref => {
+                if (ref && ref.stopAnimation) {
+                    ref.stopAnimation();
+                }
+            });
+        },
+
         handleTouchStart(event) {
             this.touchStartX = event.touches[0].clientX;
             this.touchCurrentX = this.touchStartX;
@@ -150,6 +197,11 @@ export default {
         },
 
         async startCurrentAnimation() {
+            // Only start animation if the component is visible
+            if (!this.isVisible) {
+                return;
+            }
+
             // Cancel all animations first
             this.animationRefs.forEach(ref => {
                 if (ref && ref.stopAnimation) {
