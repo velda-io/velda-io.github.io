@@ -62,7 +62,7 @@ Choose the plan for your team's needs. Start free and scale as you grow.
       'Priority support',
     ]"
     cta-text="Book a demo"
-    cta-link="https://calendar.app.google/xJC6qMwzQ6UdAFVs5"
+    cta-link="https://calendly.com/velda-io/30min"
     badge="ENTERPRISE"
   />
 </div>
@@ -71,7 +71,7 @@ Choose the plan for your team's needs. Start free and scale as you grow.
   title="Still deciding?"
   description="Our experts can help you make the right choice."
   :buttons="[
-    { text: 'Book a free consultation', link: 'https://calendar.app.google/xJC6qMwzQ6UdAFVs5', variant: 'primary' },
+    { text: 'Book a free consultation', link: 'https://calendly.com/velda-io/30min', variant: 'primary' },
   ]"
 />
 

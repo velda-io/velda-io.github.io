@@ -21,4 +21,4 @@ Keep your data and code protected with Velda's enterprise-grade security. We int
 
 ---
 
-**Ready to revolutionize your development workflow?** [Book a demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) today and see firsthand how Velda can transform your team's productivity.
+**Ready to revolutionize your development workflow?** [Book a demo](https://calendly.com/velda-io/30min) today and see firsthand how Velda can transform your team's productivity.

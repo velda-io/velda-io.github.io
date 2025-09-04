@@ -53,7 +53,7 @@ hero:
       link: https://novahub.dev
     - theme: alt
       text: Book a demo
-      link: https://calendar.app.google/xJC6qMwzQ6UdAFVs5
+      link: https://calendly.com/velda-io/30min
 features:
 - title: Develop on Velda
   details: Instantly onboard new developers from templates. Use your favorite IDEs with powerful AI agents, or immediately start from web.
@@ -83,4 +83,4 @@ Watch this one-minute demo to see how Velda act in action.
 
 ### Start your journey today
 
-Experience the development platform that leading teams are already using to ship faster. [Book your personalized demo](https://calendar.app.google/xJC6qMwzQ6UdAFVs5) and get free cluster setup as an early adopter—limited spots available.
+Experience the development platform that leading teams are already using to ship faster. [Book your personalized demo](https://calendly.com/velda-io/30min) and get free cluster setup as an early adopter—limited spots available.

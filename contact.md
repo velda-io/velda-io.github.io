@@ -45,7 +45,7 @@ const members = [
                 </a>
             </li>
             <li>
-                <a href="https://calendar.app.google/xJC6qMwzQ6UdAFVs5" target="_blank" rel="noopener">
+                <a href="https://calendly.com/velda-io/30min" target="_blank" rel="noopener">
                     📅 Book a <strong>free consultation</strong>
                 </a>
             </li>
