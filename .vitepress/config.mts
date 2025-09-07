@@ -11,7 +11,7 @@ export default defineConfig({
     siteTitle: 'VELDA',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Sign-in', link: 'https://novahub.dev' , noIcon: true },
+      { text: 'Blog', link: 'https://blog.velda.io', noIcon: true },
       { text: 'Getting Started', link: '/comparison' },
       { text: 'Docs', link: '/intro' },
     ],
@@ -32,7 +32,8 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'linkedin', link: 'https://www.linkedin.com/company/velda-io/' },
-      { icon: 'github', link: 'https://github.com/velda-io/velda' }
+      { icon: 'github', link: 'https://github.com/velda-io/velda' },
+      { icon: 'x', link: 'https://x.com/velda_io' }
     ],
     footer: {
       copyright: 'Copyright © 2025 Velda Inc'
