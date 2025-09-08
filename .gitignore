@@ -1,3 +1,2 @@
-.vitepress/dist
-.vitepress/cache
+public/sitemap.xml
 node_modules

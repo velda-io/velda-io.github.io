@@ -2,21 +2,33 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "Velda",
-  description: "Velda site",
+  description: "Cloud development that actually feels local. Run AI workloads, GPU clusters, and data processing without Kubernetes complexity.",
+  sitemap: {
+    hostname: 'https://velda.io'
+  },
   srcExclude: [
     "examples/**",
+    "blog/README.md",
+    "blog/_template.md"
   ],
   themeConfig: {
     logo: "/logos.png",
     siteTitle: 'VELDA',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blog', link: 'https://blog.velda.io', noIcon: true },
+      { text: 'Blog', link: '/blog/' },
       { text: 'Getting Started', link: '/comparison' },
       { text: 'Docs', link: '/intro' },
     ],
 
     sidebar: [
+      {
+        text: 'Blog',
+        items: [
+          { text: 'Latest Posts', link: '/blog/' },
+          { text: 'Introducing Velda', link: '/blog/introducing-velda' }
+        ]
+      },
       {
         text: 'Docs',
         items: [
