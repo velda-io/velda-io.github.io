@@ -21,26 +21,31 @@ export default defineConfig({
       { text: 'Docs', link: '/intro' },
     ],
 
-    sidebar: [
-      {
-        text: 'Blog',
-        items: [
-          { text: 'Latest Posts', link: '/blog/' },
-          { text: 'Introducing Velda', link: '/blog/introducing-velda' }
-        ]
-      },
-      {
-        text: 'Docs',
-        items: [
-          { text: 'Why Velda', link: '/intro' },
-          { text: 'Connect to Velda Instance', link: '/connect' },
-          { text: 'Run workloads', link: '/run' }
-        ]
-      }, {
-        text: 'About us',
-        link: '/contact',
-      }
-    ],
+    // Context-aware sidebars: blog pages get a blog sidebar; docs pages get the docs sidebar
+    sidebar: {
+      '/blog/': [
+        {
+          text: 'Blog',
+          items: [
+            { text: 'Latest Posts', link: '/blog/' },
+            { text: 'Introducing Velda', link: '/blog/introducing-velda' }
+          ]
+        }
+      ],
+      '/': [
+        {
+          text: 'Docs',
+          items: [
+            { text: 'Why Velda', link: '/intro' },
+            { text: 'Connect to Velda Instance', link: '/connect' },
+            { text: 'Run workloads', link: '/run' }
+          ]
+        }, {
+          text: 'About us',
+          link: '/contact',
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'linkedin', link: 'https://www.linkedin.com/company/velda-io/' },
