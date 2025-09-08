@@ -6,7 +6,10 @@ import PricingCard from '../components/PricingCard.vue'
 import FeatureComparison from '../components/FeatureComparison.vue'
 import CallToAction from '../components/CallToAction.vue'
 import BlogHome from '../components/BlogHome.vue'
+import Footer from '../components/Footer.vue'
+import CustomLayout from './CustomLayout.vue'
 import Comparison from './comparison.vue'
+import { Icon } from '@iconify/vue'
 import setupGA from './ga'
 
 declare global {
@@ -17,12 +20,15 @@ declare global {
 
 export default {
   ...DefaultTheme,
+  Layout: CustomLayout,
   enhanceApp({ router, app }) {
     app.component('Animations', Animations)
     app.component('PricingCard', PricingCard)
     app.component('FeatureComparison', FeatureComparison)
     app.component('CallToAction', CallToAction)
     app.component('BlogHome', BlogHome)
+    app.component('Footer', Footer)
+    app.component('Icon', Icon)
     app.component('Comparison', Comparison)
     setupGA(router)
   }

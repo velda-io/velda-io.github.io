@@ -24,6 +24,21 @@
   width: 100%;
 }
 
+/* Ensure footer is always visible and not covered by sidebar */
+.VPDoc.has-sidebar .velda-footer {
+  position: relative;
+  z-index: 20;
+  clear: both;
+  margin-top: 4rem;
+}
+
+/* Additional footer positioning for blog pages */
+.VPDoc .velda-footer {
+  position: relative;
+  z-index: 20;
+  clear: both;
+}
+
 /* Tile font style */
 .title, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
   font-family: 'Oswald', Arial, sans-serif;

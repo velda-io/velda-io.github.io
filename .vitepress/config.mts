@@ -52,9 +52,6 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/velda-io/velda' },
       { icon: 'x', link: 'https://x.com/velda_io' }
     ],
-    footer: {
-      copyright: 'Copyright © 2025 Velda Inc'
-    }
   },
   cleanUrls: true,
 })
