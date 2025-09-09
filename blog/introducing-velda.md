@@ -1,4 +1,5 @@
 ---
+sidebar: false
 title: "Introducing Velda: Cloud Development That Actually Feels Local"
 description: "Simplify cloud development with Velda - run AI workloads, GPU clusters, and data processing without Kubernetes complexity. Pay only for compute time used."
 date: 2025-07-30
@@ -159,7 +160,3 @@ Follow us for the latest updates:
 - [GitHub](https://github.com/velda-io/velda) - Open source repository
 - [LinkedIn](https://www.linkedin.com/company/velda-io/) - Company updates  
 - [Twitter/X](https://x.com/velda_io) - Product announcements
-
----
-
-**Keywords:** Cloud Development, GPU Computing, AI Training, Kubernetes Alternative, Machine Learning Infrastructure, High-Performance Computing, DevOps, Cloud Native, Container Alternative
