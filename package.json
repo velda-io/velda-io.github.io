@@ -18,6 +18,8 @@
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",
-    "postcss": "^8.5.6"
+    "mermaid": "^11.11.0",
+    "postcss": "^8.5.6",
+    "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

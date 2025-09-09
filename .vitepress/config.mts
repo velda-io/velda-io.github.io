@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: "Velda",
   description: "Cloud development that actually feels local. Run AI workloads, GPU clusters, and data processing without Kubernetes complexity.",
   sitemap: {
@@ -28,6 +29,7 @@ export default defineConfig({
           text: 'Blog',
           items: [
             { text: 'Latest Posts', link: '/blog/' },
+            { text: "Why AI/ML Researchers Are Stuck with Inefficient GPU Setups (And How to Fix It)", link: "/blog/why-stuck-inefficient-gpu-setup" },
             { text: 'Introducing Velda', link: '/blog/introducing-velda' }
           ]
         }
@@ -54,4 +56,37 @@ export default defineConfig({
     ],
   },
   cleanUrls: true,
-})
+  transformHead: async ({ pageData }) => {
+    const head: any[] = [];
+    const fm = pageData.frontmatter;
+    if (fm.title) {
+      head.push(['meta', { property: 'og:title', content: fm.title }]);
+    }
+    if (fm.description) {
+      head.push(['meta', { property: 'og:description', content: fm.description }]);
+      head.push(['meta', { name: 'description', content: fm.description }]);
+    }
+    if (fm.image) {
+      head.push(['meta', { property: 'og:image', content: fm.image }]);
+    }
+    if (fm.date) {
+      head.push(['meta', { property: 'article:published_time', content: new Date(fm.date).toISOString() }]);
+    }
+    if (fm.author) {
+      head.push(['meta', { property: 'article:author', content: fm.author }]);
+    }
+    if (fm.keywords) {
+      head.push(['meta', { name: 'keywords', content: Array.isArray(fm.keywords) ? fm.keywords.join(', ') : fm.keywords }]);
+    }
+    if (fm.excerpt) {
+      head.push(['meta', { property: 'og:description', content: fm.excerpt }]);
+    }
+    head.push(['meta', { property: 'og:type', content: 'article' }]);
+    head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }]);
+
+    return head;
+  },
+  markdown: {
+    anchor: { permalink: undefined },
+  }
+}))
