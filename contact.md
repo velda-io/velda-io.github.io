@@ -50,8 +50,18 @@ const members = [
                 </a>
             </li>
             <li>
-              <a href="https://github.com/velda-io/velda">
+              <a href="https://github.com/velda-io/velda" target="_blank" rel="noopener">
                 <img class="icon" src="https://api.iconify.design/simple-icons/github.svg" />Star us on GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/velda-io" target="_blank" rel="noopener">
+                <img class="icon" src="https://api.iconify.design/simple-icons/linkedin.svg" />Connect on LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/velda_io" target="_blank" rel="noopener">
+                <img class="icon" src="https://api.iconify.design/simple-icons/x.svg" />Follow us on X
               </a>
             </li>
         </ul>
