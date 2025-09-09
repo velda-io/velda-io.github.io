@@ -108,6 +108,6 @@ Developers can also deliver model improvements faster, because they're never slo
 
 Velda can be deployed with an on-premises GPU cluster, existing Kubernetes cluster, or directly with your cloud hyperscaler. Cluster admins define pools that hide the details of complex resource management from different providers, while providing enough flexibility for AI/ML researchers to make changes.
 
-Velda is available as open source, which is completely free to use, and also as an enterprise version for those who need support and additional optimizations.
+Velda is available as [open source](https://github.com/velda-io/velda), which is completely free to use, and also available in [enterprise](/book) for those who need support and additional optimizations.
 
-Subscribe to us and learn more about the developer journey with Velda!
+[Subscribe to us](/contact) and learn more about the developer journey with Velda!
