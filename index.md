@@ -49,9 +49,6 @@ hero:
       text: Get started
       link: comparison
     - theme: alt
-      text: Go to console
-      link: https://novahub.dev
-    - theme: alt
       text: Book a demo
       link: https://calendly.com/velda-io/30min
 features:

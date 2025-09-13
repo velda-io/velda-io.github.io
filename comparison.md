@@ -10,7 +10,7 @@ description: "Choose the right plan for your team. From open-source to enterpris
 Choose the plan for your team's needs. Start free and scale as you grow.
 
 <div class="pricing-grid">
-  <PricingCard 
+  <PricingCard
     title="Open source"
     subtitle="Self-hosted"
     price="$0"
@@ -25,30 +25,10 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     ]"
     cta-text="Get Started"
     cta-link="https://github.com/velda-io/velda"
-    badge="OPEN SOURCE"
+    badge="Free"
   />
 
-  <PricingCard 
-    title="Individual"
-    subtitle="Hosted"
-    price="Pay As You Go"
-    period=""
-    description="Managed cloud with free tier and pay-as-you-scale pricing. Perfect for individual and small teams. "
-    :features="[
-      'Free studio (4-hour session limit)',
-      'Pay-as-you-go pricing',
-      'No cloud setup required',
-      'Single US region',
-      'Email support',
-    ]"
-    cta-text="Start for free"
-    cta-link="https://novahub.dev"
-    cta-class="primary"
-    badge="MOST POPULAR"
-    :featured="true"
-  />
-
-  <PricingCard 
+  <PricingCard
     title="Enterprise"
     subtitle="Dedicated"
     price="Custom"
@@ -58,16 +38,34 @@ Choose the plan for your team's needs. Start free and scale as you grow.
       'RBAC User management',
       'SSO / SAML integration',
       'Multiple hosting options',
-      'Observability',
+      'Advanced Observability',
       'Priority support',
     ]"
     cta-text="Book a demo"
     cta-link="https://calendly.com/velda-io/30min"
-    badge="ENTERPRISE"
+    badge="MOST POPULAR"
+    :featured="true"
+  />
+
+  <PricingCard
+    title="Individual"
+    subtitle="Hosted"
+    price="Coming Soon"
+    period=""
+    description="Managed cloud with free tier and pay-as-you-scale pricing. Perfect for individual and small teams. "
+    :features="[
+      'Free studio (4-hour session limit)',
+      'Free usage every month',
+      'Pay-as-you-go pricing',
+      'No cloud setup required',
+      'Email support',
+    ]"
+    badge="Pay as you go"
+    cta-text="Coming soon"
   />
 </div>
 
-<CallToAction 
+<CallToAction
   title="Still deciding?"
   description="Our experts can help you make the right choice."
   :buttons="[
