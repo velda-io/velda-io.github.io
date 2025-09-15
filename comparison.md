@@ -43,7 +43,7 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     ]"
     cta-text="Book a demo"
     cta-link="https://calendly.com/velda-io/30min"
-    badge="MOST POPULAR"
+    badge="Free setup & trial"
     :featured="true"
   />
 
