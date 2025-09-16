@@ -8,6 +8,7 @@ export default withMermaid(defineConfig({
     hostname: 'https://velda.io'
   },
   srcExclude: [
+    "README.md",
     "examples/**",
     "blog/README.md",
     "blog/_template.md"
@@ -29,6 +30,7 @@ export default withMermaid(defineConfig({
           text: 'Blog',
           items: [
             { text: 'Latest Posts', link: '/blog/' },
+            { text: "vrun is all you need: Revolutionizing Development with One Command", link: "/blog/vrun-is-all-you-need" },
             { text: "Why AI/ML Researchers Are Stuck with Inefficient GPU Setups (And How to Fix It)", link: "/blog/why-stuck-inefficient-gpu-setup" },
             { text: 'Introducing Velda', link: '/blog/introducing-velda' }
           ]

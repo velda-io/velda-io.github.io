@@ -12,7 +12,8 @@
     "build": "npm run sitemap && vitepress build",
     "preview": "vitepress preview",
     "sitemap": "node scripts/generate-sitemap.js",
-    "sitemap:validate": "node scripts/validate-sitemap.js"
+    "sitemap:validate": "node scripts/validate-sitemap.js",
+    "update-blog-posts": "node scripts/update-blog-posts.js"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",

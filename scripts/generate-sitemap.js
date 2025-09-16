@@ -88,6 +88,92 @@ async function generateSitemap() {
   console.log('✅ Sitemap generated successfully!')
   console.log(`📍 Found ${markdownFiles.length} pages`)
   console.log('📄 Sitemap saved to public/sitemap.xml')
+
+  // --- Generate sitemap.md (human-readable) ---
+  try {
+    console.log('📝 Generating sitemap.md...')
+
+    // Helper: parse YAML frontmatter for title and date
+    function parseFrontmatter(content) {
+      if (!content.startsWith('---')) return {}
+      const end = content.indexOf('\n---', 3)
+      if (end === -1) return {}
+      const fm = content.slice(3, end + 1)
+      const res = {}
+      const titleMatch = fm.match(/title:\s*(?:"([^"]+)"|'([^']+)'|([^\n]+))/i)
+      const dateMatch = fm.match(/date:\s*(?:"([^"]+)"|'([^']+)'|([^\n]+))/i)
+      if (titleMatch) res.title = titleMatch[1] || titleMatch[2] || titleMatch[3].trim()
+      if (dateMatch) res.date = (dateMatch[1] || dateMatch[2] || dateMatch[3]).trim()
+      return res
+    }
+
+    // Define user-facing main pages (label, path, short description)
+    const mainPages = [
+      { label: 'Home', path: '/' , desc: 'Welcome to Velda' },
+      { label: 'Getting Started', path: '/comparison', desc: 'Compare Velda with other solutions' },
+      { label: 'Contact', path: '/contact', desc: 'Get in touch with the Velda team' },
+      { label: 'Book a Demo', path: '/book', desc: 'Schedule a demonstration' }
+    ]
+
+    const docsPages = [
+      { label: 'Why Velda', path: '/intro', desc: 'Introduction and core concepts' },
+      { label: 'Connect to Velda Instance', path: '/connect', desc: 'Setup and connection guide' },
+      { label: 'Run Workloads', path: '/run', desc: 'How to execute your workloads' }
+    ]
+
+    // Collect blog posts (exclude README and template)
+    const blogFiles = markdownFiles.filter(f => f.startsWith('blog/') && !f.endsWith('README.md') && !f.endsWith('_template.md'))
+
+    const blogPosts = blogFiles.map(f => {
+      const content = fs.readFileSync(f, 'utf8')
+      const fm = parseFrontmatter(content)
+      const urlPath = '/' + f.replace('.md', '')
+      const displayPath = urlPath.endsWith('/index') ? urlPath.replace('/index','/') : urlPath
+      const stats = fs.statSync(path.resolve(f))
+      const fallbackDate = stats.mtime.toISOString().split('T')[0]
+      return {
+        file: f,
+        path: displayPath,
+        title: fm.title || path.basename(f, '.md').replace(/[-_]/g, ' '),
+        date: fm.date || fallbackDate
+      }
+    })
+
+    // Sort blog posts by date descending
+    blogPosts.sort((a,b) => (b.date || '') .localeCompare(a.date || ''))
+
+    // Build markdown content similar to existing sitemap.md
+    let md = `---\ntitle: Sitemap\ndescription: Complete site navigation for Velda - find all pages, blog posts, and documentation\n---\n\n# Sitemap\n\n## 🏠 Main Pages\n`
+
+    for (const p of mainPages) {
+      md += `- [${p.label}](${p.path}) - ${p.desc}\n`
+    }
+
+    md += `\n## 📚 Documentation\n`
+    for (const p of docsPages) {
+      md += `- [${p.label}](${p.path}) - ${p.desc}\n`
+    }
+
+    md += `\n## 📰 Blog\n- [Blog Home](/blog/) - Latest posts and updates\n`
+    for (const post of blogPosts) {
+      // Format date as Month D, YYYY if ISO-like, otherwise keep original
+      let displayDate = post.date
+      try {
+        const dt = new Date(post.date)
+        if (!Number.isNaN(dt.getTime())) {
+          displayDate = dt.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+        }
+      } catch (e) {}
+      md += `- [${post.title}](${post.path}) - *${displayDate}*\n`
+    }
+
+    md += `\n## 🔗 External Links\n- [GitHub Repository](https://github.com/velda-io/velda) - Open source code\n- [LinkedIn](https://www.linkedin.com/company/velda-io/) - Company updates\n- [Twitter/X](https://x.com/velda_io) - Latest announcements\n\n---\n\n*Last updated: ${CURRENT_DATE}*\n`
+
+    fs.writeFileSync('sitemap.md', md)
+    console.log('✅ sitemap.md written to project root')
+  } catch (err) {
+    console.error('Failed to generate sitemap.md', err)
+  }
 }
 
 // Run the generator
