@@ -86,6 +86,36 @@ export default withMermaid(defineConfig({
     head.push(['meta', { property: 'og:type', content: 'article' }]);
     head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }]);
 
+    // Add canonical link (strip .html or .md suffix if present)
+    try {
+      const hostname = 'https://velda.io'
+      // Prefer VitePress-provided cleaned path when available
+      const cleanedPath = (pageData as any).path
+      const relPath = pageData.relativePath
+      let pagePath = ''
+
+      if (typeof cleanedPath === 'string' && cleanedPath.length) {
+        pagePath = cleanedPath
+      } else if (typeof relPath === 'string' && relPath.length) {
+        // convert 'blog/introducing-velda.md' -> '/blog/introducing-velda'
+        pagePath = '/' + relPath.replace(/index\.md$/i, '').replace(/\.md$/i, '')
+      }
+
+      // Fallback to root if still empty
+      if (!pagePath) pagePath = '/'
+
+      // Strip trailing .html if any (defensive)
+      pagePath = pagePath.replace(/\.html$/i, '')
+
+      // Ensure leading slash
+      if (!pagePath.startsWith('/')) pagePath = '/' + pagePath
+
+      const canonical = `${hostname}${pagePath}`
+      head.push(['link', { rel: 'canonical', href: canonical }])
+    } catch (e) {
+      // ignore canonical generation errors
+    }
+
     return head;
   },
   markdown: {
