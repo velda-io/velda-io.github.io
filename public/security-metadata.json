@@ -1,0 +1,35 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Velda",
+  "url": "https://velda.io",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "security",
+    "email": "security@velda.io",
+    "url": "https://velda.io/security"
+  },
+  "securityPolicy": {
+    "@type": "CreativeWork",
+    "name": "Security Policy",
+    "url": "https://velda.io/security",
+    "description": "Vulnerability disclosure policy and security practices for Velda's hosted development environment platform"
+  },
+  "compliance": [
+    {
+      "@type": "CreativeWork", 
+      "name": "GDPR Compliance",
+      "description": "General Data Protection Regulation compliance"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "CCPA Compliance", 
+      "description": "California Consumer Privacy Act compliance"
+    }
+  ],
+  "vulnerabilityDisclosure": {
+    "contact": "security@velda.io",
+    "responseTime": "48 hours",
+    "policy": "https://velda.io/security#disclosure-policy"
+  }
+}

@@ -6,21 +6,21 @@
         <div class="footer-column">
           <h3 class="footer-title">Company</h3>
           <ul class="footer-links">
-            <li><a href="/comparison">
-              <Icon icon="tabler:currency-dollar" class="footer-icon" />
-              Plans & Pricing
-            </a></li>
-            <li><a href="https://calendly.com/velda-io" target="_blank" rel="noopener">
-              <Icon icon="tabler:calendar" class="footer-icon" />
-              Schedule a Call
-            </a></li>
-            <li><a href="mailto:contact@velda.io">
-              <Icon icon="tabler:mail" class="footer-icon" />
-              Email Contact
-            </a></li>
             <li><a href="/contact">
               <Icon icon="tabler:info-circle" class="footer-icon" />
               About Us
+            </a></li>
+            <li><a href="/privacy">
+              <Icon icon="tabler:shield-check" class="footer-icon" />
+              Privacy Notice
+            </a></li>
+            <li><a href="/eula">
+              <Icon icon="tabler:file-text" class="footer-icon" />
+              Terms of Service
+            </a></li>
+            <li><a href="/security">
+              <Icon icon="tabler:shield-lock" class="footer-icon" />
+              Security Notice
             </a></li>
           </ul>
         </div>
@@ -29,6 +29,10 @@
         <div class="footer-column">
           <h3 class="footer-title">Resources</h3>
           <ul class="footer-links">
+            <li><a href="/comparison">
+              <Icon icon="tabler:currency-dollar" class="footer-icon" />
+              Plans & Pricing
+            </a></li>
             <li><a href="/blog/">
               <Icon icon="tabler:article" class="footer-icon" />
               Blog
@@ -52,6 +56,14 @@
         <div class="footer-column">
           <h3 class="footer-title">Connect</h3>
           <ul class="footer-links">
+            <li><a href="https://calendly.com/velda-io" target="_blank" rel="noopener">
+              <Icon icon="tabler:calendar" class="footer-icon" />
+              Schedule a Call
+            </a></li>
+            <li><a href="mailto:contact@velda.io">
+              <Icon icon="tabler:mail" class="footer-icon" />
+              Email Contact
+            </a></li>
             <li><a href="https://github.com/velda-io/velda" target="_blank" rel="noopener">
               <Icon icon="tabler:brand-github" class="footer-icon" />
               GitHub
@@ -76,6 +88,13 @@
           </div>
           <div class="footer-legal">
             <span>&copy; {{ currentYear }} Velda. All rights reserved.</span>
+            <div class="footer-legal-links">
+              <a href="/privacy">Privacy Notice</a>
+              <span>•</span>
+              <a href="/eula">Terms of Service</a>
+              <span>•</span>
+              <a href="/security">Security</a>
+            </div>
           </div>
         </div>
       </div>
@@ -215,6 +234,33 @@ const currentYear = computed(() => new Date().getFullYear())
 .footer-legal {
   color: var(--vp-c-text-3);
   font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-legal {
+    align-items: flex-end;
+  }
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.footer-legal-links a {
+  color: var(--vp-c-text-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-legal-links a:hover {
+  color: var(--vp-c-brand-1);
 }
 
 /* Responsive adjustments */

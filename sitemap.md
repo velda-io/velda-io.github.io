@@ -7,6 +7,9 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 🏠 Main Pages
 - [Home](/) - Welcome to Velda
+- [EULA](/eula) - End User License Agreement
+- [Privacy](/privacy) - Privacy Notice
+- [Security](/security) - Security practices and policies
 - [Getting Started](/comparison) - Compare Velda with other solutions
 - [Contact](/contact) - Get in touch with the Velda team
 - [Book a Demo](/book) - Schedule a demonstration
@@ -30,4 +33,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2025-09-16*
+*Last updated: 2025-09-23*

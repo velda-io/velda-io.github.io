@@ -1,0 +1,19 @@
+Contact: mailto:security@velda.io
+Contact: https://velda.io/security
+Expires: 2026-09-23T23:59:59.000Z
+Encryption: https://velda.io/security#pgp-key
+Acknowledgments: https://velda.io/security#acknowledgments
+Policy: https://velda.io/security#disclosure-policy
+Hiring: https://velda.io/contact
+
+# Security Contact Information for Velda
+# 
+# If you discover a security vulnerability in our hosted development 
+# environment platform, please report it responsibly using the contact 
+# methods listed above.
+#
+# We are currently implementing comprehensive security testing procedures
+# including penetration testing and vulnerability scanning.
+#
+# Please do not disclose vulnerabilities publicly until we have had a 
+# chance to review and address them.

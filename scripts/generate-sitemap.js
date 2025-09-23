@@ -16,7 +16,10 @@ const pageConfig = {
   '/connect': { priority: '0.7', changefreq: 'monthly' },
   '/run': { priority: '0.7', changefreq: 'monthly' },
   '/contact': { priority: '0.6', changefreq: 'monthly' },
-  '/book': { priority: '0.5', changefreq: 'monthly' }
+  '/book': { priority: '0.1', changefreq: 'monthly' },
+  '/eula': { priority: '0.5', changefreq: 'monthly' },
+  '/security': { priority: '0.5', changefreq: 'monthly' },
+  '/privacy': { priority: '0.5', changefreq: 'monthly' }
 }
 
 // Blog post configuration
@@ -110,6 +113,9 @@ async function generateSitemap() {
     // Define user-facing main pages (label, path, short description)
     const mainPages = [
       { label: 'Home', path: '/' , desc: 'Welcome to Velda' },
+      { label: 'EULA', path: '/eula', desc: 'End User License Agreement' },
+      { label: 'Privacy', path: '/privacy', desc: 'Privacy Notice' },
+      { label: 'Security', path: '/security', desc: 'Security practices and policies' },
       { label: 'Getting Started', path: '/comparison', desc: 'Compare Velda with other solutions' },
       { label: 'Contact', path: '/contact', desc: 'Get in touch with the Velda team' },
       { label: 'Book a Demo', path: '/book', desc: 'Schedule a demonstration' }

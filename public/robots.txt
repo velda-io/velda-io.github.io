@@ -4,10 +4,23 @@ Allow: /
 # Sitemap
 Sitemap: https://velda.io/sitemap.xml
 
+# Security and Legal Pages
+Allow: /security
+Allow: /privacy
+Allow: /eula
+Allow: /.well-known/security.txt
+Allow: /security.txt
+
 # Disallow development and template files
 Disallow: /examples/
 Disallow: /blog/README.md
 Disallow: /blog/_template.md
+
+# Security: Disallow sensitive paths (if any exist in future)
+Disallow: /admin/
+Disallow: /.env
+Disallow: /config/
+Disallow: /api/internal/
 
 # Allow important pages
 Allow: /
