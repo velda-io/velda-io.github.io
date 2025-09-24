@@ -23,6 +23,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
+- [Building a Scalable ML Workflow with Velda](/blog/build-machine-learning-workflow) - *September 24, 2025*
 - [vrun is All You Need: Revolutionizing Development with One Command](/blog/vrun-is-all-you-need) - *September 14, 2025*
 - [Why AI/ML Researchers Are Stuck with Inefficient GPU Setups (And How to Fix It)](/blog/why-stuck-inefficient-gpu-setup) - *September 7, 2025*
 - [Velda Blog - Cloud Development Insights & Updates](/blog/) - *September 7, 2025*

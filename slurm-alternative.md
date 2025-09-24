@@ -27,8 +27,8 @@ image: "https://velda.io/og-preview.png"
 
 | Feature | Slurm | Velda |
 |--------------------|--------------------|--------------------|
-| **Containerized Execution**<br>Each task runs in a container that is isolated with other workloads on the same node, and developers cannot access tasks of other users| ❌ | ✅ |
-| **Environment customization**<br>Every workload can run in fully customizable environment, including system packages(apt, pip, etc.) | ❌ | ✅ |
+| **Containerized Execution**<br>Each task runs in a container that is isolated with other workloads on the same node, and workload cannot access tasks of other users| ❌ | ✅ |
+| **Environment customization**<br>Every workload can run in fully customizable environment, including some system packages(apt, pip, etc.) | ❌ | ✅ |
 | **Email**<br>Get notified when your job is completed | ❌ | ✅ |
 | **Cluster autoscale**<br>Allocate compute resources from Cloud / Kubernetes based on demand | ❌ | ✅ |
 | **Interactive Development**<br>Developers have access to dedicated dev-environments, with full capability like IDEs and docker access | ❌ | ✅ |
