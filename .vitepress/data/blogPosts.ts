@@ -13,9 +13,34 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    "title": "vrun is All You Need: Revolutionizing AI/ML Development with One Command",
+    "title": "Building a Scalable ML Workflow with Velda",
+    "slug": "build-machine-learning-workflow",
+    "description": "Learn how to build robust, scalable machine learning workflows using Velda's vrun and vbatch commands. From simple pipelines to complex fan-out patterns for parallel processing.",
+    "excerpt": "Build sophisticated ML workflows with Velda's simple commands. Learn to create pipelines with dependencies, parallel processing, and fan-out patterns for scalable machine learning.",
+    "date": "2025-09-25",
+    "author": "Chuan Qiu",
+    "readingTime": "5 min",
+    "category": "Technical Tutorial",
+    "image": "https://cdn-images-1.medium.com/max/2400/1*2Ej2vw32-janKdPbfp1gKg.png",
+    "tags": [
+      "machine-learning",
+      "ml-workflow",
+      "data-processing",
+      "ai-pipeline",
+      "cloud-computing",
+      "vrun",
+      "vbatch",
+      "parallel-processing",
+      "model-training",
+      "data-science",
+      "mlops",
+      "workflow-automation"
+    ]
+  },
+  {
+    "title": "vrun is All You Need: Revolutionizing Development with One Command",
     "slug": "vrun-is-all-you-need",
-    "description": "Discover how Velda's vrun command transforms AI/ML development by providing instant, scalable cloud compute that feels like local execution. Eliminate inefficient GPU setups and complex orchestration with this game-changing tool.",
+    "description": "Discover how Velda's vrun command transforms development by providing instant, scalable cloud compute that feels like local execution. Eliminate inefficient GPU setups and complex orchestration with this game-changing tool.",
     "excerpt": "Why vrun is the ultimate solution for AI/ML researchers struggling with inefficient GPU setups. Learn how one command can provide instant scaling, cost efficiency, and seamless development experience.",
     "date": "2025-09-15",
     "author": "Chuan Qiu",

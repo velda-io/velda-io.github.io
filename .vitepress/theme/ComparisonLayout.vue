@@ -35,26 +35,26 @@
     margin-right: auto;
 }
 
-.container.vp-doc ::v-deep h1 {
+.container.vp-doc :deep(h1) {
     text-align: center;
 }
-.comparison-table ::v-deep > table {
+.comparison-table :deep(table) {
     width: 100%;
     table-layout: fixed;
     display: table;
 }
-.comparison-table ::v-deep > table > thead > tr > th:nth-child(1),
-.comparison-table ::v-deep > table > tbody > tr > td:nth-child(1) {
+.comparison-table :deep(table > thead > tr > th:nth-child(1)),
+.comparison-table :deep(table > tbody > tr > td:nth-child(1)) {
     width: 50%;
 }
 
-.comparison-table ::v-deep > table > thead > tr > th:nth-child(2),
-.comparison-table ::v-deep > table > tbody > tr > td:nth-child(2) {
+.comparison-table :deep(table > thead > tr > th:nth-child(2)),
+.comparison-table :deep(table > tbody > tr > td:nth-child(2)) {
     width: 25%;
 }
 
-.comparison-table ::v-deep > table > thead > tr > th:nth-child(3),
-.comparison-table ::v-deep > table > tbody > tr > td:nth-child(3) {
+.comparison-table :deep(table > thead > tr > th:nth-child(3)),
+.comparison-table :deep(table > tbody > tr > td:nth-child(3)) {
     width: 25%;
 }
 

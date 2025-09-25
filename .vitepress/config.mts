@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from "vitepress-plugin-mermaid";
+import { blogPosts } from './data/blogPosts';
 
 export default withMermaid(defineConfig({
   title: "Velda",
@@ -28,12 +29,10 @@ export default withMermaid(defineConfig({
       '/blog/': [
         {
           text: 'Blog',
-          items: [
-            { text: 'Latest Posts', link: '/blog/' },
-            { text: "vrun is all you need: Revolutionizing Development with One Command", link: "/blog/vrun-is-all-you-need" },
-            { text: "Why AI/ML Researchers Are Stuck with Inefficient GPU Setups (And How to Fix It)", link: "/blog/why-stuck-inefficient-gpu-setup" },
-            { text: 'Introducing Velda', link: '/blog/introducing-velda' }
-          ]
+          items: [{text: "Latest Posts", link: '/blog/'}, ...blogPosts.map(post => ({
+            text: post.title,
+            link: `/blog/${post.slug}`
+          }))]
         }
       ],
       '/': [
