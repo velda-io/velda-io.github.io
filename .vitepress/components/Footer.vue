@@ -22,6 +22,10 @@
               <Icon icon="tabler:shield-lock" class="footer-icon" />
               Security Notice
             </a></li>
+            <li><a href="/sitemap">
+              <Icon icon="tabler:news" class="footer-icon" />
+              Sitemap
+            </a></li>
           </ul>
         </div>
 
@@ -48,6 +52,17 @@
             <li><a href="/run">
               <Icon icon="tabler:play" class="footer-icon" />
               Run Workloads
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Compare -->
+        <div class="footer-column">
+          <h3 class="footer-title">Compare</h3>
+          <ul class="footer-links">
+            <li><a href="/slurm-alternative">
+                <Icon icon="tabler:arrow-up-right" class="footer-icon" />
+              Velda VS Slurm
             </a></li>
           </ul>
         </div>
@@ -113,7 +128,6 @@ const currentYear = computed(() => new Date().getFullYear())
 .velda-footer {
   background: var(--vp-c-bg-soft);
   border-top: 1px solid var(--vp-c-divider);
-  margin-top: 4rem;
   width: 100%;
   position: relative;
   z-index: 30;
@@ -135,7 +149,7 @@ const currentYear = computed(() => new Date().getFullYear())
 
 @media (min-width: 768px) {
   .footer-columns {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
   }
 }

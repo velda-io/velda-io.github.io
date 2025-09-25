@@ -124,7 +124,8 @@ async function generateSitemap() {
     const docsPages = [
       { label: 'Why Velda', path: '/intro', desc: 'Introduction and core concepts' },
       { label: 'Connect to Velda Instance', path: '/connect', desc: 'Setup and connection guide' },
-      { label: 'Run Workloads', path: '/run', desc: 'How to execute your workloads' }
+      { label: 'Run Workloads', path: '/run', desc: 'How to execute your workloads' },
+      { label: 'Slurm Alternative', path: '/slurm-alternative', desc: 'Compare Velda with Slurm' }
     ]
 
     // Collect blog posts (exclude README and template)
@@ -149,7 +150,7 @@ async function generateSitemap() {
     blogPosts.sort((a,b) => (b.date || '') .localeCompare(a.date || ''))
 
     // Build markdown content similar to existing sitemap.md
-    let md = `---\ntitle: Sitemap\ndescription: Complete site navigation for Velda - find all pages, blog posts, and documentation\n---\n\n# Sitemap\n\n## 🏠 Main Pages\n`
+    let md = `---\nsidebar: false\ntitle: Sitemap\ndescription: Complete site navigation for Velda - find all pages, blog posts, and documentation\n---\n\n# Sitemap\n\n## 🏠 Main Pages\n`
 
     for (const p of mainPages) {
       md += `- [${p.label}](${p.path}) - ${p.desc}\n`
