@@ -1,4 +1,5 @@
 ---
+sidebar: false
 title: Sitemap
 description: Complete site navigation for Velda - find all pages, blog posts, and documentation
 ---
@@ -18,6 +19,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 - [Why Velda](/intro) - Introduction and core concepts
 - [Connect to Velda Instance](/connect) - Setup and connection guide
 - [Run Workloads](/run) - How to execute your workloads
+- [Slurm Alternative](/slurm-alternative) - Compare Velda with Slurm
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
@@ -33,4 +35,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2025-09-23*
+*Last updated: 2025-09-25*
