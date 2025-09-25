@@ -47,7 +47,9 @@ vbatch -f -P cpu-8 python my_long_running_script.py
 
 Let's build a simple ML workflow with three stages: data processing, model training, and evaluation. We can chain these tasks together using the `--after-success` flag, which ensures a task starts only after its dependencies have successfully completed. Assuming you already have scripts for each step, creating the pipeline in Velda is as simple as running these commands:
 
+`training_pipeline.sh`:
 ```
+#!/bin/bash
 # Process the data, e.g. data cleaning
 vbatch -P cpu-16 --name process python process_data.py
 
@@ -59,6 +61,13 @@ vbatch -P cpu-8 --name eval --after-success train python evaluate_model.py
 ```
 
 This creates a linear pipeline where each step is executed in sequence.
+To execute the pipeline, run:
+```
+vbatch ./training_pipeline.sh
+```
+
+All tasks created within a vbatch script will be automatically grouped as sub-tasks, and the parent task
+is only marked as complete when all children tasks complete.
 
 <img src="https://cdn-images-1.medium.com/max/1600/1*UFUi0CM4fZaN1ey4MnZfmQ.png" alt="Task list view" />
 <center><small>Web page for task list view</small></center>
