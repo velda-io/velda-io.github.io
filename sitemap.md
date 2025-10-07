@@ -36,4 +36,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2025-09-25*
+*Last updated: 2025-10-07*
