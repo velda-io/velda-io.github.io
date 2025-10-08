@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+.brand {
+  font-family: 'Oswald', ui-sans-serif;
+  font-weight: 700;
+}
+
+code.vrun {
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  background: transparent;
+  padding: 0 0.18rem;
+  border-radius: 4px;
+  font-family: 'Oswald', ui-sans-serif;
+}
+
+
 /* Custom VitePress CSS */
 :root {
   --vp-c-brand-1: #1B8696;

@@ -16,7 +16,7 @@ export default withMermaid(defineConfig({
   ],
   themeConfig: {
     logo: "/logos.png",
-    siteTitle: 'VELDA',
+    siteTitle: '<span class="brand">VELDA</span>',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Blog', link: '/blog/' },
@@ -29,7 +29,7 @@ export default withMermaid(defineConfig({
       '/blog/': [
         {
           text: 'Blog',
-          items: [{text: "Latest Posts", link: '/blog/'}, ...blogPosts.map(post => ({
+          items: [{ text: "Latest Posts", link: '/blog/' }, ...blogPosts.map(post => ({
             text: post.title,
             link: `/blog/${post.slug}`
           }))]

@@ -16,6 +16,7 @@
     "update-blog-posts": "node scripts/update-blog-posts.js"
   },
   "dependencies": {
+    "@fontsource/oswald": "^5.2.8",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/postcss": "^4.1.11",
     "@tailwindcss/vite": "^4.1.11",

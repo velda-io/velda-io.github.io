@@ -14,6 +14,10 @@ import { Icon } from '@iconify/vue'
 import setupGA from './ga'
 import ComparisonLayout from './ComparisonLayout.vue'
 
+import '@fontsource/oswald/500.css';
+import '@fontsource/oswald/600.css';
+import "@fontsource/oswald/700.css";
+
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void

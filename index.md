@@ -6,13 +6,10 @@ layout: home
 head:
   - - meta
     - name: description
-      content: Velda - Supercharge your development with accessible compute power as you need.
+      content: Velda - Develop platform that can instantly scale, built for ML, HPC and automation workloads.
   - - meta
     - property: og:title
-      content: VELDA - Develop without limits
-  - - meta
-    - property: og:description
-      content: Redefine how compute resources(e.g. GPUs) can be accessed through a personalized HPC cluster. Stop spending on GPUs when they're inactive, or scale your application like your machine has unbounded power. Book your personalized demo today.
+      content: VELDA - Develop platform that can instantly scale
   - - meta
     - property: og:image
       content: https://velda.io/og-preview.png
@@ -39,25 +36,14 @@ head:
       href: https://velda.io
 
 hero:
-  name: "VELDA"
-  text: Develop without limits
-  image:
-    src: /logos.png
-    alt: Velda
-  actions:
-    - theme: brand
-      text: Get started
-      link: comparison
-    - theme: alt
-      text: Book a demo
-      link: https://calendly.com/velda-io/30min
+  null:
 features:
-- title: Develop on Velda
-  details: Instantly onboard new developers from templates. Use your favorite IDEs, or directly connect from the browser in VS-code.
-- title: Scale in seconds
-  details: With a vrun prefix, run your workload with the compute power you need, like running locally. Your data and environment are always in sync.
-- title: Save $$$
-  details: Only provision the compute resource you use. No extra setup work required to scale.
+- title: Develop on <span class="brand">VELDA</span>
+  details: One click to access VS-Code from your browser, or connect with your prefered IDE. Instantly onboard from predefined templates.
+- title: Scale in Seconds
+  details: With a simple <code class="vrun">vrun</code> prefix, run your workload with the compute power you need, same experience as running locally. Your data and environment are always in sync.
+- title: Save on Compute
+  details: Only provision the compute resource you use. No extra setup work required to scale, no more idle GPUs on developer's workstation.
 
 ---
 
@@ -80,4 +66,4 @@ Watch this one-minute demo to see how Velda act in action.
 
 ### Start your journey today
 
-Experience the development platform that leading teams are already using to ship faster. [Book your personalized demo](https://calendly.com/velda-io/30min) and get free cluster setup as an early adopter—limited spots available.
+Experience the development platform that leading teams are already using to ship faster. [Book your personalized demo](https://calendly.com/velda-io/30min) and get free cluster setup as an early adopter—limited spots available.t 
