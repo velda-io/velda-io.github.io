@@ -5,8 +5,8 @@
         The developer platform for ML and HPC workloads that scale instantly
       </h1>
       <p class="hero-subline">
-        Instantly run workflows and scale your workloads across your cluster or cloud with a simple
-        <code class="vrun">vrun</code> command prefix. No image rebuilds, no dependency drift, no manifests, no waiting, cut cloud bill.
+        Instantly run your workloads across your cloud with a simple
+        <code class="vrun">vrun</code> command prefix. No image builds, no dependency drift, no manifests, no waiting, cut cloud bill.
       </p>
       <div class="hero-kicker">
         vrun is all you need
@@ -57,7 +57,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--vp-c-brand-2);
-  margin-top: 2.2rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
 }
 
