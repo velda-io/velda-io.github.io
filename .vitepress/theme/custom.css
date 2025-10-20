@@ -5,6 +5,10 @@
   font-weight: 700;
 }
 
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
 code.vrun {
   color: var(--vp-c-brand-1);
   font-weight: 500;
@@ -20,7 +24,9 @@ code.vrun {
   --vp-c-brand-1: #1B8696;
   --vp-button-brand-bg: #1B8696;
   --vp-c-brand-2: #166C77;
-  /*--vp-c-text-1: #1B8696;*/
+  --vp-c-text-1: #131414;
+  --vp-c-text-2: #575858;
+  --vp-code-color: #22375D;
 }
 
 /* Wide layout for blog pages */
@@ -54,16 +60,29 @@ code.vrun {
   clear: both;
 }
 
-/* Tile font style */
-.title, .vp-doc h1, .vp-doc h2, .vp-doc h3 {
-  font-family: 'Oswald', Arial, sans-serif;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-}
-
 .VPNavBarTitle .title {
   color: var(--vp-c-brand-1);
   font-weight: 700;
+}
+
+/* Ensure teleported nav CTA sits to the right inside the nav bar container */
+.VPNavBar {
+  position: relative;
+}
+
+/* If the nav has a container, ensure our wrapper stays inside it */
+.VPNavBar .nav-signup-wrapper {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 640px) {
+  /* On small screens, hide the desktop CTA to avoid layout break; mobile pages can show CTA elsewhere */
+  .VPNavBar .nav-signup-wrapper {
+    display: none;
+  }
 }
 
 .cookie-banner {
@@ -81,6 +100,7 @@ code.vrun {
   gap: 1em;
   font-size: 1em;
 }
+
 .cookie-banner button {
   margin-left: 1em;
   background: #fff;
@@ -92,6 +112,7 @@ code.vrun {
   font-weight: bold;
   transition: background 0.2s;
 }
+
 .cookie-banner button:hover {
   background: #e0f7fa;
 }
@@ -106,12 +127,13 @@ code.vrun {
 
 @media (min-width: 900px) {
   .blog-tiles {
-    grid-template-columns: 1fr 1fr; /* two columns on wide screens */
+    grid-template-columns: 1fr 1fr;
+    /* two columns on wide screens */
   }
 }
 
 .blog-tile {
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 1.25rem;
   border-radius: 10px;
   background: var(--vp-canvas-bg, #fff);
@@ -120,13 +142,29 @@ code.vrun {
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .blog-tile:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
-.blog-tile img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-.blog-tile h3 { margin: 0; font-size: 1.15rem; }
-.blog-tile p.excerpt { margin: 0; color: #444; }
+
+.blog-tile img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.blog-tile h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.blog-tile p.excerpt {
+  margin: 0;
+  color: #444;
+}
+
 .blog-cover {
   width: 100%;
   height: 360px;
@@ -137,4 +175,41 @@ code.vrun {
 
 .VPButton.medium {
   border-radius: 10px !important;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc h5,
+.vp-doc h6 {
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+  border: none;
+}
+
+.vp-doc h1 {
+  font-size: 36px;
+  margin: 0 0 0.5rem 0;
+  font-style: bold;
+  font-weight: 700;
+}
+
+.vp-doc h2 {
+  font-size: 24px;
+  margin: 0 0 0.5rem 0;
+  font-style: bold;
+  font-weight: 700;
+}
+
+.vp-doc p {
+  color: var(--vp-c-text-2);
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+}
+
+.vp-doc .auto-animate-wrapper p {
+    all: revert;
 }

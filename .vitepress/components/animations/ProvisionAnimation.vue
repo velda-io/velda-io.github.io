@@ -2,27 +2,30 @@
     <div ref="animationWrapper" class="provisioning-animation-wrapper">
         <svg ref="svgContainer" class="connection-svg"></svg>
 
-        <div class="flex flex-col lg:flex-row w-full gap-4 justify-between">
+        <div class="flex flex-col align-item-center xs:flex-row w-full justify-around">
             <!-- Central Terminal - always at top on mobile, left on desktop -->
-            <Terminal ref="terminal" class="w-full lg:w-1/2 self-center" height="16rem" />
+
+            <div class="w-full xs:w-120 self-center">
+                <Terminal ref="terminal" height="20rem" />
+            </div>
 
             <!-- Machine Stack - right side on desktop, bottom on mobile -->
-            <div class="machine-stack w-full lg:w-1/2 flex flex-row flex-wrap justify-center items-center gap-3">
-                <!-- Machine 1 -->
-                <Machine ref="machine1" title="IDE" status="active" hardware="CPU"
-                    class="flex-grow flex-shrink-0" />
+            <div class="w-40 xs:w-40 self-center">
 
                 <!-- Machine 2 -->
-                <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2" title="Training"
-                    :status="trainingMachineStatus" hardware="GPU"
+                <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2"
+                    :status="trainingMachineStatus" hardware="gpu-h200-1"
                     class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
                         'opacity-0 scale-90': trainingMachineStatus === ''
                     }">
                     <template v-if="isProvisioning">
-                        <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
+                        <p class="text-amber-400 text-md font-semibold">Provisioning...</p>
                     </template>
-                    <template v-else-if="isTrainingDeactivated">
-                        <p class="text-sm font-semibold mt-2">Deactivated</p>
+                    <template v-else-if="isTrainingActive">
+                        <p class="text-green-400 text-md font-semibold">Training</p>
+                    </template>
+                    <template v-else>
+                        <p class="text-md font-semibold">Deactivated</p>
                     </template>
                 </Machine>
             </div>
@@ -77,7 +80,7 @@ async function drawLines() {
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
     const terminalRect = terminal.value.$el.getBoundingClientRect();
     const terminalEl = terminal.value.$el;
-    const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint in Tailwind is 1024px
+    const isLargeScreen = window.innerWidth >= 480;
 
     // Calculate terminal connection point - on large screens it's right side, on small screens it's bottom
     let termX, termY;
@@ -105,14 +108,14 @@ async function drawLines() {
         m1X = m1Rect.left - wrapperRect.left + m1Rect.width / 2;
         m1Y = m1Rect.top - wrapperRect.top;
     }
-    
+
     svgContainer.value.innerHTML += `<line class="connection-line" x1="${m1X}" y1="${m1Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
 
     // Check for machine2's ref and if it's active
     if (machine2.value && isTrainingActive.value) {
         const m2Rect = machine2.value.$el.getBoundingClientRect();
         let m2X, m2Y;
-        
+
         if (isLargeScreen) {
             // On large screens, connect to the left side of machines
             m2X = m2Rect.left - wrapperRect.left;
@@ -122,7 +125,7 @@ async function drawLines() {
             m2X = m2Rect.left - wrapperRect.left + m2Rect.width / 2;
             m2Y = m2Rect.top - wrapperRect.top;
         }
-        
+
         svgContainer.value.innerHTML += `<line class="connection-line" x1="${m2X}" y1="${m2Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
     }
 }
@@ -136,7 +139,7 @@ async function startAnimation() {
     resetAnimation();
 
     if (!terminal.value) return;
-    const command = "vrun -P gpu ./train_model.sh";
+    const command = "vrun -P gpu-h200-1 ./train_model.sh";
     await terminal.value.sendCommand(animator, command);
 
     showTrainingMachine.value = true;
@@ -238,7 +241,7 @@ onMounted(() => {
     if (animationWrapper.value) {
         resizeObserver.observe(animationWrapper.value);
     }
-    
+
     // Also listen for window resize events to handle breakpoint changes
     window.addEventListener('resize', drawLines);
 });
@@ -262,19 +265,12 @@ defineExpose({ startAnimation, stopAnimation });
     padding-bottom: 0;
     position: relative;
     width: 100%;
-    min-height: 480px;
+    aspect-ratio: 2/1;
     margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-}
-
-.provisioning-animation-wrapper :deep(p) {
-    margin: 0;
-    padding: 0;
-    line-height: normal;
-    text-align: left;
 }
 
 .typing-caret {
@@ -312,11 +308,7 @@ defineExpose({ startAnimation, stopAnimation });
 .machine-stack {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 16px;
-    padding: 1rem 0;
 }
 </style>

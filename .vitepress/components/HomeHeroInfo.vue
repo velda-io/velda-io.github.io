@@ -2,55 +2,130 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        The developer platform for ML and HPC workloads that scale instantly
+        Developer Platform That
+        <br />
+        <span class="highlight">Scales Instantly</span>
       </h1>
       <p class="hero-subline">
-        Instantly run your workloads across your cloud with a simple
-        <code class="vrun">vrun</code> command prefix. No image builds, no dependency drift, no manifests, no waiting, cut cloud bill.
+        Loved by ML & HPC users. Run any jobs in your cloud from your dev-environment with a simple <code>vrun</code> prefix.
       </p>
-      <div class="hero-kicker">
-        vrun is all you need
-      </div>
       <div class="hero-ctas">
-        <a class="cta primary" href="/comparison">Get started</a>
-        <a class="cta secondary" href="/book">Book a demo</a>
+        <CtaButton variant="primary" href="https://velda.app">Get started</CtaButton>
+        <CtaButton variant="secondary" href="/book">Book a demo</CtaButton>
       </div>
     </div>
   </div>
 </template>
 
+<script setup>
+import CtaButton from './CtaButton.vue'
+</script>
+
 <style scoped>
+
 .home-hero {
-  display: flex;
-  align-items: center;
-  padding-top: 15vh;
-  justify-content: center;
-  min-height: 50vh;
-  text-align: center;
+  margin-top: calc((var(--vp-nav-height) + var(--vp-layout-top-height, 0px)) * -1);
+  padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 48px) 24px 48px;
+}
+
+@media (min-width: 640px) {
+  .home-hero {
+    padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px) 48px 64px;
+  }
+}
+
+@media (min-width: 960px) {
+  .home-hero {
+    padding: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 80px) 64px 64px;
+  }
 }
 
 .hero-content {
-  max-width: 800px;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  max-width: 1152px;
+}
+
+@media (min-width: 960px) {
+  .hero-content {
+    flex-direction: row;
+  }
+}
+
+.home-hero::before {
+  /* background artwork */
+  display: block;
+  background-image: url('/hero.svg');
+  opacity: 0.7;
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: "";
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  position: absolute;
+}
+.home-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* span the full viewport width so the background covers edge-to-edge */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 100px;
+  box-sizing: border-box;
+  /* place the hero behind the header and allow it to extend into the header area */
+  position: relative;
+  z-index: 0;
+  /* pull the hero up to overlap the header; use the VitePress nav height variable when available */
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-headline {
-  font-size: 3rem;
+  font-size: 60px;
   font-weight: 800;
   line-height: 1.2;
-  /* tighten spacing under headline */
   margin-bottom: 1rem;
   color: var(--vp-c-text-1);
 }
 
+.highlight {
+  background: linear-gradient(90deg, #ff2da6 0%, #7b5cff 60%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
 .hero-subline {
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-size: 20px;
+  line-height: 1.5;
   color: var(--vp-c-text-2);
-  margin-bottom: 0;
+  margin-bottom: 50px;
+  max-width: 55%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-kicker {
+  display: none;
   font-size: 0.75rem;
   font-family: 'Oswald', ui-sans-serif;
   font-weight: 500;
@@ -63,70 +138,42 @@
 
 .hero-ctas {
   display: flex;
-  /* constrain CTA row so buttons aren't too wide on large screens */
   width: 100%;
-  max-width: 420px;
-  margin: 0.75rem auto 0;
-  gap: 1rem;
-  align-items: stretch;
-}
-
-.cta {
-  display: inline-flex;
+  max-width: 520px;
+  margin: 1.5rem auto 0;
+  gap: 30px;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.1rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  /* make CTAs equal width */
-  flex: 1 1 0;
-  min-width: 120px;
-}
-
-.cta.primary {
-  background: var(--vp-button-brand-bg, var(--vp-c-brand-1));
-  color: white;
-}
-
-.cta.secondary {
-  background: transparent;
-  color: var(--vp-c-brand-1);
-  border: 2px solid var(--vp-c-brand-1);
-}
-
-.cta.primary:hover, .cta.secondary:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
-  .home-hero {
-    padding: 3rem 1.5rem;
+@media (max-width: 1024px) {
+
+  .hero-content {
+    padding: 0 10px;
   }
 
   .hero-headline {
-    font-size: 2.25rem;
+    font-size: 48px;
   }
 
   .hero-subline {
     font-size: 1.125rem;
+    max-width: 75%;
+  }
+
+  .cta {
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 480px) {
-  .home-hero {
-    padding: 2rem 1rem;
-  }
-
+@media (max-width: 768px) {
   .hero-headline {
-    font-size: 1.875rem;
+    font-size: 35px;
   }
 
   .hero-subline {
-    font-size: 1rem;
+    font-size: 20px;
   }
 
   .hero-ctas {
@@ -134,6 +181,22 @@
     max-width: 320px;
     gap: 0.75rem;
   }
-  .cta { width: 100%; }
+
+  .cta {
+    width: 70%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-headline {
+    font-size: 30px;
+  }
+
+  .hero-subline {
+    font-size: 16px;
+  }
+
 }
 </style>

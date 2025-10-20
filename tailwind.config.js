@@ -6,6 +6,7 @@ module.exports = {
     "./.vitepress/**/*.ts",
     "./**/*.md",
   ],
+  important: true,
   theme: {
     extend: {},
   },

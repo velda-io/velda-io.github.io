@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress'
+import tailwindcss from "@tailwindcss/vite";
 import { withMermaid } from "vitepress-plugin-mermaid";
 import { blogPosts } from './data/blogPosts';
+import NavSignUp from './components/NavSignUp.vue';
 
 export default withMermaid(defineConfig({
   title: "Velda",
@@ -14,16 +16,16 @@ export default withMermaid(defineConfig({
     "blog/README.md",
     "blog/_template.md"
   ],
+  appearance: false,
   themeConfig: {
     logo: "/logos.png",
     siteTitle: '<span class="brand">VELDA</span>',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Blog', link: '/blog/' },
-      { text: 'Getting Started', link: '/comparison' },
-      { text: 'Docs', link: '/intro' },
+      { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
+      { text: 'Plans', link: '/comparison' },
+      { component: 'NavSignUp', text: 'Sign-in', link: 'https://velda.app', noIcon: true },
     ],
-
     // Context-aware sidebars: blog pages get a blog sidebar; docs pages get the docs sidebar
     sidebar: {
       '/blog/': [
@@ -119,5 +121,8 @@ export default withMermaid(defineConfig({
   },
   markdown: {
     anchor: { permalink: undefined },
-  }
+  },
+  vite: {
+    plugins: [tailwindcss()],
+  },
 }))

@@ -28,10 +28,14 @@
                     <span>Idle / Break</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 3%;"></div>
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 3%;"></div>
+                    </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar split very-low-utilization" style="width: 60%;">
+                    <div class="time-bar">
+                        <div class="resource-bar split very-low-utilization" style="width: 80%;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,10 +53,14 @@
                     <span>Coding</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 10%;"></div>
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;"></div>
+                    </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar split low-utilization" style="width: 60%;">
+                    <div class="time-bar">
+                        <div class="resource-bar split low-utilization" style="width: 80%;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,21 +75,25 @@
                                 d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
                         </svg>
                     </div>
-                    <span>Debug large binary</span>
+                    <span>Running compute heavy workload directly</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 10%;">
-                    </div>
-                    <div class="resource-bar" style="width: 40%;">
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;">
+                        </div>
+                        <div class="resource-bar" style="width: 50%;">
+                        </div>
                     </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar split high-utilization" style="width: 60%;">
+                    <div class="time-bar">
+                        <div class="resource-bar split high-utilization" style="width: 80%;">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 5. Running Large Batch of Jobs with K8s -->
+            <!-- 5. Running Large Batch of Jobs with Kubernetes -->
             <div class="comparison-row">
                 <div class="scenario-title">
                     <div class="scenario-icon">
@@ -93,18 +105,22 @@
                                 d="M9 3v4M15 3v4M9 17v4M15 17v4M3 11h18" />
                         </svg>
                     </div>
-                    <span>Lightweight dev VM + Large binary on Kubernetes</span>
+                    <span>Run workload with Kubernetes / Cluster</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 10%;">
-                    </div>
-                    <div class="resource-bar" style="width: 40%;">
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;">
+                        </div>
+                        <div class="resource-bar" style="width: 60%;">
+                        </div>
                     </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar" style="width: 10%;">
-                    </div>
-                    <div class="resource-bar" style="width: 40%;">
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;">
+                        </div>
+                        <div class="resource-bar" style="width: 60%;">
+                        </div>
                     </div>
                     <div class="efficiency-indicator negative engineering-indicator">
                         <div class="eng-effort more">
@@ -147,37 +163,41 @@
                             <path d="M12 8v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <span>Process data via multi-processing</span>
+                    <span>Process data via multi-processing in a single machine</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                    </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar split high-utilization" style="width: 60%;">
-                    </div>
-                    <div class="efficiency-indicator negative time-indicator">
-                        <div class="time-block longer">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
+                    <div class="time-bar">
+                        <div class="resource-bar split full-utilization" style="width: 80%;">
                         </div>
+                        <div class="efficiency-indicator negative">
+                            <div class="time-block longer"></div>
+                        </div>
+                    </div>
+                    <div class="efficiency-indicator negative engineering-indicator ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon-clock" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -195,20 +215,22 @@
                     <span>Process large data with a distributed system</span>
                 </div>
                 <div class="metric-cell velda">
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                    </div>
                 </div>
                 <div class="metric-cell traditional">
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
-                    <div class="resource-bar" style="width: 10%;"></div>
+                    <div class="time-bar">
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                        <div class="resource-bar" style="width: 20%;"></div>
+                    </div>
                     <div class="efficiency-indicator negative engineering-indicator">
                         <div class="eng-effort more">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon-eng" viewBox="0 0 24 24" fill="none"
@@ -233,7 +255,16 @@
                     </div>
                 </div>
             </div>
-
+            <div class="p-4 flex flex-row gap-3 flex-nowrap w-full align-start" aria-hidden="false">
+                    <div class="flex items-center gap-2 flex-none">
+                        <span class="w-3.5 h-3.5 rounded-sm bg-emerald-500 shadow-inner ring-1 ring-black/5"></span>
+                        <span class="text-sm text-[var(--vp-c-text)] whitespace-nowrap">Utilized compute</span>
+                    </div>
+                    <div class="flex items-center gap-2 flex-none">
+                        <span class="w-3.5 h-3.5 rounded-sm bg-rose-500 shadow-inner ring-1 ring-black/5"></span>
+                        <span class="text-sm text-[var(--vp-c-text)] whitespace-nowrap">Underutilized compute</span>
+                    </div>
+            </div>
         </div>
     </div>
 </template>
@@ -295,7 +326,6 @@ onMounted(() => {
     text-align: left;
     width: 100%;
     padding: 1rem;
-    background-color: var(--vp-c-bg);
     border-radius: 10px;
 }
 
@@ -312,6 +342,7 @@ onMounted(() => {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    background-color: var(--vp-c-bg-alt);
 }
 
 .comparison-header {
@@ -359,7 +390,6 @@ onMounted(() => {
 .comparison-row {
     display: grid;
     grid-template-columns: minmax(120px, 1fr) minmax(100px, 1fr) minmax(100px, 1fr);
-    background-color: var(--vp-c-bg-alt);
     border-bottom: 1px solid var(--vp-c-divider);
     transition: background-color 0.3s;
 }
@@ -395,7 +425,7 @@ onMounted(() => {
 
 @media (max-width: 640px) {
     .scenario-title {
-        padding: 0;
+        padding: 8px 8px 0 8px;
         grid-column: 1 / -1;
         min-height: unset;
         /* remove any minimum height */
@@ -426,9 +456,14 @@ onMounted(() => {
 .metric-cell {
     padding: 1rem;
     text-align: left;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-bar {
     display: flex;
     flex-direction: row;
+    position: relative;
     align-items: flex-start;
 }
 
@@ -456,7 +491,7 @@ onMounted(() => {
 
     .time-indicator,
     .engineering-indicator {
-        margin-top: 4px;
+        margin-bottom: 4px;
         /* reduced from 8px */
     }
 
@@ -506,7 +541,7 @@ onMounted(() => {
 }
 
 .low-utilization.resource-bar.split::before {
-    width: 15%;
+    width: 25%;
 }
 
 .medium-utilization.resource-bar.split::before {
@@ -518,13 +553,11 @@ onMounted(() => {
 }
 
 .full-utilization.resource-bar.split::before {
-    width: 85%;
+    width: 100%;
 }
 
 .efficiency-indicator {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 0.5rem;
     color: #10b981;
     font-size: 0.75rem;
@@ -561,8 +594,6 @@ onMounted(() => {
 .time-indicator,
 .engineering-indicator {
     margin-top: 8px;
-    display: flex;
-    justify-content: center;
 }
 
 @media (max-width: 640px) {

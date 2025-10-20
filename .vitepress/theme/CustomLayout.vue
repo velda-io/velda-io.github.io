@@ -3,9 +3,6 @@
     <template #layout-bottom>
       <Footer />
     </template>
-    <template #home-hero-info>
-      <HomeHeroInfo />
-    </template>
   </Layout>
 </template>
 

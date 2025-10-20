@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="carousel-dots">
-            <span v-for="(animation, index) in animations" :key="index" class="dot"
+            <span v-for="(animation, index) in animations" :key="index" class="carousel-dot"
                 :class="{ active: currentIndex === index }" @click="goToSlide(index)"></span>
         </div>
     </div>
@@ -290,7 +290,7 @@ export default {
     margin-top: 1rem;
 }
 
-.dot {
+.carousel-dot {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -301,11 +301,11 @@ export default {
     transition: background-color 0.3s;
 }
 
-.dot:hover {
+.carousel-dot:hover {
     background-color: var(--vp-c-brand-light);
 }
 
-.dot.active {
+.carousel-dot.active {
     background-color: var(--vp-c-brand);
 }
 

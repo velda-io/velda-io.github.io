@@ -2,42 +2,53 @@
     <div ref="animationWrapper" class="provisioning-animation-wrapper">
         <svg ref="svgContainer" class="connection-svg"></svg>
 
-        <div class="flex flex-col lg:flex-row w-full gap-4 justify-between">
+        <div class="flex flex-col xs:flex-row w-full gap-4 justify-around">
             <!-- Central Terminal - always at top on mobile, left on desktop -->
-            <Terminal ref="terminal" class="w-full lg:w-1/2 self-center" height="16rem" />
+            <div class="w-full xs:w-120 self-center">
+                <Terminal ref="terminal" height="20rem" />
+            </div>
 
             <!-- Machine Stack - right side on desktop, bottom on mobile -->
-            <div class="machine-stack w-full lg:w-1/2 flex flex-row flex-wrap justify-center items-center gap-3">
+            <div class="w-50 xs:w-50 flex flex-row xs:flex-col justify-center self-center gap-3 mb-3">
                 <!-- Machine 1 - Ray Head Node -->
-                <Machine :style="{ visibility: showHeadNode ? 'visible' : 'hidden' }" 
-                    ref="machine1" 
-                    title="Ray Head" 
-                    :status="headNodeStatus" 
-                    hardware="CPU"
-                    class="flex-grow flex-shrink-0 transition-all duration-500" 
-                    :class="{
-                        'opacity-0 scale-90': headNodeStatus === ''
-                    }">
-                    <template v-if="isProvisioningHead">
-                        <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
-                    </template>
-                </Machine>
+                <div class="w-40 self-center">
+                    <Machine :style="{ visibility: showHeadNode ? 'visible' : 'hidden' }" ref="machine1"
+                        :status="headNodeStatus" hardware="CPU"
+                        class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
+                            'opacity-0 scale-90': headNodeStatus === ''
+                        }">
+                        <template v-if="isProvisioningHead">
+                            <p class="text-amber-400 text-sm font-semibold mt-2">
+                                Provisioning...
+                            </p>
+                        </template>
+                        <template v-else>
+                            <p class="text-green-400 text-sm font-semibold mt-2">
+                                Head Node
+                            </p>
+                        </template>
+                    </Machine>
+                </div>
 
-                <!-- Machine 2 - Ray Worker Node -->
-                <Machine :style="{ visibility: showWorkerNode ? 'visible' : 'hidden' }" 
-                    ref="machine2" 
-                    title="Ray Worker"
-                    :multi-machine="true"
-                    :status="workerNodeStatus" 
-                    hardware="CPU"
-                    class="flex-grow flex-shrink-0 transition-all duration-500" 
-                    :class="{
-                        'opacity-0 scale-90': workerNodeStatus === ''
-                    }">
-                    <template v-if="isProvisioningWorker">
-                        <p class="text-amber-400 text-sm font-semibold mt-2">Provisioning...</p>
-                    </template>
-                </Machine>
+                <div class="w-40 self-center">
+                    <!-- Machine 2 - Ray Worker Node -->
+                    <Machine :style="{ visibility: showWorkerNode ? 'visible' : 'hidden' }" ref="machine2"
+                        :multi-machine="true" :status="workerNodeStatus" hardware="gpu-h200-1"
+                        class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
+                            'opacity-0 scale-90': workerNodeStatus === ''
+                        }">
+                        <template v-if="isProvisioningWorker">
+                            <p class="text-amber-400 text-sm font-semibold mt-2">
+                                Provisioning...
+                            </p>
+                        </template>
+                        <template v-else>
+                            <p class="text-green-400 text-sm font-semibold mt-2">
+                                Worker Nodes
+                            </p>
+                        </template>
+                    </Machine>
+                </div>
             </div>
         </div>
     </div>
@@ -85,6 +96,7 @@ let resizeObserver;
  * Draws connecting lines from machines to the terminal.
  */
 async function drawLines() {
+    return;
     // Wait for the next DOM update to ensure elements are rendered
     await nextTick();
     if (!svgContainer.value || !terminal.value || !animationWrapper.value) return;
@@ -93,7 +105,7 @@ async function drawLines() {
     const wrapperRect = animationWrapper.value.getBoundingClientRect();
     const terminalRect = terminal.value.$el.getBoundingClientRect();
     const terminalEl = terminal.value.$el;
-    const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint in Tailwind is 1024px
+    const isLargeScreen = window.innerWidth >= 480;
 
     // Calculate terminal connection point - on large screens it's right side, on small screens it's bottom
     let termX, termY;
@@ -122,7 +134,7 @@ async function drawLines() {
             m1X = m1Rect.left - wrapperRect.left + m1Rect.width / 2;
             m1Y = m1Rect.top - wrapperRect.top;
         }
-        
+
         svgContainer.value.innerHTML += `<line class="connection-line" x1="${m1X}" y1="${m1Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
     }
 
@@ -130,7 +142,7 @@ async function drawLines() {
     if (machine2.value && isWorkerNodeActive.value) {
         const m2Rect = machine2.value.$el.getBoundingClientRect();
         let m2X, m2Y;
-        
+
         if (isLargeScreen) {
             // On large screens, connect to the left side of machines
             m2X = m2Rect.left - wrapperRect.left;
@@ -140,14 +152,14 @@ async function drawLines() {
             m2X = m2Rect.left - wrapperRect.left + m2Rect.width / 2;
             m2Y = m2Rect.top - wrapperRect.top;
         }
-        
+
         svgContainer.value.innerHTML += `<line class="connection-line" x1="${m2X}" y1="${m2Y}" x2="${termX}" y2="${termY}" stroke-dasharray="5, 5" />`;
-        
+
         // If both nodes are active, draw a connection between head and worker node
         if (isHeadNodeActive.value && machine1.value) {
             const m1Rect = machine1.value.$el.getBoundingClientRect();
             let m1X, m1Y;
-            
+
             if (isLargeScreen) {
                 m1X = m1Rect.left - wrapperRect.left + m1Rect.width / 2;
                 m1Y = m1Rect.top - wrapperRect.top + m1Rect.height;
@@ -159,7 +171,7 @@ async function drawLines() {
                 m2X = m2Rect.left - wrapperRect.left;
                 m2Y = m2Rect.top - wrapperRect.top + m2Rect.height / 2;
             }
-            
+
             svgContainer.value.innerHTML += `<line class="connection-line ray-connection" x1="${m1X}" y1="${m1Y}" x2="${m2X}" y2="${m2Y}" />`;
         }
     }
@@ -174,16 +186,16 @@ async function startAnimation() {
     resetAnimation();
 
     if (!terminal.value) return;
-    
+
     // Start with ray head node creation
     await createHeadNode();
-    
+
     // Wait and then create worker node
     await animator.sleep(1500);
     await createWorkerNode();
     await animator.sleep(500);
     await runRayWorkload();
-    
+
     // Animation has completed, call onComplete if provided
     await animator.sleep(2000);
     if (props.onComplete) {
@@ -206,15 +218,15 @@ async function createHeadNode() {
     headNodeStatus.value = 'provisioning';
 
     await animator.sleep(1000);
-    
+
     // Output head node creation messages
     const headNodeOutput = [
         "Starting Ray head",
         "Head node initialized",
     ];
-    
+
     await streamOutputToTerminal(headNodeOutput);
-    
+
     isProvisioningHead.value = false;
     isHeadNodeActive.value = true;
     headNodeStatus.value = 'active';
@@ -225,7 +237,7 @@ async function createHeadNode() {
  * Creates the Ray worker node.
  */
 async function createWorkerNode() {
-    const command = "for ((i=0;i<5;i++)); do\n vrun -s ray-worker \\\n   ray start --address=ray-head:6379;\ndone";
+    const command = "vbatch -N 5 -P gpu-h200-1 \\\n  ray start --address=ray-head:6379";
     await terminal.value.sendCommand(animator, command);
 
     showWorkerNode.value = true;
@@ -235,22 +247,21 @@ async function createWorkerNode() {
     workerNodeStatus.value = 'provisioning';
 
     await animator.sleep(1000);
-    
+
     // Output worker node creation messages
     const workerNodeOutput = [
-        "Starting Ray worker on this node",
-        "Connecting to ray-head:6379...",
+        "Starting Ray workers",
         "...",
         "Ray workers started.",
     ];
-    
+
     await streamOutputToTerminal(workerNodeOutput);
-    
+
     isProvisioningWorker.value = false;
     isWorkerNodeActive.value = true;
     workerNodeStatus.value = 'active';
     await drawLines();
-    
+
     // Show cluster ready
     await animator.sleep(400);
 }
@@ -259,8 +270,8 @@ async function createWorkerNode() {
  * Runs a sample Ray workload.
  */
 async function runRayWorkload() {
-    const command = "RAY_ADDRESS=ray://ray-head:10001 ./ray_workload.py";
-    await terminal.value.sendCommand(animator, command);
+    await terminal.value.sendCommand(animator, "export RAY_ADDRESS=ray://ray-head:10001");
+    await terminal.value.sendCommand(animator, "./ray_workload.py");
     const workloadOutput = [
         "Running Ray workload ...",
         "Processed 50,000 tasks",
@@ -278,7 +289,7 @@ async function streamOutputToTerminal(outputLines) {
         const line = outputLines[i];
         const className = line.includes('Ray cluster ready') ? 'success' : 'system';
         terminal.value.sendLine(line, className);
-        
+
         const delay = Math.random() * 200 + 200;
         await animator.sleep(delay);
     }
@@ -314,7 +325,7 @@ onMounted(() => {
     if (animationWrapper.value) {
         resizeObserver.observe(animationWrapper.value);
     }
-    
+
     // Also listen for window resize events to handle breakpoint changes
     window.addEventListener('resize', drawLines);
 });
@@ -389,16 +400,5 @@ defineExpose({ startAnimation, stopAnimation });
     stroke: #3B82F6;
     /* Blue for ray connection */
     stroke-width: 2.5;
-}
-
-.machine-stack {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 16px;
-    padding: 1rem 0;
 }
 </style>

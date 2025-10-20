@@ -50,11 +50,15 @@ This page includes all animations one by one for easy reference.
 </button>
 
 <div style="padding: 0 24px;">
-    <div v-for="(animation, index) in animations.animations" :key="index" class="animation-container">
+    <div v-for="(animation, index) in animations.animations" :key="index" class="animation-frame">
         <h3 class="animation-title">{{ animation.title }}</h3>
         <p class="animation-description">{{ animation.description }}</p>
-        <div class="animation-box">
-        <component :is="animation.component" :ref="el => { if (el) animationRefs[index] = el; }" :onComplete="restartAnim(index)"/>
+        <div class="animation-container xs:aspect-[2/1]">
+            <div class="w-full h-full">
+                <div class="animation-box">
+                    <component :is="animation.component" :ref="el => { if (el) animationRefs[index] = el; }" :onComplete="restartAnim(index)"/>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -76,23 +80,43 @@ This page includes all animations one by one for easy reference.
     background-color: var(--vp-c-brand-light);
 }
 
-.animation-container {
+.animation-frame {
     margin: 2rem 0;
     padding: 0.5rem;
     border: 1px solid var(--vp-c-divider);
     border-radius: 0.5rem;
     background-color: var(--vp-c-bg-secondary);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
     overflow: hidden;
 }
 
 .animation-box {
-    width: 100%;
-    max-width: 956px;
-    height: auto;
-    min-height: 448px;
     overflow: hidden;
+    background-color: #FAFAFA;
+    transform-origin: top left;
+    transform: scale(var(--scale));
+}
+
+.animation-box {
+    --scale: calc(min(100cqw / 400px, 1));
+    width: 400px;
+}
+.animation-container {
+    width: 100%;
+    max-width: 400px;
+    container-type: inline-size;
+}
+
+@media (min-width: 480px) {
+    .animation-box {
+        width: 800px;
+        aspect-ratio: 2 / 1;
+        --scale: calc(min(100cqw / 800px, 1));
+    }
+    .animation-container {
+        width: 100%;
+        max-width: 800px;
+    }
 }
 
 .animation-title {

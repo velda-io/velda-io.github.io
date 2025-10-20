@@ -6,10 +6,10 @@
                 <div class="dot dot-yellow"></div>
                 <div class="dot dot-green"></div>
             </div>
-            <div class="flex-grow text-center text-xs text-gray-300">{{ title }}</div>
+            <div class="terminal-font flex-grow text-left pl-2 font-semibold text-gray-800">{{ title }}</div>
         </div>
         <div ref="terminalContent"
-            class="terminal-font terminal-content rounded-md p-3 text-sm overflow-y-auto"
+            class="terminal-font terminal-content p-3 text-xs overflow-y-auto"
             :style="{ height: height }"></div>
     </div>
 </template>
@@ -130,12 +130,10 @@ defineExpose({
 
 <style scoped>
 .terminal-font {
-    font-family: 'Fira Code', monospace;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .terminal-window {
-    background-color: #1F2937;
-    border-radius: 0.5rem;
     width: 100%;
     max-width: 42rem;
     z-index: 10;
@@ -160,20 +158,22 @@ defineExpose({
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    background-color: #374151;
+    background-color: #EAEAEA;
+    font-size: 14px;
+    border: 2px solid var(--vp-c-border);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
 
 .header-dots {
     display: flex;
-    gap: 0.5rem;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 9999px;
+    margin: 0 1px;
 }
 
 .dot-red {
@@ -190,16 +190,20 @@ defineExpose({
 
 .terminal-content {
     background-color: white;
-    border: 2px solid var(--vp-c-border);
-    transition: border-color 0.3s;
     overflow-wrap: break-word;
+    border-left: 2px solid var(--vp-c-border);
+    border-right: 2px solid var(--vp-c-border);
+    border-bottom: 2px solid var(--vp-c-border);
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 /* Remove default margins for paragraphs to ensure proper terminal display */
 .terminal-content :deep(p) {
+    font: inherit;
     margin: 0;
     padding: 0;
-    line-height: normal;
+    line-height: 1.5;
     text-align: left;
 }
 </style>
