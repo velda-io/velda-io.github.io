@@ -8,11 +8,11 @@ description: "Choose the right plan for your team. From open-source to enterpris
 :::raw
 <div class="px-6 flex flex-col justify-center mx-auto w-full max-w-[var(--vp-layout-max-width)]">
 <div class="mt-12.5 mb-25 text-center items-center flex flex-col gap-y-4">
-  <h1 class="text-4xl xl:text-5xl font-bold max-w-120 md:max-w-none"> Help your whole team work smarter</h1>
+  <h1 class="text-4xl xl:text-5xl font-bold max-w-120 md:max-w-none lg:max-w-120"> Help your whole team work smarter</h1>
   <p class="text-lg line-relaxed text-color-[#575858]">Start free and scale as you grow.</p>
 </div>
 
-<div class="pricing-grid grid gap-8 my-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+<div class="pricing-grid grid gap-8 mb-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
   <PricingCard class="order-3 md:order-3 xl:order-1"
     title="Open source"
     subtitle="Self-hosted"
@@ -44,7 +44,7 @@ description: "Choose the right plan for your team. From open-source to enterpris
     ]"
     cta-link="https://velda.app"
     cta-text="Get Free GPU now"
-    badge="Extra welcome credits"
+    badge="Extra new-user credits"
     :featured="true"
   />
 
