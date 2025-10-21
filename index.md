@@ -95,7 +95,7 @@ Just your local dev experience — with unbounded power.</p>
 <LeftRightLayout title="Scale in Seconds">
   <template #subtitle>
     <p>Develop and scale — all in one platform. </p>
-    <p>Run training, serving, or data pipelines with a simple  <code>vrun</code> prefix.</p>
+    <p>Run training, serving, or data pipelines with a simple  <code>vrun</code> prefix, for any workload.</p>
   </template>
   <AutoAnimationWrapper
     :component="RayAnimation"
@@ -136,8 +136,7 @@ Just your local dev experience — with unbounded power.</p>
       </button>
   </div>
 </div>
-
-<div class="flex flex-row my-25 gap-4 text-center max-w-200">
+<div class="flex flex-col md:flex-row mt-40 mb-3 gap-4 text-center">
   <div class="w-full flex flex-col justify-between p-10 gap-6">
     <div class="gap-5">
       <h2>Individual</h2>
@@ -175,14 +174,22 @@ Just your local dev experience — with unbounded power.</p>
 
 .bottombg {
   position: relative;
+}
+
+.bottombg::before {
+  content: "";
+  position: absolute;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
   width: 100vw;
+  height: 100%;
+  z-index: -1;
   box-sizing: border-box;
   background-image: url("/bg-hm.svg");
   background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
 }
 

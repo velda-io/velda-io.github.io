@@ -3,9 +3,9 @@
         <div class="lr-title">
             <h2 v-if="title" class="lr-title-heading" v-html="title"></h2>
             <template v-if="$slots.subtitle">
-                <p class="lr-title-sub">
+                <div class="lr-title-sub flex flex-col gap-4">
                     <slot name="subtitle" />
-                </p>
+                </div>
             </template>
             <p v-else-if="subtitle" class="lr-title-sub" v-html="subtitle"></p>
         </div>
@@ -81,6 +81,7 @@ const subtitle = props.subtitle
     font-size: 18px;
     line-height: 1.5;
     color: var(--vp-c-text-2);
+    gap: 1rem;
     margin: 0;
 }
 
@@ -93,7 +94,7 @@ const subtitle = props.subtitle
 
     /* Default: title on the left */
     .lr-grid .lr-title {
-        grid-column: 1 / span 4;
+        grid-column: 1 / span 5;
     }
 
     .lr-grid .lr-content {
@@ -102,7 +103,7 @@ const subtitle = props.subtitle
 
     /* When direction is right, swap positions */
     .lr-grid.direction-right .lr-title {
-        grid-column: 8 / span 4;
+        grid-column: 8 / span 5;
         grid-row: 1;
         /* title on the right */
     }
@@ -115,10 +116,6 @@ const subtitle = props.subtitle
 
     .lr-title-inner {
         padding: 2rem 1rem 0 0;
-    }
-
-    .lr-content {
-        padding-top: 5rem;
     }
 }
 

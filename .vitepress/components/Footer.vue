@@ -1,9 +1,9 @@
 <template>
-  <footer class="w-full relative z-30 border-t"
+  <footer class="vp-raw w-full relative z-30 border-t"
     :style="{ borderColor: 'var(--vp-c-divider)', background: 'var(--vp-c-bg-soft)' }">
     <div class="max-w-7xl mx-auto px-6 py-8 text-[var(--vp-c-text-2)] text-md grid grid-cols-2 md:grid-cols-9 lg:grid-cols-12 gap-row-2 gap-y-10 md:gap-3 mb-6">
       <div class="col-span-2 md:col-span-3 lg:col-span-6 flex flex-col items-start justify-between gap-4">
-        <img src="/logo-h.png" alt="Velda Logo" class="w-40" />
+        <img src="/logo-h.png" alt="Velda Logo" class="h-10" />
         <div class="text-[var(--vp-c-text-3)] text-sm">&copy; {{ currentYear }} Velda. All rights reserved.</div>
       </div>
 

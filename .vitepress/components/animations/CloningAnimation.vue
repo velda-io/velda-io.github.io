@@ -8,7 +8,7 @@
             </svg>
         </div>
 
-        <div class="flex flex-col lg:flex-row justify-center items-center w-full gap-8">
+        <div class="flex flex-col lg:flex-row justify-center items-center w-full gap-8 pt-10">
 
             <!-- Template Machine -->
             <div class="flex flex-col items-center w-full gap-4">

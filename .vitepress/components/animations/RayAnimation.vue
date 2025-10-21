@@ -207,8 +207,10 @@ async function startAnimation() {
  * Creates the Ray head node.
  */
 async function createHeadNode() {
-    const command = "vrun -s ray-head ray start --head";
+    const command = "# Run distributed data processing with Ray";
     await terminal.value.sendCommand(animator, command);
+    const command2 = "vrun -s ray-head ray start --head";
+    await terminal.value.sendCommand(animator, command2);
 
     showHeadNode.value = true;
 
