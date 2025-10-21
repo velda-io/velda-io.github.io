@@ -79,6 +79,7 @@ const subtitle = props.subtitle
 
 .lr-title-sub {
     font-size: 18px;
+    font-weight: 500;
     line-height: 1.5;
     color: var(--vp-c-text-2);
     gap: 1rem;
