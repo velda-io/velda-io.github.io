@@ -7,7 +7,7 @@ author: Hema Raghavan
 tags: [machine-learning, ml-workflow, cloud-computing, gpu-computing, developer-productivity, velda]
 keywords: ["ML development", "GPU utilization", "Velda", "cloud development", "developer productivity", "MLOps"]
 excerpt: "How Kumo.ai used Velda to accelerate experiments, cut dependency update times, and increase GPU utilization across the team."
-image: "https://cdn-images-1.medium.com/max/2400/1*72Jo87jR0xg_3zzBkwkNLQ.png"
+image: "https://cdn-images-1.medium.com/max/2400/1*6-j31fR15GpaBT_y2n6G1A.png"
 readingTime: "6 min"
 category: "Case Study"
 ---

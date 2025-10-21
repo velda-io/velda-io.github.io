@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     "author": "Hema Raghavan",
     "readingTime": "6 min",
     "category": "Case Study",
-    "image": "https://cdn-images-1.medium.com/max/2400/1*72Jo87jR0xg_3zzBkwkNLQ.png",
+    "image": "https://cdn-images-1.medium.com/max/2400/1*6-j31fR15GpaBT_y2n6G1A.png",
     "tags": [
       "machine-learning",
       "ml-workflow",
