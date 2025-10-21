@@ -1,36 +1,51 @@
 <template>
-  <div class="pricing-card" :class="{ featured: featured }">
-    <div v-if="badge" class="card-badge">
-      <span>{{ badge }}</span>
-    </div>
-    
-    <div class="card-header">
-      <h3 class="card-title">{{ title }}</h3>
-      <div class="card-subtitle" v-if="subtitle">{{ subtitle }}</div>
-      <div class="card-price">
-        <span class="price-amount">{{ price }}</span>
-        <span class="price-period" v-if="period">{{ period }}</span>
+  <div class="h-full flex flex-col">
+    <div v-if="!badge" class="h-12"> </div>
+    <div
+      :class="[
+        'relative bg-white rounded-2xl flex flex-col grow overflow-hidden',
+        featured ? 'border-4 border-teal-500 shadow-lg' : 'border border-gray-200 shadow-md',
+        badge ? 'pt-12' : ''
+      ]"
+    >
+      <div v-if="badge" class="absolute left-0 right-0 top-0">
+        <span class="block w-full text-center bg-teal-500 text-white font-semibold py-3 rounded-t-xl">{{ badge }}</span>
       </div>
-      <p class="card-description">{{ description }}</p>
-    </div>
 
-    <ul class="feature-list">
-      <li v-for="(feature, index) in features" :key="index" class="feature-item">
-        <CheckIcon class="feature-icon" />
-        <span>{{ feature }}</span>
-      </li>
-    </ul>
+      <div class="px-7.5 py-10 flex flex-col gap-y-4 h-83">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900 mb-1">{{ title }}</h3>
+          <div class="text-md text-gray-700" v-if="subtitle">{{ subtitle }}</div>
+        </div>
 
-    <div class="card-footer">
-      <a :href="ctaLink" class="cta-button" :class="ctaClass">
-        {{ ctaText }}
-      </a>
+        <div class="grow">
+          <div class="mb-4">
+            <span class="text-3xl font-bold text-gray-900">{{ price }}</span>
+            <span class="text-gray-500 ml-3" v-if="period">{{ period }}</span>
+          </div>
+          <p class="text-base text-sm text-gray-600">{{ description }}</p>
+        </div>
+
+        <div class="flex justify-center">
+          <a :href="ctaLink" class="w-full max-w-2xl inline-block text-center rounded-full bg-black text-white font-medium py-2.5">{{ ctaText }}</a>
+          </div>
+      </div>
+
+      <hr class="border-t border-gray-300 mx-7.5" />
+
+      <ul class="p-7.5 space-y-2.5 grow">
+        <li v-for="(feature, index) in features" :key="index" class="flex items-center gap-4 text-black-100">
+          <CheckIcon class="w-8 h-8 flex-shrink-0" />
+          <span class="text-base">{{ feature }}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 
-import { h, defineComponent } from "vue";
+import { h, defineComponent, useAttrs } from 'vue'
+
 interface Props {
   title: string
   subtitle?: string
@@ -46,165 +61,20 @@ interface Props {
 }
 
 defineProps<Props>()
+
 const CheckIcon = defineComponent({
-  name: "CheckIcon",
+  name: 'CheckIcon',
   setup() {
+    const attrs = useAttrs()
     return () =>
-      h("svg", { class: "w-5 h-5 text-green-500", fill: "currentColor", viewBox: "0 0 20 20" }, [
-        h("path", {
-          "fill-rule": "evenodd",
-          d: "M16.707 5.293a1 1 0 0 1 0 1.414l-8 8a1 1 0 0 1-1.414 0l-4-4a1 1 0 0 1 1.414-1.414L8 12.586l7.293-7.293a1 1 0 0 1 1.414 0z",
-          "clip-rule": "evenodd",
-        }),
-      ]);
+      h(
+        'svg',
+        { ...attrs, fill: 'none', viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' },
+        [
+          h('circle', { cx: '12', cy: '12', r: '9', stroke: 'currentColor', 'stroke-width': '1.8', fill: 'white' }),
+          h('path', { d: 'M9 12.5l1.8 1.8L15 10', stroke: 'currentColor', 'stroke-width': '1.8', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', fill: 'none' }),
+        ]
+      )
   },
-});
+})
 </script>
-
-<style scoped>
-
-.pricing-card {
-  position: relative;
-  padding: 2rem;
-  background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-border);
-  border-radius: 1.5rem;
-  box-shadow: var(--vp-shadow-2);
-  transition: all 0.3s ease;
-  border-left: 4px solid var(--vp-c-border);
-  border-right: 4px solid var(--vp-c-border);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.pricing-card.featured {
-  border-color: var(--vp-c-brand-1);
-  border-left-color: var(--vp-c-brand-1);
-  border-right-color: var(--vp-c-brand-1);
-  transform: scale(1.02);
-  box-shadow: var(--vp-shadow-3);
-}
-
-.card-badge {
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.card-badge span {
-  background: var(--vp-c-brand-1);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-}
-
-.pricing-card:not(.featured) .card-badge span {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-2);
-}
-
-.card-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-}
-
-.card-subtitle {
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
-  margin-bottom: 1.5rem;
-}
-
-.card-price {
-  margin-bottom: 1.5rem;
-}
-
-.price-amount {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--vp-c-text-1);
-  line-height: 1;
-}
-
-/* Handle longer pricing text like "Pay As You Go" */
-.price-amount:not([class*="$"]):not([class*="Custom"]) {
-  font-size: 2rem;
-}
-
-.price-period {
-  color: var(--vp-c-text-2);
-  margin-left: 0.5rem;
-}
-
-.card-description {
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  flex-grow: 1;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--vp-c-text-2);
-}
-
-.feature-icon {
-  flex-shrink: 0;
-}
-
-.card-footer {
-  margin-top: auto;
-  text-align: center;
-}
-
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 2px solid var(--vp-c-border);
-  color: var(--vp-c-text-1);
-}
-
-.cta-button:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-}
-
-.cta-button.primary {
-  background: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
-  color: white;
-}
-
-.cta-button.primary:hover {
-  background: var(--vp-c-brand-2);
-  border-color: var(--vp-c-brand-2);
-}
-</style>

@@ -1,16 +1,19 @@
 ---
-layout: Comparison
+layout: page
 sidebar: false
-title: "Deployment options"
+title: "Velda plans & Deployment options"
 description: "Choose the right plan for your team. From open-source to enterprise-grade solutions."
 ---
 
-# Start developoing on Velda
+:::raw
+<div class="px-6 flex flex-col justify-center mx-auto w-full max-w-[var(--vp-layout-max-width)]">
+<div class="mt-12.5 mb-25 text-center items-center flex flex-col gap-y-4">
+  <h1 class="text-4xl xl:text-5xl font-bold max-w-120 md:max-w-none"> Help your whole team work smarter</h1>
+  <p class="text-lg line-relaxed text-color-[#575858]">Start free and scale as you grow.</p>
+</div>
 
-Choose the plan for your team's needs. Start free and scale as you grow.
-
-<div class="pricing-grid">
-  <PricingCard
+<div class="pricing-grid grid gap-8 my-12 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+  <PricingCard class="order-3 md:order-3 xl:order-1"
     title="Open source"
     subtitle="Self-hosted"
     price="$0"
@@ -25,20 +28,18 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     ]"
     cta-text="Get Started"
     cta-link="https://github.com/velda-io/velda"
-    badge="Free"
   />
 
-  <PricingCard
+  <PricingCard class="order-1 md:order-1 xl:order-2"
     title="Individual"
     subtitle="Hosted"
-    price="Coming Soon"
+    price="From $0"
     period=""
     description="Managed cloud with free tier and pay-as-you-scale pricing. Perfect for individual and small teams. "
     :features="[
       'Immediate GPU access',
-      'Free usage every month',
+      'Free points every month',
       'Pay-as-you-go pricing',
-      'No cloud setup required',
       'Email support',
     ]"
     cta-link="https://velda.app"
@@ -47,7 +48,7 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     :featured="true"
   />
 
-  <PricingCard
+  <PricingCard class="order-2 md:order-2 xl:order-3"
     title="Enterprise"
     subtitle="Dedicated"
     price="Custom"
@@ -62,7 +63,6 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     ]"
     cta-text="Book a demo"
     cta-link="https://calendly.com/velda-io/30min"
-    badge="Free setup & trial"
   />
 </div>
 
@@ -73,109 +73,5 @@ Choose the plan for your team's needs. Start free and scale as you grow.
     { text: 'Book a free consultation', link: 'https://calendly.com/velda-io/30min', variant: 'primary' },
   ]"
 />
-
-<style scoped>
-
-h1 {
-  font-family: 'Oswald', Arial, sans-serif;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 1.5rem;
-}
-/* Pricing Grid Layout */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-}
-
-/* Two-column layout between 768px and 1279px: place Individual (2nd) and Enterprise (3rd) on top row */
-@media (min-width: 768px) and (max-width: 1279px) {
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  /* Reset any explicit spanning so items lay out predictably */
-  .pricing-grid > * {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  /* Individual (2nd card) on top-left */
-  .pricing-grid > :nth-child(2) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  /* Enterprise (3rd card) on top-right */
-  .pricing-grid > :nth-child(3) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  /* Open source (1st card) occupies the left column on the second row */
-  .pricing-grid > :nth-child(1) {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: start; /* ensure it aligns to the left column */
-  }
-}
-
-/* Three-column layout at large screens (1280px and up) */
-@media (min-width: 1280px) {
-  .pricing-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-}
-
-/* Enhanced card shadows */
-.pricing-card:not(.featured):hover {
-  transform: translateY(-2px);
-  box-shadow: var(--vp-shadow-3);
-}
-
-/* Better responsive handling for pricing cards - single column ordering */
-@media (max-width: 767px) {
-  .pricing-grid {
-    /* use flex for easy re-ordering on narrow screens */
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  /* Order items so single-column reads: Individual (2), Enterprise (3), Open source (1) */
-  .pricing-grid > :nth-child(2) { order: 1; }
-  .pricing-grid > :nth-child(3) { order: 2; }
-  .pricing-grid > :nth-child(1) { order: 3; }
-
-  .pricing-card.featured {
-    transform: none;
-  }
-}
-
-h2 {
-  font-family: 'Oswald', Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--vp-c-brand-1);
-  margin-bottom: 1rem;
-}
-
-/* Styling for list items */
-.faq ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.faq li {
-  font-family: 'Roboto', Arial, sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-</style>
+</div>
+:::
