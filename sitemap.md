@@ -23,6 +23,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
+- [Optimizing ML Development at Kumo.ai with Velda](/blog/kumo-optimizing-ml-development) - *October 20, 2025*
 - [Velda Blog - Cloud Development Insights & Updates](/blog/) - *October 19, 2025*
 - [Building a Scalable ML Workflow with Velda](/blog/build-machine-learning-workflow) - *September 24, 2025*
 - [vrun is All You Need: Revolutionizing Development with One Command](/blog/vrun-is-all-you-need) - *September 14, 2025*

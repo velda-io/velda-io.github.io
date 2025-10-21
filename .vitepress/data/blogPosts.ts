@@ -13,6 +13,25 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "Optimizing ML Development at Kumo.ai with Velda",
+    "slug": "kumo-optimizing-ml-development",
+    "description": "A case study: how Kumo.ai reduced iteration time, improved GPU utilization, and sped up onboarding by using Velda for development and experimentation.",
+    "excerpt": "How Kumo.ai used Velda to accelerate experiments, cut dependency update times, and increase GPU utilization across the team.",
+    "date": "2025-10-21",
+    "author": "Hema Raghavan",
+    "readingTime": "6 min",
+    "category": "Case Study",
+    "image": "https://cdn-images-1.medium.com/max/2400/1*72Jo87jR0xg_3zzBkwkNLQ.png",
+    "tags": [
+      "machine-learning",
+      "ml-workflow",
+      "cloud-computing",
+      "gpu-computing",
+      "developer-productivity",
+      "velda"
+    ]
+  },
+  {
     "title": "Building a Scalable ML Workflow with Velda",
     "slug": "build-machine-learning-workflow",
     "description": "Learn how to build robust, scalable machine learning workflows using Velda's vrun and vbatch commands. From simple pipelines to complex fan-out patterns for parallel processing.",
