@@ -10,7 +10,7 @@
         Loved by ML & HPC users. Run any jobs in your cloud from your dev-environment with a simple <code>vrun</code> prefix.
       </p>
       <div class="hero-ctas">
-        <CtaButton variant="primary" href="https://velda.app">Get started</CtaButton>
+        <CtaButton variant="primary" href="https://velda.cloud">Get started</CtaButton>
         <CtaButton variant="secondary" href="/book">Book a demo</CtaButton>
       </div>
     </div>

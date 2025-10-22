@@ -143,7 +143,7 @@ Just your local dev experience — with unbounded power.</p>
       <p>Managed cloud with free monthly credit and pay-as-you-go pricing. Perfect for individual and small teams</p>
     </div>
     <div>
-      <CtaButton href="https://velda.app">Get started</CtaButton>
+      <CtaButton href="https://velda.cloud">Velda Cloud</CtaButton>
     </div>
   </div>
   <div class="w-full flex flex-col justify-between p-10 gap-6 bg-white/40">

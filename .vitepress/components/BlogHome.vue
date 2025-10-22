@@ -20,7 +20,7 @@
         class="group border col-span-4 rounded-xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl border-[var(--vp-c-divider)]"
       >
         <a :href="`/blog/${post.slug}`" class="flex flex-col w-full h-full" :aria-label="`Read ${post.title}`">
-          <div class="w-full aspect-[2/1] overflow-hidden">
+          <div class="w-full aspect-[2/1] overflow-hidden bg-white">
             <img
               :src="post.image"
               :alt="post.title"

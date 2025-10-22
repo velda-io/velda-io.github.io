@@ -26,12 +26,12 @@ description: "Choose the right plan for your team. From open-source to enterpris
       'All data in your control',
       'Community support',
     ]"
-    cta-text="Get Started"
+    cta-text="Go to GitHub"
     cta-link="https://github.com/velda-io/velda"
   />
 
   <PricingCard class="order-1 md:order-1 xl:order-2"
-    title="Individual"
+    title="Velda Cloud"
     subtitle="Hosted"
     price="From $0"
     period=""
@@ -42,9 +42,9 @@ description: "Choose the right plan for your team. From open-source to enterpris
       'Pay-as-you-go pricing',
       'Email support',
     ]"
-    cta-link="https://velda.app"
+    cta-link="https://velda.cloud"
     cta-text="Get Free GPU now"
-    badge="Extra new-user credits"
+    badge="Bonus Welcome Credits For Limited Time"
     :featured="true"
   />
 
