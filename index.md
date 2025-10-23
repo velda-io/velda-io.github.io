@@ -106,7 +106,7 @@ Just your local dev experience — with unbounded power.</p>
 <div class="vp-doc">
 <h2> Save on Compute </h2>
 <p>Access powerful compute on demand — no need for high-end workstations.</p>
-<p>Only provision the compute resource that is needed, with no overhead.</p>
+<p>Provision the compute resource when the jobs are running, not during coding, with no setup overhead.</p>
 </div>
 <EfficiencyComparison />
 </div>
@@ -139,11 +139,11 @@ Just your local dev experience — with unbounded power.</p>
 <div class="flex flex-col md:flex-row mt-40 mb-3 gap-4 text-center">
   <div class="w-full flex flex-col justify-between p-10 gap-6">
     <div class="gap-5">
-      <h2>Individual</h2>
-      <p>Managed cloud with free monthly credit and pay-as-you-go pricing. Perfect for individual and small teams</p>
+      <h2>Velda Cloud</h2>
+      <p>Managed cloud with instant VSCode + GPU access, plus free monthly credit. Perfect for individual and small teams</p>
     </div>
     <div>
-      <CtaButton href="https://velda.cloud">Velda Cloud</CtaButton>
+      <CtaButton href="https://velda.cloud">Get Started</CtaButton>
     </div>
   </div>
   <div class="w-full flex flex-col justify-between p-10 gap-6 bg-white/40">
