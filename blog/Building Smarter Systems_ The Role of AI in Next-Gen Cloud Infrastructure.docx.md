@@ -3,7 +3,7 @@ Technology is growing fast. Every business today needs systems that are quick, s
 Artificial Intelligence (AI) has changed how we use the cloud. Instead of managing everything manually, AI helps systems make better decisions, fix issues early, and run more efficiently.  
  Platforms like Velda.io are leading this transformation, helping teams simplify operations and scale faster with intelligent automation.
 
-Let’s look at how AI-powered cloud infrastructure is building the next generation of cloud systems and what it means for businesses.![][image1]
+Let’s look at how AI-powered cloud infrastructure is building the next generation of cloud systems and what it means for businesses.![https://miro.medium.com/v2/resize:fit:4800/format:webp/1*sdv0mEFfM3J1DV2V3m-E1A.png][image1]
 
 ---
 
