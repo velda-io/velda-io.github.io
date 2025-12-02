@@ -23,6 +23,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
+- [How to Run Jupyter Notebook on an HPC Cluster: SLURM & Velda Guide](/blog/run-juypter-notebook-on-hpc) - *November 30, 2025*
 - [Optimizing ML Development at Kumo.ai with Velda](/blog/kumo-optimizing-ml-development) - *October 20, 2025*
 - [Velda Blog - Cloud Development Insights & Updates](/blog/) - *October 19, 2025*
 - [Building a Scalable ML Workflow with Velda](/blog/build-machine-learning-workflow) - *September 24, 2025*
@@ -37,4 +38,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2025-10-22*
+*Last updated: 2025-12-02*

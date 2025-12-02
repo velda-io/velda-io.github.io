@@ -13,6 +13,27 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "How to Run Jupyter Notebook on an HPC Cluster: SLURM & Velda Guide",
+    "slug": "run-juypter-notebook-on-hpc",
+    "description": "Master running Jupyter Notebooks on HPC clusters with SLURM or simplify the process with Velda. Learn SSH tunneling, port forwarding, and streamlined alternatives for interactive data science workflows on remote compute resources.",
+    "excerpt": "Learn how to run Jupyter Notebooks on HPC clusters using SLURM with SSH tunneling, or discover how Velda simplifies the entire process to a single command for seamless interactive data science workflows.",
+    "date": "2025-12-01",
+    "author": "Chuan Qiu",
+    "readingTime": "7 min",
+    "category": "Technical Blog",
+    "image": "https://cdn-images-1.medium.com/max/2400/1*plZPR9YMdDmyc1KXsShkJQ.png",
+    "tags": [
+      "jupyter",
+      "hpc",
+      "slurm",
+      "data-science",
+      "remote-computing",
+      "velda",
+      "ssh-tunneling",
+      "interactive-development"
+    ]
+  },
+  {
     "title": "Optimizing ML Development at Kumo.ai with Velda",
     "slug": "kumo-optimizing-ml-development",
     "description": "A case study: how Kumo.ai reduced iteration time, improved GPU utilization, and sped up onboarding by using Velda for development and experimentation.",
