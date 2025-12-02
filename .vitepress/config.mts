@@ -1,10 +1,8 @@
 import { defineConfig } from 'vitepress'
 import tailwindcss from "@tailwindcss/vite";
-import { withMermaid } from "vitepress-plugin-mermaid";
 import { blogPosts } from './data/blogPosts';
-import NavSignUp from './components/NavSignUp.vue';
 
-export default withMermaid(defineConfig({
+export default defineConfig({
   title: "Velda",
   description: "Cloud development that actually feels local. Run AI workloads, GPU clusters, and data processing without Kubernetes complexity.",
   sitemap: {
@@ -18,7 +16,7 @@ export default withMermaid(defineConfig({
   ],
   appearance: false,
   themeConfig: {
-    logo: "/logos.png",
+    logo: "/logo-24.png",
     siteTitle: '<span class="brand">VELDA</span>',
     nav: [
       { text: 'Home', link: '/' },
@@ -125,4 +123,4 @@ export default withMermaid(defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-}))
+})

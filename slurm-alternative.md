@@ -17,7 +17,7 @@ image: "https://velda.io/og-preview.png"
     { text: 'Book Demo', link: 'https://calendly.com/velda-io/30min', variant: 'secondary' }
   ]"
   :competitor-a="{ name: 'Slurm', logo: '/slurm.svg' }"
-  :competitor-b="{ name: 'Velda', logo: '/logos.png' }"
+  :competitor-b="{ name: 'Velda', logo: '/logo-76.png' }"
   :highlight-winner="true"
   :show-winner-badge="true"
 />

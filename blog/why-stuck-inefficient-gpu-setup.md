@@ -30,30 +30,29 @@ You might wonder: "Aren't there plenty of software solutions that promise easier
 
 Yes. However, almost all existing GPU scheduling tools impose a critical bottleneck: slow iteration cycles. The feedback cycle increases from seconds to minutes, plus several hours to set up any new workload. Developers need to build containers that recreate their dev environment for every GPU workload, even for a simple test. This might be acceptable for deploying applications in production environments, but are productivity killers during the iterative research phase of model training.
 
+<img src="https://miro.medium.com/v2/resize:fit:920/format:webp/1*3Yhe-do69wSpa88-TsABmQ.png" />
+<!--
 ```mermaid
 ---
 title: Developer journey with a container orchestration tool
 ---
 flowchart
-    A[📝 Write code] --> B[🔨 Build & Push<br/>Docker image]
-    B --> C[🚀 Submit to Job scheduler]
-    C --> E{😴 After 10 mins<br/>Job starts}
-    E -->|😱| G[🐛 Discover a typo<br/>in Python script]
-    E -->|🎉| SUCCESS[✨ SUCCESS!<br/>It actually works]
-    G --> A
-    
-    %% Medium blog styling
+    A[📝 Write code] -- > B[🔨 Build & Push<br/>Docker image]
+    B -- > C[🚀 Submit to Job scheduler]
+    C -- > E{😴 After 10 mins<br/>Job starts}
+    E -- >|😱| G[🐛 Discover a typo<br/>in Python script]
+    E -- >|🎉| SUCCESS[✨ SUCCESS!<br/>It actually works]
+    G -- > A
     style A fill:#f8f9fa,stroke:#495057,stroke-width:2px,color:#212529
     style B fill:#e7f3ff,stroke:#0066cc,stroke-width:2px,color:#0066cc
     style C fill:#fff4e6,stroke:#0066cc,stroke-width:2px,color:#0066cc
     style E fill:#f0f0f0,stroke:#666666,stroke-width:2px,color:#333333
     style G fill:#ffe6e6,stroke:#cc0000,stroke-width:2px,color:#990000
     style SUCCESS fill:#00b300,stroke:#006600,stroke-width:3px,color:#ffffff
-    
     style SUCCESS fill:#4caf50,color:#ffffff
-
     linkStyle 3,5 stroke:#cc5200,stroke-width:2px
 ```
+-->
 
 ### The Version Hell Problem
 
