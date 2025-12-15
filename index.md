@@ -2,14 +2,15 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
+title: VELDA - Scale to cloud like your local machine
 # SEO and LinkedIn/Social media preview metadata
 head:
   - - meta
     - name: description
-      content: Velda - Develop platform that can instantly scale, built for ML, HPC and automation workloads.
+      content: Velda - Scale insantly without any container build, dependency management or manifest
   - - meta
     - property: og:title
-      content: VELDA - Develop platform that can instantly scale
+      content: VELDA - Scale to cloud like your local machine
   - - meta
     - property: og:image
       content: https://velda.io/og-preview.png
@@ -24,7 +25,7 @@ head:
       content: summary_large_image
   - - meta
     - name: twitter:title
-      content: VELDA - Supercharge your development
+      content: VELDA - Scale to cloud like your local machine
   - - meta
     - name: twitter:description
       content: Experience the development platform that leading teams are already using to ship faster.

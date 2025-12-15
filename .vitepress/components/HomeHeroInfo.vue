@@ -2,12 +2,10 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        Developer Platform That
-        <br />
-        <span class="highlight">Scales Instantly</span>
+        Scale to the Cloud Like <br/> <span class="highlight">Your Local Machine</span>
       </h1>
       <p class="hero-subline">
-        Loved by ML & HPC users. Run any jobs in your cloud from your dev-environment with a simple <code>vrun</code> prefix.
+        Loved by ML & HPC users. Run jobs on your cloud directly from your dev environment. No images to build, no manifest to write. Just add a prefix.
       </p>
       <div class="hero-ctas">
         <CtaButton variant="primary" href="https://velda.cloud">Get started</CtaButton>
