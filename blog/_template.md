@@ -4,6 +4,12 @@ description: "A brief description of your blog post for SEO and social media"
 date: 2025-MM-DD
 author: Author Name
 tags: [tag1, tag2, tag3]
+sidebar: false
+keywords: ["keyword1", "keyword2"]
+image: "https://example.com/hero-image.png"
+excerpt: "A one-line summary of the post used in listings and social previews."
+readingTime: "3 min"
+category: "Category Name"
 ---
 
 # Your Blog Post Title

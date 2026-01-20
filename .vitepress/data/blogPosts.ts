@@ -13,6 +13,24 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "How Velda Works: Accelerating ML Development Without Container Overhead",
+    "slug": "how-velda-works-accelerating-ml-development",
+    "description": "Velda provides instant, reproducible ML development environments by mounting a remote root filesystem and fetching files on demand.",
+    "excerpt": "Velda replaces OCI images with a remotely mounted root filesystem and demand-driven file fetching, prioritizing rapid iteration for ML development.",
+    "date": "2026-01-05",
+    "author": "Chuan Qiu",
+    "readingTime": "4 min",
+    "category": "Technical Overview",
+    "image": "https://substack-post-media.s3.amazonaws.com/public/images/38ae9435-cf2c-4fd8-8eb0-40e34cab4dd8_1024x572.png",
+    "tags": [
+      "velda",
+      "ml",
+      "containers",
+      "gpu",
+      "productivity"
+    ]
+  },
+  {
     "title": "How to Run Jupyter Notebook on an HPC Cluster: SLURM & Velda Guide",
     "slug": "run-juypter-notebook-on-hpc",
     "description": "Master running Jupyter Notebooks on HPC clusters with SLURM or simplify the process with Velda. Learn SSH tunneling, port forwarding, and streamlined alternatives for interactive data science workflows on remote compute resources.",
