@@ -13,6 +13,25 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "What Is a Velda Pool? Autoscaling Compute Pools for Cloud, Kubernetes, and VMs",
+    "slug": "what-is-a-velda-pool-autoscaling-compute-pools",
+    "description": "The hidden worker layer that makes vrun feel local while scaling across cloud, Kubernetes, and data centers.",
+    "excerpt": "A Velda pool manages worker lifecycle (create, verify, retire) so `vrun` can scale compute across clouds, Kubernetes, and data centers without manual VM provisioning.",
+    "date": "2026-01-20",
+    "author": "Chuan Qiu",
+    "readingTime": "6 min",
+    "category": "Technical Overview",
+    "image": "https://substack-post-media.s3.amazonaws.com/public/images/09fb360c-6d66-4fa5-afdf-34291d44f675_1024x559.png",
+    "tags": [
+      "velda",
+      "pool",
+      "autoscaling",
+      "kubernetes",
+      "cloud",
+      "workers"
+    ]
+  },
+  {
     "title": "How Velda Works: Accelerating ML Development Without Container Overhead",
     "slug": "how-velda-works-accelerating-ml-development",
     "description": "Velda provides instant, reproducible ML development environments by mounting a remote root filesystem and fetching files on demand.",
