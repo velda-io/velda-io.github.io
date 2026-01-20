@@ -2,14 +2,14 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        Scale to the Cloud Like <br/> <span class="highlight">Your Local Machine</span>
+        The cloud OS for <br/> <span class="highlight">AI/ML</span> workloads
       </h1>
       <p class="hero-subline">
-        Loved by ML & HPC users. Run jobs on your cloud directly from your dev environment. No images to build, no manifest to write. Just add a prefix.
+        Built for AI/ML/data teams. Launch distributed jobs on any cloud instantly from your Velda dev environment. No images to build, no manifest to write. Just add a command prefix.
       </p>
       <div class="hero-ctas">
-        <CtaButton variant="primary" href="https://velda.cloud">Get started</CtaButton>
-        <CtaButton variant="secondary" href="/book">Book a demo</CtaButton>
+        <CtaButton variant="primary" href="/github">Deploy Open-source</CtaButton>
+        <CtaButton variant="secondary" href="https://velda.cloud">Start on Velda Cloud</CtaButton>
       </div>
     </div>
   </div>
@@ -117,7 +117,7 @@ import CtaButton from './CtaButton.vue'
   line-height: 1.5;
   color: var(--vp-c-text-2);
   margin-bottom: 50px;
-  max-width: 55%;
+  max-width: 60%;
   margin-left: auto;
   margin-right: auto;
 }

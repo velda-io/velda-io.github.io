@@ -2,7 +2,7 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: VELDA - Scale to cloud like your local machine
+title: Scale to cloud like your local machine
 # SEO and LinkedIn/Social media preview metadata
 head:
   - - meta
