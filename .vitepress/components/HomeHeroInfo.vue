@@ -2,15 +2,24 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        The cloud OS for <br/> <span class="highlight">AI/ML</span> workloads
+        Scale like <span class="highlight">your local machine</span><br/>in the cloud
       </h1>
+      <p class="hero-tagline">
+        A cloud OS for <strong>AI/ML</strong> workloads
+      </p>
       <p class="hero-subline">
-        Built for AI/ML/data teams. Launch distributed jobs on any cloud instantly from your Velda dev environment. No images to build, no manifest to write. Just add a command prefix.
+        Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix. 
       </p>
       <div class="hero-ctas">
-        <CtaButton variant="primary" href="/github">Deploy Open-source</CtaButton>
-        <CtaButton variant="secondary" href="https://velda.cloud">Start on Velda Cloud</CtaButton>
+        <CtaButton variant="primary" href="/github">Self-host Velda</CtaButton>
+        <CtaButton variant="secondary" href="https://velda.cloud">Use Velda Cloud</CtaButton>
       </div>
+      <div class="hero-code">
+        <code>vrun -P gpu-h200-8 python train.py</code>
+      </div>
+      <p class="hero-code-caption">
+        Same experience locally or in the cloud.
+      </p>
     </div>
   </div>
 </template>
@@ -112,14 +121,53 @@ import CtaButton from './CtaButton.vue'
   font-weight: 900;
 }
 
-.hero-subline {
-  font-size: 20px;
+.hero-tagline {
+  font-size: 24px;
   line-height: 1.5;
   color: var(--vp-c-text-2);
-  margin-bottom: 50px;
-  max-width: 60%;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.hero-tagline strong {
+  font-weight: 700;
+}
+
+.hero-subline {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+  margin-bottom: 40px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.hero-code {
+  margin-top: 50px;
+  margin-bottom: 1rem;
+}
+
+.hero-code code {
+  background: rgba(30, 41, 59, 0.9);
+  color: #e2e8f0;
+  padding: 18px 32px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  display: inline-block;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.hero-code code::before {
+  content: '$ ';
+  color: #94a3b8;
+}
+
+.hero-code-caption {
+  font-size: 16px;
+  color: var(--vp-c-text-2);
+  margin-top: 1rem;
 }
 
 .hero-kicker {
@@ -155,9 +203,18 @@ import CtaButton from './CtaButton.vue'
     font-size: 48px;
   }
 
+  .hero-tagline {
+    font-size: 20px;
+  }
+
   .hero-subline {
-    font-size: 1.125rem;
-    max-width: 75%;
+    font-size: 1rem;
+    max-width: 85%;
+  }
+
+  .hero-code code {
+    font-size: 16px;
+    padding: 16px 28px;
   }
 
   .cta {
@@ -170,8 +227,22 @@ import CtaButton from './CtaButton.vue'
     font-size: 35px;
   }
 
+  .hero-tagline {
+    font-size: 18px;
+  }
+
   .hero-subline {
-    font-size: 20px;
+    font-size: 16px;
+    max-width: 90%;
+  }
+
+  .hero-code code {
+    font-size: 14px;
+    padding: 14px 24px;
+  }
+
+  .hero-code-caption {
+    font-size: 14px;
   }
 
   .hero-ctas {
@@ -192,8 +263,21 @@ import CtaButton from './CtaButton.vue'
     font-size: 30px;
   }
 
-  .hero-subline {
+  .hero-tagline {
     font-size: 16px;
+  }
+
+  .hero-subline {
+    font-size: 14px;
+  }
+
+  .hero-code code {
+    font-size: 13px;
+    padding: 12px 20px;
+  }
+
+  .hero-code-caption {
+    font-size: 13px;
   }
 
 }
