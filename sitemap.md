@@ -8,6 +8,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 🏠 Main Pages
 - [Home](/) - Welcome to Velda
+- [Documentation](https://docs.velda.io) - Getting started with Velda
 - [EULA](/eula) - End User License Agreement
 - [Privacy](/privacy) - Privacy Notice
 - [Security](/security) - Security practices and policies
@@ -15,14 +16,11 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 - [Contact](/contact) - Get in touch with the Velda team
 - [Book a Demo](/book) - Schedule a demonstration
 
-## 📚 Documentation
-- [Why Velda](/intro) - Introduction and core concepts
-- [Connect to Velda Instance](/connect) - Setup and connection guide
-- [Run Workloads](/run) - How to execute your workloads
-- [Slurm Alternative](/slurm-alternative) - Compare Velda with Slurm
-
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
+- [What Is a Velda Pool? Autoscaling Compute Pools for Cloud, Kubernetes, and VMs](/blog/what-is-a-velda-pool-autoscaling-compute-pools) - *January 19, 2026*
+- [Running vLLM on SLURM Clusters: A Complete Guide for HPC Inference](/blog/running-vllm-on-slurm-clusters) - *January 7, 2026*
+- [How Velda Works: Accelerating ML Development Without Container Overhead](/blog/how-velda-works-accelerating-ml-development) - *January 4, 2026*
 - [How to Run Jupyter Notebook on an HPC Cluster: SLURM & Velda Guide](/blog/run-juypter-notebook-on-hpc) - *November 30, 2025*
 - [Optimizing ML Development at Kumo.ai with Velda](/blog/kumo-optimizing-ml-development) - *October 20, 2025*
 - [Velda Blog - Cloud Development Insights & Updates](/blog/) - *October 19, 2025*
@@ -38,4 +36,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2025-12-02*
+*Last updated: 2026-01-23*

@@ -20,6 +20,7 @@ export default defineConfig({
     siteTitle: '<span class="brand">VELDA</span>',
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Docs', link: 'https://docs.velda.io', noIcon: true },
       { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
       { text: 'Plans', link: '/comparison' },
       { component: 'NavSignUp', text: 'Velda-Cloud', link: 'https://velda.cloud', noIcon: true },
@@ -35,19 +36,6 @@ export default defineConfig({
           }))]
         }
       ],
-      '/': [
-        {
-          text: 'Docs',
-          items: [
-            { text: 'Why Velda', link: '/intro' },
-            { text: 'Connect to Velda Instance', link: '/connect' },
-            { text: 'Run workloads', link: '/run' }
-          ]
-        }, {
-          text: 'About us',
-          link: '/contact',
-        }
-      ]
     },
 
     socialLinks: [

@@ -113,19 +113,13 @@ async function generateSitemap() {
     // Define user-facing main pages (label, path, short description)
     const mainPages = [
       { label: 'Home', path: '/' , desc: 'Welcome to Velda' },
+      { label: 'Documentation', path: 'https://docs.velda.io', desc: 'Getting started with Velda' },
       { label: 'EULA', path: '/eula', desc: 'End User License Agreement' },
       { label: 'Privacy', path: '/privacy', desc: 'Privacy Notice' },
       { label: 'Security', path: '/security', desc: 'Security practices and policies' },
       { label: 'Getting Started', path: '/comparison', desc: 'Compare Velda with other solutions' },
       { label: 'Contact', path: '/contact', desc: 'Get in touch with the Velda team' },
       { label: 'Book a Demo', path: '/book', desc: 'Schedule a demonstration' }
-    ]
-
-    const docsPages = [
-      { label: 'Why Velda', path: '/intro', desc: 'Introduction and core concepts' },
-      { label: 'Connect to Velda Instance', path: '/connect', desc: 'Setup and connection guide' },
-      { label: 'Run Workloads', path: '/run', desc: 'How to execute your workloads' },
-      { label: 'Slurm Alternative', path: '/slurm-alternative', desc: 'Compare Velda with Slurm' }
     ]
 
     // Collect blog posts (exclude README and template)
@@ -153,11 +147,6 @@ async function generateSitemap() {
     let md = `---\nsidebar: false\ntitle: Sitemap\ndescription: Complete site navigation for Velda - find all pages, blog posts, and documentation\n---\n\n# Sitemap\n\n## 🏠 Main Pages\n`
 
     for (const p of mainPages) {
-      md += `- [${p.label}](${p.path}) - ${p.desc}\n`
-    }
-
-    md += `\n## 📚 Documentation\n`
-    for (const p of docsPages) {
       md += `- [${p.label}](${p.path}) - ${p.desc}\n`
     }
 

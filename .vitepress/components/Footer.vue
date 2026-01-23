@@ -12,9 +12,8 @@
         <ul class="space-y-3">
           <li><a href="/comparison">Plan & Pricing</a></li>
           <li><a href="/slurm-alternative">Velda VS Slurm</a></li>
-          <li><a href="/run">Run Workload</a></li>
           <li><a href="/blog/">Blog</a></li>
-          <li><a href="/intro">Documentation</a></li>
+          <li><a href="https://docs.velda.io">Documentation</a></li>
         </ul>
       </div>
 

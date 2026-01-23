@@ -32,6 +32,24 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
+    "title": "Running vLLM on SLURM Clusters: A Complete Guide for HPC Inference",
+    "slug": "running-vllm-on-slurm-clusters",
+    "description": "Deploy OpenAI-compatible LLM endpoints on SLURM with vLLM for research and development.",
+    "excerpt": "Guide to run vLLM on SLURM clusters: create batch scripts, submit jobs, access endpoints, and follow best practices for reliable HPC inference.",
+    "date": "2026-01-08",
+    "author": "Chuan Qiu",
+    "readingTime": "6 min",
+    "category": "Tutorial",
+    "image": "https://substack-post-media.s3.amazonaws.com/public/images/7372e67f-3b90-4b52-a2d0-f2c98f7930e0_1024x559.png",
+    "tags": [
+      "vllm",
+      "slurm",
+      "hpc",
+      "inference",
+      "velda"
+    ]
+  },
+  {
     "title": "How Velda Works: Accelerating ML Development Without Container Overhead",
     "slug": "how-velda-works-accelerating-ml-development",
     "description": "Velda provides instant, reproducible ML development environments by mounting a remote root filesystem and fetching files on demand.",
