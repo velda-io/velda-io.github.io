@@ -13,6 +13,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "The hidden cost in Pythonic workflows",
+    "slug": "the-hidden-cost-in-pythonic-workflows",
+    "description": "How CLI-based orchestration solves the hidden problems of decorator frameworks in production ML pipelines.",
+    "excerpt": "Why decorator-heavy Python orchestrators introduce hidden operational costs, and how CLI-first tooling restores reproducibility and simplicity.",
+    "date": "2026-01-27",
+    "author": "Chuan Qiu",
+    "readingTime": "5 min",
+    "category": "Technical Overview",
+    "image": "https://substack-post-media.s3.amazonaws.com/public/images/f13a76b4-ce8c-4394-bc99-bfa87c503508_1024x559.png",
+    "tags": [
+      "ml",
+      "orchestration",
+      "cli",
+      "workflows",
+      "dagster",
+      "prefect",
+      "airflow"
+    ]
+  },
+  {
     "title": "What Is a Velda Pool? Autoscaling Compute Pools for Cloud, Kubernetes, and VMs",
     "slug": "what-is-a-velda-pool-autoscaling-compute-pools",
     "description": "The hidden worker layer that makes vrun feel local while scaling across cloud, Kubernetes, and data centers.",
