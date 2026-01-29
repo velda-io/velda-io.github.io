@@ -28,7 +28,7 @@
 }
 
 .comparison-table {
-    margin: 2rem 0;
+    margin: 4rem 0;
     max-width: 800px;
     width: 100%;
     margin-left: auto;
