@@ -1,17 +1,17 @@
 ---
 layout: page
 sidebar: false
-title: "Velda: The Modern Slurm Alternative for High Performance computing"
-description: "Compare Velda's cloud-native development platform with traditional Slurm HPC systems. Discover cloud-native architecture, better resource utilization, and superior developer experience."
-keywords: ["Slurm Alternative", "HPC Cluster", "cloud HPC development", "Slurm VSCode", "Slurm GPU training", "Slurm replacement"]
+title: "Velda: The Modern Slurm Alternative for High-Performance Computing"
+description: "Discover why Velda is the best Slurm alternative for ML teams. Compare cloud-native architecture, GPU scheduling, containerized workloads, and developer-first features with traditional Slurm HPC clusters."
+keywords: ["Slurm Alternative", "HPC Cluster", "cloud HPC development", "Slurm VSCode", "Slurm GPU training", "Slurm replacement", "machine learning infrastructure", "GPU cluster management", "HPC workload management"]
 image: "https://velda.io/og-preview.png"
 ---
 <ComparisonDoc>
 <template #comparison-banner>
 
 <ComparisonBanner 
-  verdict-title="Finally, a modern HPC cluster management"
-  verdict-description="Velda simplifies development and job management with its user-friendly command-line interfaces (CLIs). Designed for teams that demand higher productivity, flexible capacity, Velda empowers developers to manage their workloads easily and cost-effectively from the start."
+  verdict-title="Finally, Modern HPC Cluster Management"
+  verdict-description="Velda simplifies development and job management with its user-friendly command-line interface. Designed for teams that demand higher productivity and flexible capacity, Velda empowers developers to manage their workloads easily and cost-effectively from day one."
   :cta-buttons="[
     { text: 'Get Started', link: 'https://velda.io/comparison', variant: 'primary' },
     { text: 'Book Demo', link: 'https://calendly.com/velda-io/30min', variant: 'secondary' }
@@ -27,64 +27,80 @@ image: "https://velda.io/og-preview.png"
 
 | Feature | Slurm | Velda |
 |--------------------|--------------------|--------------------|
-| **Containerized Execution**<br>Each task runs in a container that is isolated with other workloads on the same node, and workload cannot access tasks of other users| ❌ | ✅ |
-| **Environment customization**<br>Every workload can run in fully customizable environment, including some system packages(apt, pip, etc.) | ❌ | ✅ |
-| **Cluster Autoscaling**<br>Allocate compute resources from Cloud / Kubernetes based on demand, or share resource with other Kubernetes workload | ❌ | ✅ |
-| **Multi-cloud scheduling**<br>When needed, get compute resources from other clouds with comparable performance | ❌ | ✅ |
-| **Job snapshot**<br>Continue iterating while a job is queueing, or reproduce a job with same code, by taking an instant snapshot of your current environment | ❌ | ✅ |
-| **Interactive Development**<br>Developers have access to dev-environments that can be used as the [primary dev solution](/blog/why-stuck-inefficient-gpu-setup), with full capability like IDEs and docker access, or VS-Code access from browser.| ❌ | ✅ |
-| **Service development**<br>Run service directly in the cluster in one command, and access them with multiple options like DNS names, port-forwarding or load-balancer. [vrun is all you need](/blog/vrun-is-all-you-need) | ❌ | ✅ |
-| **SSO integration**<br>Use your SSO provider to manage user access / login | ❌ | ✅ |
-| **RBAC**<br>Role based access control: Limit who can see other's job/data | Custom integration | ✅ |
-| **Web access**<br>From browser, directly start development in VS Code Web, or view task logs | Third-party | ✅ |
+| **Containerized Execution**<br>Each task runs in an isolated container, preventing access to other workloads on the same node and ensuring workloads cannot access other users' tasks| ❌ | ✅ |
+| **Environment Customization**<br>Every workload runs in a fully customizable environment, including system packages (apt, pip, etc.) | ❌ | ✅ |
+| **Cluster Autoscaling**<br>Allocate compute resources from Cloud/Kubernetes based on demand, or share resources with other Kubernetes workloads | ❌ | ✅ |
+| **Multi-Cloud Scheduling**<br>Seamlessly access compute resources from multiple clouds with comparable performance | ❌ | ✅ |
+| **Job Snapshot**<br>Continue iterating while a job is queuing, or reproduce a job with the same code by taking an instant snapshot of your current environment | ❌ | ✅ |
+| **Interactive Development**<br>Developers have access to dev-environments that can be used as the [primary dev solution](/blog/why-stuck-inefficient-gpu-setup), with full capabilities like IDEs, Docker access, and VS Code access from browser| ❌ | ✅ |
+| **Service Development**<br>Run services directly in the cluster with one command, and access them through multiple options like DNS names, port-forwarding, or load-balancer. [vrun is all you need](/blog/vrun-is-all-you-need) | ❌ | ✅ |
+| **SSO Integration**<br>Use your SSO provider to manage user access and login | ❌ | ✅ |
+| **RBAC**<br>Role-based access control: Limit who can see other users' jobs and data | Custom integration | ✅ |
+| **Web Access**<br>From browser, directly start development in VS Code Web or view task logs | Third-party | ✅ |
 
 </template>
 
-# What's right for me?
-Both Velda and Slurm are options for managing HPC clusters, and they provide a similar command-line interface to run jobs. Users who are already familiar with Slurm will find it easy to get started with Velda, while Velda offers a more modern, cloud-native approach.
+# Choosing the Right HPC Solution: Velda vs Slurm
+
+Both Velda and Slurm are powerful options for managing HPC clusters with similar command-line interfaces for job execution. Users already familiar with Slurm will find Velda's transition seamless, while gaining access to a modern, cloud-native architecture designed for ML and AI workloads.
 
 ## Resource Management and Deployment Model
 ### Slurm’s Traditional Node-Based System
 
-Slurm operates on a legacy HPC model: Fixed size cluster, default to legacy resource management on the node, lacks isolations among jobs in regard to resource, networking. This often creates significant inefficiencies with modern, heterogeneous workloads. Users must understand these complex configurations to maximize cluster capacity and efficiency.
+Slurm operates on a legacy HPC model with fixed-size clusters and traditional node-level resource management. It lacks proper isolation among jobs regarding resources and networking, creating significant inefficiencies with modern, heterogeneous workloads. Users must navigate complex configurations to maximize cluster capacity and efficiency.
 
 ### Velda’s Cloud-Native Architecture
 
-Velda leverages multiple backends to allocate compute resources: statically managed nodes in a traditional data center, virtual machines from your selected clouds, or pods from Kubernetes. Scale to multi-cloud option is available.
+Velda leverages multiple backends to allocate compute resources: statically managed nodes in traditional data centers, virtual machines from your selected clouds, or pods from Kubernetes. Multi-cloud scaling is available out of the box.
 
-Velda supports a variety of instance configurations and can dynamically provision compute based on workload demands.  This improves cost efficiency and cluster capacity to meet the needs tailered to your budget and capacity needs.
+Velda supports a variety of instance configurations and dynamically provisions compute based on workload demands. This improves cost efficiency and cluster capacity to meet your specific budget and performance requirements.
 
 [Learn more about Velda compute pools](blog/what-is-a-velda-pool-autoscaling-compute-pools)
 
 ## Development Experience
-### Slurm: Built for running jobs
-Slurm was not built for daily development. Slurm does not provide a native way to allocate development instances: Some teams use a shared login node, risking system instability; other teams rely on error-prone workarounds, such as submitting "sleep" jobs and direct SSH. Debugging jobs is challenging when job is running on a different node, and running services is poorly supported. Developers are often restricted on certain actions to do, e.g. installing system packages or running docker commands. When a job is queueing, developers are also expected to stop iterating on the same codebase, slow down iterations.
+### Slurm: Built for Running Jobs
 
-### Velda: developer first
-Velda puts the developer experience first. Developer get full access to the dev-container and customize it to their needs, including installing any packages or run commands that needs system privilege like docker (exclude system kernel changes). Instantly onboard new users by cloning instances from a template tailoed to your team. When submitting jobs, developer may take an instant snapshot of the entire environment for consistent and reproducible jobs, while continue iterating when jobs are running or queueing.
+Slurm was not built for daily development workflows. It lacks native support for development instances, forcing teams to choose between risky shared login nodes or error-prone workarounds like submitting "sleep" jobs and using direct SSH. Debugging jobs running on different nodes is challenging, and running services is poorly supported. Developers face restrictions on critical actions like installing system packages or running Docker commands. When jobs are queuing, developers must stop iterating on the same codebase, significantly slowing down development cycles.
+
+### Velda: Developer-First Platform
+
+Velda puts the developer experience first. Developers get full access to their dev-container and can customize it to their needs, including installing packages and running commands that require system privileges like Docker (excluding system kernel changes). Instantly onboard new users by cloning instances from templates tailored to your team. When submitting jobs, developers can take an instant snapshot of the entire environment for consistent and reproducible results while continuing to iterate even when jobs are running or queuing.
 
 ## Job Scheduler & Workload Management
-Slurm has powerful workload management features, thanks to its long-standing industry adoption and recognition. Velda provides comparable features that is tailered for common workflwos and model training/evalaution.
+
+Slurm offers powerful workload management features, thanks to its long-standing industry adoption. Velda provides comparable and enhanced features specifically tailored for common ML workflows, model training, and evaluation.
 
 ### Built for Model Training & AI Workloads
-Velda is built for the full lifecycle of machine learning and natively supports many scheduling features, such as:
 
-* Advanced GPU scheduling options, E.g
-  * Gang scheduling, start all workload when all resource are ready.
-  * Network-topology-aware cloud instance allocation, extending your resource allocation backend with specific topology options (e.g., EC2 Placement Groups in AWS, Compact Placement in Google Cloud, or custom config in KQueue).
-* [Define workflows that involve heterogeneous steps](/blog/build-machine-learning-workflow) (e.g., data processing, training, evaluation, and model deployment).
-* Platform-agnostic, support PyTorch, Jax, Ray, and other frameworks.
-* Start model serving and serving development in one command, accessible via custom DNS names. See [vrun is all you need](/blog/vrun-is-all-you-need) .
+Velda is built for the full lifecycle of machine learning and natively supports advanced scheduling features, including:
+
+* **Advanced GPU Scheduling Options**
+  * Gang scheduling: start all workloads when all resources are ready
+  * Network-topology-aware cloud instance allocation, extending your resource allocation backend with specific topology options (e.g., EC2 Placement Groups in AWS, Compact Placement in Google Cloud, or custom config in KQueue)
+* [Define workflows that involve heterogeneous steps](/blog/build-machine-learning-workflow) (e.g., data processing, training, evaluation, and model deployment)
+* **Platform-agnostic**: supports PyTorch, JAX, Ray, and other ML frameworks
+* Start model serving and service development in one command, accessible via custom DNS names. See [vrun is all you need](/blog/vrun-is-all-you-need)
 
 ## Workload Isolation
-Slurm provides basic process isolation through Linux user accounts and relies on shared filesystems for data access. This approach creates potential security vulnerabilities and makes it difficult to ensure complete workload separation, especially in multi-tenant environments or when workloads require different system dependencies. Users often get direct SSH access to compute nodes for debugging live, risk security and resource isolation.
 
-Velda implements per-user, per-instance containers. Each user’s workload runs in a completely isolated environment, which addresses the challenge of secure multi-tenancy. User can only connect to the environment that is associated with their instance.
-Resource pool can set up resource isolation that is tailered to needs: containers, micro-VMs(Kata), VM or just bare-metal for whole node access.
+Slurm provides basic process isolation through Linux user accounts and relies on shared filesystems for data access. This approach creates potential security vulnerabilities and makes it difficult to ensure complete workload separation, especially in multi-tenant environments or when workloads require different system dependencies. Direct SSH access to compute nodes for debugging creates additional security and resource isolation risks.
+
+Velda implements per-user, per-instance containers. Each user's workload runs in a completely isolated environment, addressing the challenges of secure multi-tenancy. Users can only connect to environments associated with their instances. Resource pools can be configured with isolation tailored to specific needs: containers, micro-VMs (Kata), VMs, or bare-metal for whole-node access.
+
+## Integrations with Other Job Frameworks
+
+Velda provides direct integrations with popular job orchestration frameworks like Ray, enabling you to run distributed jobs without managing underlying infrastructure.
+
+Most job frameworks (Airflow, Celery, etc.) don't provide cluster management out of the box, and those that do (e.g., Ray) come with restrictions due to various customizations in packaging, observability, and Kubernetes manifests.
+
+Velda enforces a consistent standard on environment management by cloning your entire dev stack with simple parameters to scale. This enables Velda to directly integrate with other job managers and provides a consistent experience running locally versus in the cloud.
+
+While some community integrations exist for Slurm, they rely on specific restricted Slurm cluster setups, limiting their support and usability.
 
 ## Enterprise Features and Compliance
-Modern organizations require robust access controls, audit logging, and compliance capabilities. Slurm’s basic accounting and limited Role-Based Access Control (RBAC) features may not meet enterprise security requirements and often rely heavily on third-party tools or customizations, such as syncing SSO with an LDAP directory.
 
-Velda provides comprehensive enterprise features, including SSO / SAML integration, usage reporting, and RBAC policies. It also includes features for optimizing resource usage and cost, supporting the efficient management of workloads. Integration with existing security infrastructure ensures seamless adoption in regulated environments.
+Modern organizations require robust access controls, audit logging, and compliance capabilities. Slurm's basic accounting and limited Role-Based Access Control (RBAC) features often fall short of enterprise security requirements, relying heavily on third-party tools or custom integrations like syncing SSO with LDAP directories.
+
+Velda provides comprehensive enterprise features out of the box, including SSO/SAML integration, detailed usage reporting, and granular RBAC policies. It also includes advanced features for optimizing resource usage and costs, supporting efficient workload management. Native integration with existing security infrastructure ensures seamless adoption in regulated environments.
 
 </ComparisonDoc>
