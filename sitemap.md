@@ -18,7 +18,8 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
-- [The hidden cost in Pythonic workflows](/blog/the-hidden-cost-in-pythonic-workflows) - *January 26, 2026*
+- [How to Optimize Container Iteration Speed](/blog/how-to-optimize-container-iteration-speed) - *February 10, 2026*
+- [CLI vs Decorators for ML Pipelines | Best Practices](/blog/the-hidden-cost-in-pythonic-workflows) - *January 26, 2026*
 - [What Is a Velda Pool? Autoscaling Compute Pools for Cloud, Kubernetes, and VMs](/blog/what-is-a-velda-pool-autoscaling-compute-pools) - *January 19, 2026*
 - [Running vLLM on SLURM Clusters: A Complete Guide for HPC Inference](/blog/running-vllm-on-slurm-clusters) - *January 7, 2026*
 - [How Velda Works: Accelerating ML Development Without Container Overhead](/blog/how-velda-works-accelerating-ml-development) - *January 4, 2026*
@@ -37,4 +38,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2026-01-27*
+*Last updated: 2026-02-11*

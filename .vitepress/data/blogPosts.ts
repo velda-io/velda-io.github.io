@@ -13,7 +13,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    "title": "The hidden cost in Pythonic workflows",
+    "title": "How to Optimize Container Iteration Speed",
+    "slug": "how-to-optimize-container-iteration-speed",
+    "description": "Five practical strategies to reduce container build, push, and run cycles for faster ML development.",
+    "excerpt": "Optimize Dockerfile ordering, shrink images, tune target machines, defer installs, and try development container streaming to cut iteration times from minutes to seconds.",
+    "date": "2026-02-11",
+    "author": "Chuan Qiu",
+    "readingTime": "6 min",
+    "category": "Engineering",
+    "image": "https://cdn-images-1.medium.com/max/2400/0*m1iriCsSSJphe1xv.png",
+    "tags": [
+      "containers",
+      "docker",
+      "devops",
+      "machine-learning",
+      "performance",
+      "cloud"
+    ]
+  },
+  {
+    "title": "CLI vs Decorators for ML Pipelines | Best Practices",
     "slug": "the-hidden-cost-in-pythonic-workflows",
     "description": "How CLI-based orchestration solves the hidden problems of decorator frameworks in production ML pipelines.",
     "excerpt": "Why decorator-heavy Python orchestrators introduce hidden operational costs, and how CLI-first tooling restores reproducibility and simplicity.",
