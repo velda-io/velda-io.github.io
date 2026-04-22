@@ -18,6 +18,7 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ## 📰 Blog
 - [Blog Home](/blog/) - Latest posts and updates
+- [Serverless GPU Compute in the Cloud | ML Team Comparison](/blog/serverless-gpu-compute-in-the-cloud) - *April 1, 2026*
 - [How to Optimize Container Iteration Speed](/blog/how-to-optimize-container-iteration-speed) - *February 10, 2026*
 - [CLI vs Decorators for ML Pipelines | Best Practices](/blog/the-hidden-cost-in-pythonic-workflows) - *January 26, 2026*
 - [What Is a Velda Pool? Autoscaling Compute Pools for Cloud, Kubernetes, and VMs](/blog/what-is-a-velda-pool-autoscaling-compute-pools) - *January 19, 2026*
@@ -38,4 +39,4 @@ description: Complete site navigation for Velda - find all pages, blog posts, an
 
 ---
 
-*Last updated: 2026-02-11*
+*Last updated: 2026-04-22*

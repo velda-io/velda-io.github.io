@@ -13,6 +13,26 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "Serverless GPU Compute in the Cloud | ML Team Comparison",
+    "slug": "serverless-gpu-compute-in-the-cloud",
+    "description": "A practical comparison of serverless GPU platforms for ML teams, from SDK-first and container-first stacks to Velda's environment-first model.",
+    "excerpt": "A practical framework for choosing between SDK-first, container-first, and environment-first serverless GPU platforms for ML workloads.",
+    "date": "2026-04-02",
+    "author": "Chuan Qiu",
+    "readingTime": "5 min",
+    "category": "Technical Overview",
+    "image": "https://substackcdn.com/image/fetch/$s_!6g3G!,w_1200,h_400,c_pad,f_auto,q_auto:best,fl_progressive:steep,b_auto:border,b_rgb:FFFFFF/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb72cf057-8031-42a1-a292-e4f7dae4e2f8_1280x1280.png",
+    "tags": [
+      "serverless-gpu",
+      "machine-learning",
+      "cloud-native-mlops",
+      "modal",
+      "runpod",
+      "sagemaker",
+      "velda"
+    ]
+  },
+  {
     "title": "How to Optimize Container Iteration Speed",
     "slug": "how-to-optimize-container-iteration-speed",
     "description": "Five practical strategies to reduce container build, push, and run cycles for faster ML development.",
