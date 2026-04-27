@@ -33,7 +33,7 @@
                 <div class="w-40 self-center">
                     <!-- Machine 2 - Ray Worker Node -->
                     <Machine :style="{ visibility: showWorkerNode ? 'visible' : 'hidden' }" ref="machine2"
-                        :multi-machine="true" :status="workerNodeStatus" hardware="gpu-h200-1"
+                        :multi-machine="true" :status="workerNodeStatus" hardware="h200-1"
                         class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
                             'opacity-0 scale-90': workerNodeStatus === ''
                         }">
@@ -239,7 +239,7 @@ async function createHeadNode() {
  * Creates the Ray worker node.
  */
 async function createWorkerNode() {
-    const command = "vbatch -N 5 -P gpu-h200-1 \\\n  ray start --address=ray-head:6379";
+    const command = "vbatch -N 5 -P h200-1 \\\n  ray start --address=ray-head:6379";
     await terminal.value.sendCommand(animator, command);
 
     showWorkerNode.value = true;

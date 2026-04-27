@@ -28,6 +28,6 @@ Allow: /blog/
 Allow: /intro
 Allow: /connect
 Allow: /run
-Allow: /comparison
+Allow: /pricing
 Allow: /contact
 Allow: /book

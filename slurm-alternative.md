@@ -13,7 +13,7 @@ image: "https://velda.io/og-preview.png"
   verdict-title="Finally, Modern HPC Cluster Management"
   verdict-description="Velda simplifies development and job management with its user-friendly command-line interface. Designed for teams that demand higher productivity and flexible capacity, Velda empowers developers to manage their workloads easily and cost-effectively from day one."
   :cta-buttons="[
-    { text: 'Get Started', link: 'https://velda.io/comparison', variant: 'primary' },
+    { text: 'Get Started', link: 'https://velda.cloud/', variant: 'primary' },
     { text: 'Book Demo', link: 'https://calendly.com/velda-io/30min', variant: 'secondary' }
   ]"
   :competitor-a="{ name: 'Slurm', logo: '/slurm.svg' }"

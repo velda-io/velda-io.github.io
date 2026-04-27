@@ -11,7 +11,7 @@ const CURRENT_DATE = new Date().toISOString().split('T')[0]
 const pageConfig = {
   '/': { priority: '1.0', changefreq: 'weekly' },
   '/blog/': { priority: '0.9', changefreq: 'weekly' },
-  '/comparison': { priority: '0.8', changefreq: 'monthly' },
+  '/pricing': { priority: '0.8', changefreq: 'monthly' },
   '/intro': { priority: '0.8', changefreq: 'monthly' },
   '/connect': { priority: '0.7', changefreq: 'monthly' },
   '/run': { priority: '0.7', changefreq: 'monthly' },

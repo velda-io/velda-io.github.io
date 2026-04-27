@@ -11,7 +11,7 @@
             Begin your Velda journey today
         </h2>
         <a
-            href="/comparison"
+            href="/pricing"
             class="get-started-btn"
         >
             Get Started

@@ -14,7 +14,7 @@
 
                 <!-- Machine 2 -->
                 <Machine :style="{ visibility: showTrainingMachine ? 'visible' : 'hidden' }" ref="machine2"
-                    :status="trainingMachineStatus" hardware="gpu-h200-1"
+                    :status="trainingMachineStatus" hardware="h200-1"
                     class="flex-grow flex-shrink-0 transition-all duration-500" :class="{
                         'opacity-0 scale-90': trainingMachineStatus === ''
                     }">
@@ -139,7 +139,7 @@ async function startAnimation() {
     resetAnimation();
 
     if (!terminal.value) return;
-    const command = "vrun -P gpu-h200-1 ./train_model.sh";
+    const command = "vrun -P h200-1 ./train_model.sh";
     await terminal.value.sendCommand(animator, command);
 
     showTrainingMachine.value = true;

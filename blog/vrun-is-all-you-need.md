@@ -222,4 +222,4 @@ Whether you're running a simple script or orchestrating complex ML pipelines, `v
 
 ---
 
-*Want to experience the power of <code>vrun</code> firsthand?[ Try Velda today](https://velda.io/comparison) and join the thousands of developers who've already simplified their cloud workflows.*
+*Want to experience the power of <code>vrun</code> firsthand?[ Try Velda today](https://velda.cloud/) and join the thousands of developers who've already simplified their cloud workflows.*

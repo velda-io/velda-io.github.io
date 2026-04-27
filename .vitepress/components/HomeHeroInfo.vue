@@ -5,21 +5,18 @@
         Scale like <span class="highlight">your local machine</span><br/>in the cloud
       </h1>
       <p class="hero-tagline">
-        A cloud OS for <strong>AI/ML</strong> workloads
+        Run training jobs without overhead of infrastructure.
       </p>
       <p class="hero-subline">
         Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix. 
       </p>
       <div class="hero-ctas">
-        <CtaButton variant="primary" href="/github">Self-host Velda</CtaButton>
-        <CtaButton variant="secondary" href="https://velda.cloud">Use Velda Cloud</CtaButton>
+        <CtaButton variant="primary" href="https://velda.cloud">Sign-up</CtaButton>
+        <CtaButton variant="secondary" href="/book">Book a Demo</CtaButton>
       </div>
       <div class="hero-code">
-        <code>vrun -P gpu-h200-8 python train.py</code>
+        <code>vrun -P h200-1 python train.py</code>
       </div>
-      <p class="hero-code-caption">
-        Same experience locally or in the cloud.
-      </p>
     </div>
   </div>
 </template>

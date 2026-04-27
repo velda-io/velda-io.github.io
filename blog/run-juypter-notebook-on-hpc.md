@@ -117,10 +117,10 @@ Managing SSH sessions, tracking node names, and dealing with firewall restrictio
 Use the `vrun` command to allocate a compute instance and start the Jupyter Notebook service simultaneously:
 
 ```bash
-vrun -P gpu-h200-1 -s notebook jupyter notebook --no-browser --port=8888
+vrun -P h200-1 -s notebook jupyter notebook --no-browser --port=8888
 ```
 
-* **`-P gpu-h200-1`**: Specifies the required resources (GPU node with 1 nvidia H200)
+* **`-P h200-1`**: Specifies the required resources (GPU node with 1 nvidia H200)
 * **`-s notebook`**: Names the session for easy identification and proxy access.
 
 **Key advantages:**
