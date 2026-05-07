@@ -3,6 +3,7 @@
         ref="cloningAnimation"
         :onComplete="props.onComplete"
         :showCustomize="true"
+        :speedFactor="props.speedFactor"
         />
 </template>
 
@@ -19,6 +20,11 @@ const props = defineProps({
         required: false,
         default: null
     },
+    speedFactor: {
+        type: Number,
+        required: false,
+        default: 1
+    }
 });
 
 async function startAnimation() {

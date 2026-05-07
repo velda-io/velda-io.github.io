@@ -23,7 +23,7 @@ export default defineConfig({
       { text: 'Docs', link: 'https://docs.velda.io', noIcon: true },
       { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
       { text: 'Pricing', link: '/pricing' },
-      { component: 'NavSignUp', text: 'Sign-up', link: 'https://velda.cloud', noIcon: true },
+      { component: 'NavSignUp', text: 'Sign-up', link: 'https://cloud.velda.io', noIcon: true },
     ],
     // Context-aware sidebars: blog pages get a blog sidebar; docs pages get the docs sidebar
     sidebar: {

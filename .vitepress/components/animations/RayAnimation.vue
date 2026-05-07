@@ -66,6 +66,11 @@ const props = defineProps({
         type: Function,
         required: false,
         default: null
+    },
+    speedFactor: {
+        type: Number,
+        required: false,
+        default: 1
     }
 });
 
@@ -182,6 +187,7 @@ async function drawLines() {
  */
 async function startAnimation() {
     // Cancel any ongoing animation first
+    animator.speedFactor = props.speedFactor;
     stopAnimation();
     resetAnimation();
 

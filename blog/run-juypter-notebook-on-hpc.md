@@ -156,6 +156,6 @@ Stop wrestling with SSH tunnels and complex HPC configurations. Velda makes runn
 
 **Get started today:**
 
-* [**Try hosted Velda cloud**](https://velda.cloud/): Immediately access cloud compute with one click
+* [**Try hosted Velda cloud**](https://cloud.velda.io/): Immediately access cloud compute with one click
 * [**Velda Open Source**](https://github.com/velda-io/velda): Deploy on your own infrastructure
 * [**Enterprise Edition**](https://velda.io/book): Get SSO, RBAC, and advanced features

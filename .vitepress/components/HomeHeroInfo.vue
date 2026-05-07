@@ -11,7 +11,7 @@
         Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix. 
       </p>
       <div class="hero-ctas">
-        <CtaButton variant="primary" href="https://velda.cloud">Sign-up</CtaButton>
+        <CtaButton variant="primary" href="https://cloud.velda.io">Sign-up</CtaButton>
         <CtaButton variant="secondary" href="/book">Book a Demo</CtaButton>
       </div>
       <div class="hero-code">

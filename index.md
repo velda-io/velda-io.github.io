@@ -80,6 +80,7 @@ Just your local dev experience — with unbounded power.</p>
   </template>
   <AutoAnimationWrapper
     :component="ProvisionAnimation"
+    :componentProps="{speedFactor: 3}"
   />
 </LeftRightLayout>
 
@@ -90,6 +91,7 @@ Just your local dev experience — with unbounded power.</p>
   </template>
   <AutoAnimationWrapper
     :component="CloningAnimation"
+    :componentProps="{speedFactor: 3}"
   />
 </LeftRightLayout>
 
@@ -100,6 +102,7 @@ Just your local dev experience — with unbounded power.</p>
   </template>
   <AutoAnimationWrapper
     :component="RayAnimation"
+    :componentProps="{speedFactor: 3}"
   />
 </LeftRightLayout>
 
@@ -144,7 +147,7 @@ Just your local dev experience — with unbounded power.</p>
       <p>Managed cloud with instant VSCode + GPU access, plus free monthly credit. Perfect for individual and small teams</p>
     </div>
     <div>
-      <CtaButton href="https://velda.cloud">Get Started</CtaButton>
+      <CtaButton href="https://cloud.velda.io">Get Started</CtaButton>
     </div>
   </div>
   <div class="w-full flex flex-col justify-between p-10 gap-6 bg-white/40">

@@ -11,6 +11,7 @@ export class CancelledError extends Error {
  */
 export class AnimationTracker {
     private animationPromises: {promise: Promise<void>, cancel: () => void}[] = [];
+    public speedFactor: number = 1;
 
     /**
      * Create a promise that resolves after the specified time
@@ -20,8 +21,9 @@ export class AnimationTracker {
     async sleep(ms: number): Promise<void> {
         let cancel: () => void = () => {};
         let timeoutId: number = 0;
+        const adjustedMs = ms / this.speedFactor;
         const promise = new Promise<void>((resolve, reject) => {
-            timeoutId = setTimeout(resolve, ms);
+            timeoutId = setTimeout(resolve, adjustedMs);
             cancel = () => {
                 clearTimeout(timeoutId);
                 reject(new CancelledError());

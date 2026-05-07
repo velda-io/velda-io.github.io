@@ -283,6 +283,11 @@ const props = defineProps({
     isActive: {
         type: Boolean,
         default: false
+    },
+    speedFactor: {
+        type: Number,
+        required: false,
+        default: 1
     }
 });
 
@@ -293,6 +298,7 @@ const animator = createAnimationTracker();
  * Starts the entire animated sequence
  */
 async function startAnimation() {
+    animator.speedFactor = props.speedFactor;
     // Animation sequence complete, call onComplete if provided
     await animator.sleep(12000); // Allow enough time for chart to be viewed
     if (props.onComplete) {

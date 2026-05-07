@@ -70,4 +70,4 @@ Choose Path B (Modal) if you're a Python-first team building inference APIs or b
 
 Choose Path C (RunPod / Cloud Run / SageMaker) if you need full container-level control, want to leverage an existing cloud provider relationship, or have workloads with complex runtime requirements that demand a custom-built image.
 
-Explore Velda today on [velda.cloud](http://velda.cloud/) with H100/H200 immediately available, or self-host with [open source](https://github.com/velda-io/velda).
+Explore Velda today on [Velda Cloud](http://cloud.velda.io/) with H100/H200 immediately available, or self-host with [open source](https://github.com/velda-io/velda).

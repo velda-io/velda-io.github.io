@@ -87,6 +87,11 @@ const props = defineProps({
         type: Boolean,
         required: false,
         default: false,
+    },
+    speedFactor: {
+        type: Number,
+        required: false,
+        default: 1
     }
 });
 
@@ -174,6 +179,7 @@ function resetAnimation() {
  */
 async function startAnimation() {
     // Cancel any ongoing animations first
+    animator.speedFactor = props.speedFactor;
     stopAnimation();
 
     resetAnimation();
