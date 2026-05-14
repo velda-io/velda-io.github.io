@@ -7,7 +7,7 @@ title: Serverless GPU for AI Workloads and Batch Jobs
 head:
   - - meta
     - name: description
-      content: Velda - Scale insantly without any container build, dependency management or manifest
+      content: Velda - Run GPU training and batch jobs instantly from your dev environment, no code change or manifest.
   - - meta
     - property: og:title
       content: VELDA - Scale to cloud like your local machine
@@ -25,10 +25,10 @@ head:
       content: summary_large_image
   - - meta
     - name: twitter:title
-      content: VELDA - Scale to cloud like your local machine
+      content: VELDA - Serverless GPU for AI Workloads and Batch Jobs
   - - meta
     - name: twitter:description
-      content: Experience the development platform that leading teams are already using to ship faster.
+      content: Velda - Run GPU training and batch jobs instantly from your dev environment, no code change or manifest.
   - - meta
     - name: twitter:image
       content: https://velda.io/logos.png
