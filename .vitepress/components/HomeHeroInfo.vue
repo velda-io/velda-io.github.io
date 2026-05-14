@@ -2,10 +2,10 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        Scale like <span class="highlight">your local machine</span><br/>in the cloud
+        <span class="highlight">Serverless GPUs</span> that <br/>developers love
       </h1>
       <p class="hero-tagline">
-        Run training jobs without overhead of infrastructure.
+        Run training and batch inference jobs without overhead of container.
       </p>
       <p class="hero-subline">
         Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix. 

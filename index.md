@@ -2,7 +2,7 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: Scale to cloud like your local machine
+title: Serverless GPU for AI Workloads and Batch Jobs
 # SEO and LinkedIn/Social media preview metadata
 head:
   - - meta
