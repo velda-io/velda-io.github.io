@@ -10,8 +10,10 @@ import ComparisonBanner from '../components/ComparisonBanner.vue'
 import LeftRightLayout from '../components/LeftRightLayout.vue'
 import AutoAnimationWrapper from '../components/AutoAnimationWrapper.vue'
 import CustomLayout from './CustomLayout.vue'
+import Comparison from './comparison.vue'
 import { Icon } from '@iconify/vue'
 import setupGA from './ga'
+import ComparisonLayout from './ComparisonLayout.vue'
 import './custom.css'
 
 import '@fontsource/oswald/500.css';
@@ -36,7 +38,10 @@ export default {
     app.component('Footer', Footer)
     app.component('ComparisonBanner', ComparisonBanner)
     app.component('LeftRightLayout', LeftRightLayout)
+    app.component('comparison', ComparisonLayout)
+    app.component('ComparisonDoc', ComparisonLayout)
     app.component('Icon', Icon)
+    app.component('Comparison', Comparison)
     app.component('AutoAnimationWrapper', AutoAnimationWrapper)
     setupGA(router)
   }

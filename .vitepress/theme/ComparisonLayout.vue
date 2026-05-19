@@ -11,7 +11,7 @@
             Begin your Velda journey today
         </h2>
         <a
-            href="/pricing"
+            href="https://cloud.velda.io"
             class="get-started-btn"
         >
             Get Started
