@@ -19,7 +19,11 @@ export default defineConfig({
     logo: "/logo-24.png",
     siteTitle: '<span class="brand">VELDA</span>',
     nav: [
-      { text: 'Home', link: '/' },
+      { text: 'Product', items: [
+        { text: 'Run Jobs', link: '/serverless-gpu' },
+        { text: 'Workflow', link: '/workflow' },
+        { text: 'Slurm Alternative', link: '/slurm-alternative' },
+      ]},
       { text: 'Docs', link: 'https://docs.velda.io', noIcon: true },
       { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
       { text: 'Pricing', link: '/pricing' },

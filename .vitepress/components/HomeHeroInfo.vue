@@ -2,27 +2,55 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        <span class="highlight">Serverless GPUs</span> that <br/>developers love
+        <span class="highlight">{{ highlightText }}</span> {{ headlinePart1 }} <br/>{{ headlinePart2 }}
       </h1>
       <p class="hero-tagline">
-        Run training and batch inference jobs without overhead of container.
+        {{ tagline }}
       </p>
       <p class="hero-subline">
-        Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix. 
+        {{ subline }}
       </p>
-      <div class="hero-ctas">
-        <CtaButton variant="primary" href="https://cloud.velda.io">Sign-up</CtaButton>
-        <CtaButton variant="secondary" href="/book">Book a Demo</CtaButton>
+      <div v-if="showCtas" class="hero-ctas">
+        <CtaButton variant="primary" :href="primaryCtaHref">{{ primaryCtaText }}</CtaButton>
+        <CtaButton variant="secondary" :href="secondaryCtaHref">{{ secondaryCtaText }}</CtaButton>
       </div>
-      <div class="hero-code">
-        <code>vrun -P h200-1 python train.py</code>
+      <div v-if="showCode" class="hero-code">
+        <code>{{ codeSnippet }}</code>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import CtaButton from './CtaButton.vue'
+
+withDefaults(defineProps<{
+  highlightText?: string
+  headlinePart1?: string
+  headlinePart2?: string
+  tagline?: string
+  subline?: string
+  codeSnippet?: string
+  showCode?: boolean
+  showCtas?: boolean
+  primaryCtaText?: string
+  primaryCtaHref?: string
+  secondaryCtaText?: string
+  secondaryCtaHref?: string
+}>(), {
+  highlightText: 'Serverless GPUs',
+  headlinePart1: 'that',
+  headlinePart2: 'developers love',
+  tagline: 'Run training and batch inference jobs without overhead of container.',
+  subline: 'Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix.',
+  codeSnippet: 'vrun -P h200-1 python train.py',
+  showCode: true,
+  showCtas: true,
+  primaryCtaText: 'Get started',
+  primaryCtaHref: 'https://cloud.velda.io',
+  secondaryCtaText: 'Talk to team',
+  secondaryCtaHref: '/book'
+})
 </script>
 
 <style scoped>
