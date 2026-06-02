@@ -32,6 +32,7 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
         <tr>
           <th class="px-4 py-3">Pool name</th>
           <th class="px-4 py-3">Price per hour</th>
+          <th class="px-4 py-3"><a href="#spot-anote" class="underline decoration-dotted underline-offset-2">Spot price*</a></th>
           <th class="px-4 py-3">GPU</th>
           <th class="px-4 py-3">CPU</th>
           <th class="px-4 py-3">RAM</th>
@@ -42,25 +43,58 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
       <tbody>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h100-1</td>
-          <td class="px-4 py-3" title="h100-1">$3.30</td>
+          <td class="px-4 py-3" title="h100-1">$4.40</td>
+          <td class="px-4 py-3" title="h100-1s">$2.50</td>
           <td class="px-4 py-3">1x H100 80 GB</td>
           <td class="px-4 py-3">16 vCPU</td>
           <td class="px-4 py-3">200 GiB</td>
           <td class="px-4 py-3">~150 GIB</td>
-          <td class="px-4 py-3">Nebius H100 instances</td>
+          <td class="px-4 py-3">Nebius H100x1 instances</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">h100-8</td>
+          <td class="px-4 py-3" title="h100-8">$35.20</td>
+          <td class="px-4 py-3" title="h100-8s">$20.00</td>
+          <td class="px-4 py-3">1x H100 80 GB</td>
+          <td class="px-4 py-3">16 vCPU</td>
+          <td class="px-4 py-3">200 GiB</td>
+          <td class="px-4 py-3">~150 GIB</td>
+          <td class="px-4 py-3">Nebius H100x8 instances</td>
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h200-1</td>
-          <td class="px-4 py-3" title="h200-1">$3.80</td>
+          <td class="px-4 py-3" title="h200-1">$5.20</td>
+          <td class="px-4 py-3" title="h200-1s">$2.80</td>
           <td class="px-4 py-3">1x H200 141 GB</td>
           <td class="px-4 py-3">16 vCPU</td>
           <td class="px-4 py-3">200 GIB</td>
           <td class="px-4 py-3">~150 GIB</td>
-          <td class="px-4 py-3">Nebius H200 instances</td>
+          <td class="px-4 py-3">Nebius H200x1 instances</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">h200-8</td>
+          <td class="px-4 py-3" title="h200-8">$41.60</td>
+          <td class="px-4 py-3" title="h200-8s">$22.40</td>
+          <td class="px-4 py-3">1x H200 141 GB</td>
+          <td class="px-4 py-3">16 vCPU</td>
+          <td class="px-4 py-3">200 GIB</td>
+          <td class="px-4 py-3">~150 GIB</td>
+          <td class="px-4 py-3">Nebius H200x8 instances</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">l40s-1-16d</td>
+          <td class="px-4 py-3" title="l40s-1-16d">$2.10</td>
+          <td class="px-4 py-3" title="l40s-1-16ds">$1.20</td>
+          <td class="px-4 py-3">1x H200 141 GB</td>
+          <td class="px-4 py-3">16 vCPU</td>
+          <td class="px-4 py-3">96 GIB</td>
+          <td class="px-4 py-3">~150 GIB</td>
+          <td class="px-4 py-3">Nebius L40s x1 instances with AMD CPUs</td>
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">shell</td>
           <td class="px-4 py-3" title="shell">$0.30</td>
+          <td class="px-4 py-3">N/A</td>
           <td class="px-4 py-3">-</td>
           <td class="px-4 py-3">4 vCPU</td>
           <td class="px-4 py-3">16 GB</td>
@@ -83,7 +117,7 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
         <tr>
           <th class="px-4 py-3">Pool name</th>
           <th class="px-4 py-3">Price per hour</th>
-          <th class="px-4 py-3"><a href="#anycloud-spot-note" class="underline decoration-dotted underline-offset-2">Spot price*</a></th>
+          <th class="px-4 py-3"><a href="#spot-anote" class="underline decoration-dotted underline-offset-2">Spot price*</a></th>
           <th class="px-4 py-3">GPU</th>
           <th class="px-4 py-3">CPU (minimum)</th>
           <th class="px-4 py-3">RAM (minimum)</th>
@@ -92,54 +126,54 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
       </thead>
       <tbody>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-a100-1</td>
-          <td class="px-4 py-3" title="anycloud-a100-1">$1.65</td>
-          <td class="px-4 py-3" title="anycloud-a100-1-spot">$0.60</td>
+          <td class="px-4 py-3 font-medium">a100-1a</td>
+          <td class="px-4 py-3" title="a100-1a">$1.65</td>
+          <td class="px-4 py-3" title="a100-1as">$0.60</td>
           <td class="px-4 py-3">1x A100 80 GB</td>
           <td class="px-4 py-3">12 vCPU</td>
           <td class="px-4 py-3">80 GB</td>
           <td class="px-4 py-3">200 GB</td>
         </tr>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-a100-8</td>
-          <td class="px-4 py-3" title="anycloud-a100-8">$13.20</td>
-          <td class="px-4 py-3" title="anycloud-a100-8-spot">$4.80</td>
+          <td class="px-4 py-3 font-medium">a100-8a</td>
+          <td class="px-4 py-3" title="a100-8a">$13.20</td>
+          <td class="px-4 py-3" title="a100-8as">$4.80</td>
           <td class="px-4 py-3">8x A100 80 GB</td>
           <td class="px-4 py-3">96 vCPU</td>
           <td class="px-4 py-3">960 GB</td>
           <td class="px-4 py-3">1000 GB</td>
         </tr>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-b200-1</td>
-          <td class="px-4 py-3" title="anycloud-b200-1">$6.00</td>
-          <td class="px-4 py-3" title="anycloud-b200-1-spot">$3.20</td>
+          <td class="px-4 py-3 font-medium">b200-1a</td>
+          <td class="px-4 py-3" title="b200-1a">$6.00</td>
+          <td class="px-4 py-3" title="b200-1as">$3.20</td>
           <td class="px-4 py-3">1x B200 180 GB</td>
           <td class="px-4 py-3">12 vCPU</td>
           <td class="px-4 py-3">120 GB</td>
           <td class="px-4 py-3">400 GB</td>
         </tr>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-b200-8</td>
-          <td class="px-4 py-3" title="anycloud-b200-8">$48.00</td>
-          <td class="px-4 py-3" title="anycloud-b200-8-spot">$10.80</td>
+          <td class="px-4 py-3 font-medium">b200-8a</td>
+          <td class="px-4 py-3" title="b200-8a">$48.00</td>
+          <td class="px-4 py-3" title="b200-8as">$10.80</td>
           <td class="px-4 py-3">8x B200 180 GB</td>
           <td class="px-4 py-3">96 vCPU</td>
           <td class="px-4 py-3">960 GB</td>
           <td class="px-4 py-3">1000 GB</td>
         </tr>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-h100-1</td>
-          <td class="px-4 py-3" title="anycloud-h100-1">$3.20</td>
-          <td class="px-4 py-3" title="anycloud-h100-1-spot">$1.35</td>
+          <td class="px-4 py-3 font-medium">h100-1a</td>
+          <td class="px-4 py-3" title="h100-1a">$3.20</td>
+          <td class="px-4 py-3" title="h100-1as">$1.35</td>
           <td class="px-4 py-3">1x H100 80 GB</td>
           <td class="px-4 py-3">12 vCPU</td>
           <td class="px-4 py-3">120 GB</td>
           <td class="px-4 py-3">400 GB</td>
         </tr>
         <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">anycloud-h100-8</td>
-          <td class="px-4 py-3" title="anycloud-h100-8">$26.40</td>
-          <td class="px-4 py-3" title="anycloud-h100-8-spot">$10.80</td>
+          <td class="px-4 py-3 font-medium">h100-8a</td>
+          <td class="px-4 py-3" title="h100-8a">$26.40</td>
+          <td class="px-4 py-3" title="h100-8as">$10.80</td>
           <td class="px-4 py-3">8x H100 80 GB</td>
           <td class="px-4 py-3">96 vCPU</td>
           <td class="px-4 py-3">960 GB</td>
@@ -148,7 +182,7 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
       </tbody>
     </table>
   </div>
-  <p id="anycloud-spot-note" class="mt-3 text-sm text-color-[#575858]">* Use pool name *-spot to access spot pool.</p>
+  <p id="spot-anote" class="mt-3 text-sm text-color-[#575858]">* Use pool name and suffix <code>s</code> (e.g. <code>h100-1as</code>) to access spot pool.</p>
 </div>
 
 <div class="mb-12 rounded-xl border border-[#d8d8d8] bg-[#f7f9fb] p-6">
