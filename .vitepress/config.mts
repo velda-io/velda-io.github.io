@@ -21,6 +21,7 @@ export default defineConfig({
     nav: [
       { text: 'Product', items: [
         { text: 'Run Jobs', link: '/serverless-gpu' },
+        { text: 'Robotics & Physical AI', link: '/robotics-physical-ai' },
         { text: 'Workflow', link: '/workflow' },
         { text: 'Slurm Alternative', link: '/slurm-alternative' },
       ]},

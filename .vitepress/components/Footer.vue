@@ -23,7 +23,6 @@
           <li><a href="/privacy">Privacy notice</a></li>
           <li><a href="/eula">Terms of Service</a></li>
           <li><a href="/security">Security Notice</a></li>
-          <li><a href="/sitemap">Sitemap</a></li>
         </ul>
       </div>
 
