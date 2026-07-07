@@ -2,7 +2,7 @@
 layout: page
 sidebar: false
 title: "Pricing"
-description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-hosting options."
+description: "Pay-as-you-go GPU pricing."
 ---
 
 :::raw
@@ -104,85 +104,6 @@ description: "Pay-as-you-go GPU pricing with separate AnyCloud rates and self-ho
       </tbody>
     </table>
   </div>
-</div>
-
-<div class="mb-12">
-  <h2 class="text-3xl font-bold mb-4">AnyCloud pools</h2>
-  <p class="mb-4 text-color-[#575858]">Use AnyCloud pools from our partner network for more GPU options and availability. Networking is included.</p>
-  <p class="mb-4 text-color-[#575858]">We only source from secure cloud providers, including Nebius, Crusoe, Verda, Massed Compute. </p>
-  <p class="mb-4 text-color-[#575858]">The CPU, Memory and ephemeral disk may vary by provider, with a minimum guaranteed.</p>
-  <div class="overflow-x-auto rounded-xl border border-[#d8d8d8]">
-    <table class="w-full text-left text-sm">
-      <thead class="bg-[#f4f6f8] text-[#222]">
-        <tr>
-          <th class="px-4 py-3">Pool name</th>
-          <th class="px-4 py-3">Price per hour</th>
-          <th class="px-4 py-3"><a href="#spot-anote" class="underline decoration-dotted underline-offset-2">Spot price*</a></th>
-          <th class="px-4 py-3">GPU</th>
-          <th class="px-4 py-3">CPU (minimum)</th>
-          <th class="px-4 py-3">RAM (minimum)</th>
-          <th class="px-4 py-3">Disk (minimum)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">a100-1a</td>
-          <td class="px-4 py-3" title="a100-1a">$1.65</td>
-          <td class="px-4 py-3" title="a100-1as">$0.60</td>
-          <td class="px-4 py-3">1x A100 80 GB</td>
-          <td class="px-4 py-3">12 vCPU</td>
-          <td class="px-4 py-3">80 GB</td>
-          <td class="px-4 py-3">200 GB</td>
-        </tr>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">a100-8a</td>
-          <td class="px-4 py-3" title="a100-8a">$13.20</td>
-          <td class="px-4 py-3" title="a100-8as">$4.80</td>
-          <td class="px-4 py-3">8x A100 80 GB</td>
-          <td class="px-4 py-3">96 vCPU</td>
-          <td class="px-4 py-3">960 GB</td>
-          <td class="px-4 py-3">1000 GB</td>
-        </tr>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">b200-1a</td>
-          <td class="px-4 py-3" title="b200-1a">$6.00</td>
-          <td class="px-4 py-3" title="b200-1as">$3.20</td>
-          <td class="px-4 py-3">1x B200 180 GB</td>
-          <td class="px-4 py-3">12 vCPU</td>
-          <td class="px-4 py-3">120 GB</td>
-          <td class="px-4 py-3">400 GB</td>
-        </tr>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">b200-8a</td>
-          <td class="px-4 py-3" title="b200-8a">$48.00</td>
-          <td class="px-4 py-3" title="b200-8as">$10.80</td>
-          <td class="px-4 py-3">8x B200 180 GB</td>
-          <td class="px-4 py-3">96 vCPU</td>
-          <td class="px-4 py-3">960 GB</td>
-          <td class="px-4 py-3">1000 GB</td>
-        </tr>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">h100-1a</td>
-          <td class="px-4 py-3" title="h100-1a">$3.20</td>
-          <td class="px-4 py-3" title="h100-1as">$1.35</td>
-          <td class="px-4 py-3">1x H100 80 GB</td>
-          <td class="px-4 py-3">12 vCPU</td>
-          <td class="px-4 py-3">120 GB</td>
-          <td class="px-4 py-3">400 GB</td>
-        </tr>
-        <tr class="border-t border-[#ececec]">
-          <td class="px-4 py-3 font-medium">h100-8a</td>
-          <td class="px-4 py-3" title="h100-8a">$26.40</td>
-          <td class="px-4 py-3" title="h100-8as">$10.80</td>
-          <td class="px-4 py-3">8x H100 80 GB</td>
-          <td class="px-4 py-3">96 vCPU</td>
-          <td class="px-4 py-3">960 GB</td>
-          <td class="px-4 py-3">1000 GB</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p id="spot-anote" class="mt-3 text-sm text-color-[#575858]">* Use pool name and suffix <code>s</code> (e.g. <code>h100-1as</code>) to access spot pool.</p>
 </div>
 
 <div class="mb-12 rounded-xl border border-[#d8d8d8] bg-[#f7f9fb] p-6">
