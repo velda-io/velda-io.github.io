@@ -55,10 +55,10 @@ description: "Pay-as-you-go GPU pricing."
           <td class="px-4 py-3 font-medium">h100-8</td>
           <td class="px-4 py-3" title="h100-8">$35.20</td>
           <td class="px-4 py-3" title="h100-8s">$20.00</td>
-          <td class="px-4 py-3">1x H100 80 GB</td>
-          <td class="px-4 py-3">16 vCPU</td>
-          <td class="px-4 py-3">200 GiB</td>
-          <td class="px-4 py-3">~150 GIB</td>
+          <td class="px-4 py-3">8x H100 80 GB</td>
+          <td class="px-4 py-3">128 vCPU</td>
+          <td class="px-4 py-3">1600 GiB</td>
+          <td class="px-4 py-3">1 TIB</td>
           <td class="px-4 py-3">Nebius H100x8 instances</td>
         </tr>
         <tr class="border-t border-[#ececec]">
@@ -75,17 +75,17 @@ description: "Pay-as-you-go GPU pricing."
           <td class="px-4 py-3 font-medium">h200-8</td>
           <td class="px-4 py-3" title="h200-8">$41.60</td>
           <td class="px-4 py-3" title="h200-8s">$22.40</td>
-          <td class="px-4 py-3">1x H200 141 GB</td>
-          <td class="px-4 py-3">16 vCPU</td>
-          <td class="px-4 py-3">200 GIB</td>
-          <td class="px-4 py-3">~150 GIB</td>
+          <td class="px-4 py-3">8x H200 141 GB</td>
+          <td class="px-4 py-3">128 vCPU</td>
+          <td class="px-4 py-3">1600 GIB</td>
+          <td class="px-4 py-3">~1 TIB</td>
           <td class="px-4 py-3">Nebius H200x8 instances</td>
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">l40s-1-16d</td>
           <td class="px-4 py-3" title="l40s-1-16d">$2.10</td>
           <td class="px-4 py-3" title="l40s-1-16ds">$1.20</td>
-          <td class="px-4 py-3">1x H200 141 GB</td>
+          <td class="px-4 py-3">1x L40s 48GB</td>
           <td class="px-4 py-3">16 vCPU</td>
           <td class="px-4 py-3">96 GIB</td>
           <td class="px-4 py-3">~150 GIB</td>
