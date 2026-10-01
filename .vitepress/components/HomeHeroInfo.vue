@@ -2,7 +2,7 @@
   <div class="home-hero">
     <div class="hero-content">
       <h1 class="hero-headline">
-        <span class="highlight">{{ highlightText }}</span> {{ headlinePart1 }} <br/>{{ headlinePart2 }}
+        <span class="highlight">{{ highlightText }}</span>{{ headlinePart1 ? ` ${headlinePart1}` : '' }}{{ headlinePart2 ? ` ${headlinePart2}` : '' }}
       </h1>
       <p class="hero-tagline">
         {{ tagline }}
@@ -38,11 +38,11 @@ withDefaults(defineProps<{
   secondaryCtaText?: string
   secondaryCtaHref?: string
 }>(), {
-  highlightText: 'Serverless GPUs',
-  headlinePart1: 'that',
-  headlinePart2: 'developers love',
-  tagline: 'Run training and batch inference jobs without overhead of container.',
-  subline: 'Launch distributed AI and batch jobs on any cloud directly from your dev environment. No Docker images, no Kubernetes manifests: just add a command prefix.',
+  highlightText: 'Serverless',
+  headlinePart1: 'GPU Cloud',
+  headlinePart2: '',
+  tagline: 'Run training and inference jobs without wasting GPUs on idle time or setup.',
+  subline: 'Avoid the overhead of containers and cluster management. Pay only for compute when your jobs run, not during development or between workloads.',
   codeSnippet: 'vrun -P h200-1 python train.py',
   showCode: true,
   showCtas: true,

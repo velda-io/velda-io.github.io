@@ -2,15 +2,15 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: Serverless GPU for AI Workloads and Batch Jobs
+title: Serverless GPU Cloud
 # SEO and LinkedIn/Social media preview metadata
 head:
   - - meta
     - name: description
-      content: Velda - Run GPU training and batch jobs instantly from your dev environment, no code change or manifest.
+      content: Velda - Serverless GPU Cloud without overhead of containers or cluster management. Run AI workloads instantly from your dev environment.
   - - meta
     - property: og:title
-      content: VELDA - Scale to cloud like your local machine
+      content: VELDA - Serverless GPU Cloud
   - - meta
     - property: og:image
       content: https://velda.io/og-preview.png
@@ -25,10 +25,10 @@ head:
       content: summary_large_image
   - - meta
     - name: twitter:title
-      content: VELDA - Serverless GPU for AI Workloads and Batch Jobs
+      content: VELDA - Serverless GPU Cloud
   - - meta
     - name: twitter:description
-      content: Velda - Run GPU training and batch jobs instantly from your dev environment, no code change or manifest.
+      content: Velda - Serverless GPU Cloud without overhead of containers or cluster management. Run AI workloads instantly from your dev environment.
   - - meta
     - name: twitter:image
       content: https://velda.io/logos.png

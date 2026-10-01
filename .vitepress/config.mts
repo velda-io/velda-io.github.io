@@ -4,7 +4,7 @@ import { blogPosts } from './data/blogPosts';
 
 export default defineConfig({
   title: "Velda",
-  description: "Cloud development that actually feels local. Run AI workloads, GPU clusters, and data processing without Kubernetes complexity.",
+  description: "Serverless GPU Cloud without overhead of containers or cluster management. Run AI workloads and batch jobs instantly from your dev environment.",
   sitemap: {
     hostname: 'https://velda.io'
   },
