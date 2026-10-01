@@ -43,8 +43,8 @@ description: "Pay-as-you-go GPU pricing."
       <tbody>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h100-1</td>
-          <td class="px-4 py-3" title="h100-1">$4.40</td>
-          <td class="px-4 py-3" title="h100-1s">$2.50</td>
+          <td class="px-4 py-3" title="h100-1">$4.90</td>
+          <td class="px-4 py-3" title="h100-1s">$3.30</td>
           <td class="px-4 py-3">1x H100 80 GB</td>
           <td class="px-4 py-3">16 vCPU</td>
           <td class="px-4 py-3">200 GiB</td>
@@ -53,8 +53,8 @@ description: "Pay-as-you-go GPU pricing."
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h100-8</td>
-          <td class="px-4 py-3" title="h100-8">$35.20</td>
-          <td class="px-4 py-3" title="h100-8s">$20.00</td>
+          <td class="px-4 py-3" title="h100-8">$39.20</td>
+          <td class="px-4 py-3" title="h100-8s">$26.40</td>
           <td class="px-4 py-3">8x H100 80 GB</td>
           <td class="px-4 py-3">128 vCPU</td>
           <td class="px-4 py-3">1600 GiB</td>
@@ -63,8 +63,8 @@ description: "Pay-as-you-go GPU pricing."
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h200-1</td>
-          <td class="px-4 py-3" title="h200-1">$5.20</td>
-          <td class="px-4 py-3" title="h200-1s">$2.80</td>
+          <td class="px-4 py-3" title="h200-1">$5.90</td>
+          <td class="px-4 py-3" title="h200-1s">$3.80</td>
           <td class="px-4 py-3">1x H200 141 GB</td>
           <td class="px-4 py-3">16 vCPU</td>
           <td class="px-4 py-3">200 GIB</td>
@@ -73,8 +73,8 @@ description: "Pay-as-you-go GPU pricing."
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h200-8</td>
-          <td class="px-4 py-3" title="h200-8">$41.60</td>
-          <td class="px-4 py-3" title="h200-8s">$22.40</td>
+          <td class="px-4 py-3" title="h200-8">$47.20</td>
+          <td class="px-4 py-3" title="h200-8s">$30.40</td>
           <td class="px-4 py-3">8x H200 141 GB</td>
           <td class="px-4 py-3">128 vCPU</td>
           <td class="px-4 py-3">1600 GIB</td>
@@ -93,13 +93,43 @@ description: "Pay-as-you-go GPU pricing."
         </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">shell</td>
-          <td class="px-4 py-3" title="shell">$0.30</td>
+          <td class="px-4 py-3" title="shell">$0.40</td>
           <td class="px-4 py-3">N/A</td>
           <td class="px-4 py-3">-</td>
           <td class="px-4 py-3">4 vCPU</td>
           <td class="px-4 py-3">16 GB</td>
           <td class="px-4 py-3">~50 GIB</td>
           <td class="px-4 py-3">Nebius CPU instance. Default worker when you connect.</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">cpu-16</td>
+          <td class="px-4 py-3" title="cpu-16">$0.70</td>
+          <td class="px-4 py-3">N/A</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">16 vCPU</td>
+          <td class="px-4 py-3">64 GB</td>
+          <td class="px-4 py-3">~100 GIB</td>
+          <td class="px-4 py-3">Nebius CPU-16 instances</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">cpu-32</td>
+          <td class="px-4 py-3" title="cpu-32">$1.40</td>
+          <td class="px-4 py-3">N/A</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">32 vCPU</td>
+          <td class="px-4 py-3">128 GB</td>
+          <td class="px-4 py-3">~200 GIB</td>
+          <td class="px-4 py-3">Nebius CPU-32 instances</td>
+        </tr>
+        <tr class="border-t border-[#ececec]">
+          <td class="px-4 py-3 font-medium">cpu-64</td>
+          <td class="px-4 py-3" title="cpu-64">$2.80</td>
+          <td class="px-4 py-3">N/A</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">64 vCPU</td>
+          <td class="px-4 py-3">256 GB</td>
+          <td class="px-4 py-3">~400 GIB</td>
+          <td class="px-4 py-3">Nebius CPU-64 instances</td>
         </tr>
       </tbody>
     </table>
