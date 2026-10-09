@@ -11,7 +11,7 @@
       <div class="col-span-1 md:col-span-2 lg:col-span-2">
         <ul class="space-y-3">
           <li><a href="/comparison">Plan & Pricing</a></li>
-          <li><a href="/slurm-alternative">Velda VS Slurm</a></li>
+          <li><a href="/price-estimator">Price Estimator</a></li>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="https://docs.velda.io">Documentation</a></li>
         </ul>
