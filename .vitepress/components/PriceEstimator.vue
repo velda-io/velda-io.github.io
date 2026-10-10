@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div class="px-6 flex flex-col justify-center mx-auto w-full max-w-[var(--vp-layout-max-width)]">
+      <div class="flex flex-col justify-center mx-auto w-full max-w-[var(--vp-layout-max-width)]">
         <div class="space-y-8">
           <!-- Node Type Selection -->
           <div class="rounded-xl border border-[#d8d8d8] bg-white p-6">
@@ -198,7 +198,7 @@
               </div>
             </div>
             <div v-else class="text-sm text-color-[#575858]">
-              Assuming 100% down payment (no financing)
+		Payment in full
             </div>
           </div>
 
@@ -256,8 +256,8 @@
               </button>
             </div>
 
-            <!-- Compact View -->
-            <div v-if="!expandedCashFlow" class="overflow-x-auto">
+            <!-- Wide Screen View (Years as Columns) -->
+            <div class="hidden lg:block overflow-x-auto">
               <div class="flex gap-2 pb-2">
                 <div class="flex-shrink-0 w-32 font-medium text-sm">Year</div>
                 <div v-for="year in cashFlowTable" :key="year.year"
@@ -288,38 +288,41 @@
               </div>
             </div>
 
-            <!-- Expanded View -->
-            <div v-else class="overflow-x-auto">
+            <!-- Narrow/Medium Screen View (Years as Rows) -->
+            <div class="block lg:hidden overflow-x-auto">
               <table class="w-full text-sm">
                 <thead class="bg-[#f4f6f8] text-[#222]">
                   <tr>
-                    <th class="px-4 py-3 text-left">Year</th>
-                    <th class="px-4 py-3 text-right">Financing</th>
-                    <th class="px-4 py-3 text-right">Electric</th>
-                    <th class="px-4 py-3 text-right">Fixed Costs</th>
-                    <th class="px-4 py-3 text-right">Maintenance</th>
-                    <th class="px-4 py-3 text-right">Residual</th>
-                    <th class="px-4 py-3 text-right font-bold">Total</th>
+                    <th class="px-3 py-3 text-left">Year</th>
+                    <th class="px-3 py-3 text-right font-bold">Total</th>
+                    <th class="px-3 py-3 text-right text-xs">$/GPU/h</th>
+                    <th v-if="expandedCashFlow" class="px-3 py-3 text-right">Financing</th>
+                    <th v-if="expandedCashFlow" class="px-3 py-3 text-right">Electric</th>
+                    <th v-if="expandedCashFlow" class="px-3 py-3 text-right">Fixed</th>
+                    <th v-if="expandedCashFlow" class="px-3 py-3 text-right">Maint.</th>
+                    <th v-if="expandedCashFlow" class="px-3 py-3 text-right">Residual</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="year in cashFlowTable" :key="year.year" class="border-t border-[#ececec]">
-                    <td class="px-4 py-3 font-medium">{{ year.year === 0 ? 'Year 0 (Down)' : `Year ${year.year}` }}</td>
-                    <td class="px-4 py-3 text-right">{{ formatCurrency(year.financing) }}</td>
-                    <td class="px-4 py-3 text-right">{{ formatCurrency(year.electric) }}</td>
-                    <td class="px-4 py-3 text-right">{{ formatCurrency(year.fixed) }}</td>
-                    <td class="px-4 py-3 text-right">{{ formatCurrency(year.maintenance) }}</td>
-                    <td class="px-4 py-3 text-right" :class="year.residual < 0 ? 'text-green-600' : ''">{{ year.residual !== 0 ? formatCurrency(year.residual) : '-' }}</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(year.total) }}</td>
+                    <td class="px-3 py-3 font-medium whitespace-nowrap">{{ year.year === 0 ? 'Y0 (Down)' : `Year ${year.year}` }}</td>
+                    <td class="px-3 py-3 text-right font-bold">{{ formatCurrency(year.total) }}</td>
+                    <td class="px-3 py-3 text-right text-xs text-color-[#575858]">${{ formatDecimal(year.total / (8760 * numCards), 2) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right">{{ formatCurrency(year.financing) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right">{{ formatCurrency(year.electric) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right">{{ formatCurrency(year.fixed) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right">{{ formatCurrency(year.maintenance) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right" :class="year.residual < 0 ? 'text-green-600' : ''">{{ year.residual !== 0 ? formatCurrency(year.residual) : '-' }}</td>
                   </tr>
                   <tr class="border-t-2 border-black bg-[#f4f6f8]">
-                    <td class="px-4 py-3 font-bold">Total</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(totalFinancingCost) }}</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(totalElectricCost) }}</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(totalFixedCost) }}</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(totalMaintenanceCost) }}</td>
-                    <td class="px-4 py-3 text-right font-bold text-green-600">{{ formatCurrency(-residualValue) }}</td>
-                    <td class="px-4 py-3 text-right font-bold">{{ formatCurrency(totalOwnershipCost) }}</td>
+                    <td class="px-3 py-3 font-bold">Total</td>
+                    <td class="px-3 py-3 text-right font-bold">{{ formatCurrency(totalOwnershipCost) }}</td>
+                    <td class="px-3 py-3 text-right text-xs font-bold text-color-[#575858]">${{ formatDecimal(effectiveRentPerHour, 2) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right font-bold">{{ formatCurrency(totalFinancingCost) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right font-bold">{{ formatCurrency(totalElectricCost) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right font-bold">{{ formatCurrency(totalFixedCost) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right font-bold">{{ formatCurrency(totalMaintenanceCost) }}</td>
+                    <td v-if="expandedCashFlow" class="px-3 py-3 text-right font-bold text-green-600">{{ formatCurrency(-residualValue) }}</td>
                   </tr>
                 </tbody>
               </table>
