@@ -1,11 +1,27 @@
 ---
 layout: page
 sidebar: false
-title: "Serverless GPU Compute"
-description: "Ship ML training, batch inference, and model services faster with Velda's environment-first serverless GPU platform."
-keywords: ["serverless GPU", "GPU compute", "ML infrastructure", "distributed training", "cloud GPU"]
+title: "Serverless GPU for ML Training | Distributed Training on H100, H200, B300"
+description: "Train machine learning models faster with serverless GPU infrastructure. Distributed training on NVIDIA H100, H200, and B300 GPUs. PyTorch, JAX, Ray support. No Kubernetes required."
+keywords: ["ML training GPU", "machine learning training", "distributed training", "serverless GPU", "H100 training", "H200 GPU", "B300 GPU", "PyTorch training", "GPU cloud", "AI training infrastructure", "LLM training", "model training"]
 image: "https://velda.io/og-preview.png"
 markdownStyles: false
+head:
+  - - meta
+    - name: description
+      content: Train ML models on serverless GPU infrastructure with H100, H200, and B300 GPUs. Distributed training, batch inference, and model serving without Kubernetes complexity.
+  - - meta
+    - property: og:title
+      content: Serverless GPU for ML Training | H100, H200, B300 | Velda
+  - - meta
+    - property: og:description
+      content: Accelerate ML training with distributed GPU compute. PyTorch, JAX, Ray support on H100/H200/B300. No container builds or Kubernetes required.
+  - - meta
+    - name: keywords
+      content: ML training GPU, distributed training, H100 training, H200 GPU, B300 Blackwell, PyTorch GPU, serverless GPU, AI training, LLM training, model training cloud
+  - - link
+    - rel: canonical
+      href: https://velda.io/serverless-gpu
 ---
 
 <script setup>
@@ -19,21 +35,17 @@ import HomeHeroInfo from './.vitepress/components/HomeHeroInfo.vue'
 <div class="mx-auto max-w-6xl px-4 pb-18 sm:px-6 md:px-16">
   <section class="mb-18 mt-2">
     <div class="mx-auto mb-8 max-w-3xl text-center">
-      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Built for teams shipping models every week</h2>
-      <p class="text-base sm:text-lg">Everything you need to go from experiment to production inference without switching platforms.</p>
+      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Built for ML training at scale</h2>
+      <p class="text-base sm:text-lg">Train models faster with distributed GPU compute. From single-GPU experiments to multi-node training runs on B300, H200, and H100 GPUs.</p>
     </div>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg-soft)] p-5">
         <div class="mb-2.5 text-2xl font-bold text-[var(--vp-c-brand-1)]">1 command</div>
-        <p class="m-0 text-base">Scale any local command to cloud GPUs with <code class="vrun">vrun</code>.</p>
+        <p class="m-0 text-base">Scale any local training command to cloud GPUs with <code class="vrun">vrun</code>.</p>
       </div>
       <div class="rounded-xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg-soft)] p-5">
-        <div class="mb-2.5 text-2xl font-bold text-[var(--vp-c-brand-1)]">H100 / H200</div>
-        <p class="m-0 text-base">High-end accelerators available on demand for training and evaluation.</p>
-      </div>
-      <div class="rounded-xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg-soft)] p-5">
-        <div class="mb-2.5 text-2xl font-bold text-[var(--vp-c-brand-1)]">Multi-cloud</div>
-        <p class="m-0 text-base">Run on AWS, GCP, Azure, or your own infrastructure from one workflow.</p>
+        <div class="mb-2.5 text-2xl font-bold text-[var(--vp-c-brand-1)]">B300 / H200 / H100</div>
+        <p class="m-0 text-base">Latest NVIDIA GPUs available for ML training and inference. Reserve capacity for guaranteed access.</p>
       </div>
       <div class="rounded-xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg-soft)] p-5">
         <div class="mb-2.5 text-2xl font-bold text-[var(--vp-c-brand-1)]">No manifests</div>
@@ -43,8 +55,8 @@ import HomeHeroInfo from './.vitepress/components/HomeHeroInfo.vue'
   </section>
   <section class="mb-18">
     <div class="mx-auto mb-8 max-w-3xl text-center">
-      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Why ML teams pick Velda</h2>
-      <p class="text-base sm:text-lg">Keep developer velocity high while workloads scale from single-GPU prototyping to distributed training.</p>
+      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Why ML teams choose Velda for training</h2>
+      <p class="text-base sm:text-lg">Accelerate your ML training workflow from single-GPU experiments to distributed multi-node training runs without infrastructure complexity.</p>
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       <article class="rounded-xl border border-[var(--vp-c-divider)] bg-white p-5.5 shadow-[0_6px_24px_rgba(17,24,39,0.04)]">
@@ -96,9 +108,12 @@ import HomeHeroInfo from './.vitepress/components/HomeHeroInfo.vue'
       </div>
     </div>
     <div class="overflow-x-auto rounded-xl bg-slate-900 px-4.5 py-4 text-slate-200">
-      <pre class="m-0"><code class="text-[15px] leading-[1.7]">$ vrun -P h200-1 python train.py --dataset imagenet
-$ vbatch -N 16 -- python pretrain.py --epochs 90
-$ vrun --service --port 8000 python serve.py</code></pre>
+      <pre class="m-0"><code class="text-[15px] leading-[1.7] terminal-code"><span class="comment"># Train on single H200 GPU</span>
+$ vrun -P h200-1 python train.py --model llama3 --batch-size 32
+<span class="comment"># Distributed training across 8 B300 GPUs</span>
+$ vbatch -N 8 -P b300-8 -- torchrun train.py --distributed
+<span class="comment"># Fine-tune with H200</span>
+$ vrun -P h200-1 python finetune.py --model gpt4 --data custom.json</code></pre>
     </div>
   </section>
   <div class="bottombg">
@@ -141,17 +156,10 @@ $ vrun --service --port 8000 python serve.py</code></pre>
             <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-center text-[15px]">✅</td>
           </tr>
           <tr>
-            <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-left text-[15px]">Interactive cloud dev environment</td>
-            <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-center text-[15px]">❌</td>
-            <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-center text-[15px]">❌</td>
-            <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-center text-[15px]">❌</td>
-            <td class="border-b border-[var(--vp-c-divider)] px-3.5 py-3 text-center text-[15px]">✅</td>
-          </tr>
-          <tr>
-            <td class="px-3.5 py-3 text-left text-[15px]">Multi-cloud scheduling with BYOC</td>
+            <td class="px-3.5 py-3 text-left text-[15px]">Interactive cloud dev environment</td>
             <td class="px-3.5 py-3 text-center text-[15px]">❌</td>
             <td class="px-3.5 py-3 text-center text-[15px]">❌</td>
-            <td class="px-3.5 py-3 text-center text-[15px]">AWS-only</td>
+            <td class="px-3.5 py-3 text-center text-[15px]">❌</td>
             <td class="px-3.5 py-3 text-center text-[15px]">✅</td>
           </tr>
         </tbody>
@@ -171,11 +179,11 @@ $ vrun --service --port 8000 python serve.py</code></pre>
       </div>
       <div class="flex w-full flex-col justify-between gap-6 bg-white/40 p-10">
         <div class="gap-5">
-          <h2 class="mb-2 text-3xl font-bold">Enterprise</h2>
-          <p class="m-0">Self hosted or dedicated infrastructure, premium support for organizations of any size.</p>
+          <h2 class="mb-2 text-3xl font-bold">Reserve GPU Capacity</h2>
+          <p class="m-0">Secure B300, H200, and H100 capacity with flexible terms. Get spot credits for unused capacity.</p>
         </div>
         <div>
-          <CtaButton href="/book" variant="secondary">Book a demo</CtaButton>
+          <CtaButton href="/reserve" variant="secondary">Reserve GPUs</CtaButton>
         </div>
       </div>
     </div>
@@ -205,6 +213,11 @@ $ vrun --service --port 8000 python serve.py</code></pre>
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+}
+
+.terminal-code .comment {
+  color: #6b7280;
+  font-style: normal;
 }
 </style>
 :::
