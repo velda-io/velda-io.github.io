@@ -8,11 +8,16 @@
     <div class="form-header">
       <h1>Reserve GPU Capacity</h1>
       <p class="form-description">
-        Fill out the form below to reserve capacity, or
+        Reserve <strong>NVIDIA B300, GB300, H200, or H100 GPU capacity</strong> for your AI training and inference workloads.
+        Fill out the form below, or
         <a href="https://calendly.com/velda-io/30min" target="_blank" rel="noopener" class="inline-link">book a meeting</a>
         directly with our team.
-	<br/>
-	Reserve capacity with Velda, you'll automatically get spot credits for the compute that you don't use.
+      </p>
+      <p class="form-description">
+        <strong>Get spot credits automatically</strong> for reserved compute you don't use. Flexible terms from 1 month to 5 years.
+      </p>
+      <p class="form-description">
+        <a href="/b300-gpu-reservation" class="inline-link">Learn more about B300 Blackwell GPUs →</a>
       </p>
     </div>
 

@@ -24,8 +24,8 @@ description: "Pay-as-you-go GPU pricing."
 </div>
 
 <div class="mb-12">
-  <h2 class="text-3xl font-bold mb-4">Standard pools</h2>
-  <p class="mb-4 text-color-[#575858]">Standard Pools from our preferred provider. Co-locate in the same data center as your storage, faster job launch and better IO performance.</p>
+  <h2 class="text-3xl font-bold mb-4">GPU Pricing</h2>
+  <p class="mb-4 text-color-[#575858]">Pay-as-you-go on-demand pricing and reserved capacity options. All prices include GPU, CPU, memory, and ephemeral disk.</p>
   <div class="overflow-x-auto rounded-xl border border-[#d8d8d8]">
     <table class="w-full text-left text-sm">
       <thead class="bg-[#f4f6f8] text-[#222]">
@@ -41,6 +41,33 @@ description: "Pay-as-you-go GPU pricing."
         </tr>
       </thead>
       <tbody>
+        <tr class="border-t border-[#ececec] bg-[#f9f9ff]">
+          <td class="px-4 py-3 font-medium">b300</td>
+          <td class="px-4 py-3" colspan="2"><a href="/reserve" class="text-[#0b63f6] font-semibold hover:underline">Contact for pricing</a></td>
+          <td class="px-4 py-3">B300 192GB HBM3e</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">NVIDIA Blackwell B300. <a href="/b300-gpu-reservation" class="text-[#7b5cff] hover:underline">Learn more</a></td>
+        </tr>
+        <tr class="border-t border-[#ececec] bg-[#f9f9ff]">
+          <td class="px-4 py-3 font-medium">gb300</td>
+          <td class="px-4 py-3" colspan="2"><a href="/reserve" class="text-[#0b63f6] font-semibold hover:underline">Contact for pricing</a></td>
+          <td class="px-4 py-3">GB300 192GB HBM3e</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">NVIDIA Blackwell GB300. Reserve capacity</td>
+        </tr>
+        <tr class="border-t border-[#ececec] bg-[#f9f9ff]">
+          <td class="px-4 py-3 font-medium">b200</td>
+          <td class="px-4 py-3" colspan="2"><a href="/reserve" class="text-[#0b63f6] font-semibold hover:underline">Contact for pricing</a></td>
+          <td class="px-4 py-3">B200 192GB HBM3e</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">-</td>
+          <td class="px-4 py-3">NVIDIA Blackwell B200. Reserve capacity</td>
+        </tr>
         <tr class="border-t border-[#ececec]">
           <td class="px-4 py-3 font-medium">h100-1</td>
           <td class="px-4 py-3" title="h100-1">$4.90</td>
@@ -143,14 +170,14 @@ description: "Pay-as-you-go GPU pricing."
 
 <div class="grid gap-6 mb-12 grid-cols-1 md:grid-cols-2">
   <div class="rounded-xl border border-[#d8d8d8] p-6">
+    <h2 class="text-2xl font-semibold mb-2">Reserve GPU Capacity</h2>
+    <p class="text-color-[#575858] mb-4">Secure B300, H200, and H100 capacity with flexible 1-60 month terms. Get spot credits for unused capacity.</p>
+    <a class="text-[#0b63f6] font-semibold" href="/reserve">Reserve capacity</a>
+  </div>
+  <div class="rounded-xl border border-[#d8d8d8] p-6">
     <h2 class="text-2xl font-semibold mb-2">Self-hosted OSS</h2>
     <p class="text-color-[#575858] mb-4">Run open-source Velda on your own infrastructure for full control and no license fee.</p>
     <a class="text-[#0b63f6] font-semibold" href="https://github.com/velda-io/velda">Get started on GitHub</a>
-  </div>
-  <div class="rounded-xl border border-[#d8d8d8] p-6">
-    <h2 class="text-2xl font-semibold mb-2">BYOC / Enterprise</h2>
-    <p class="text-color-[#575858] mb-4">Bring your own cloud account and keep compute in your environment with enterprise features and support.</p>
-    <a class="text-[#0b63f6] font-semibold" href="https://calendly.com/velda-io/30min">Talk to sales</a>
   </div>
 </div>
 </div>

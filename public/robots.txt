@@ -31,3 +31,5 @@ Allow: /run
 Allow: /pricing
 Allow: /contact
 Allow: /book
+Allow: /reserve
+Allow: /b300-gpu-reservation

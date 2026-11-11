@@ -152,11 +152,11 @@ Just your local dev experience — with unbounded power.</p>
   </div>
   <div class="w-full flex flex-col justify-between p-10 gap-6 bg-white/40">
     <div class="gap-5">
-      <h2>Enterprise</h2>
-      <p>Self hosted or dedicated infrastructure, premium support for organizations of any size.</p>
+      <h2>Reserve GPU Capacity</h2>
+      <p>Secure B300, H200, or H100 GPU capacity. Flexible terms with spot credits for unused compute.</p>
     </div>
     <div>
-      <CtaButton href="book" variant="secondary">Book a demo</CtaButton>
+      <CtaButton href="reserve" variant="secondary">Reserve GPUs</CtaButton>
     </div>
   </div>
 </div>

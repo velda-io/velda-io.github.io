@@ -12,6 +12,8 @@ const pageConfig = {
   '/': { priority: '1.0', changefreq: 'weekly' },
   '/blog/': { priority: '0.7', changefreq: 'weekly' },
   '/pricing': { priority: '0.8', changefreq: 'monthly' },
+  '/reserve': { priority: '0.9', changefreq: 'weekly' },
+  '/b300-gpu-reservation': { priority: '0.9', changefreq: 'weekly' },
   '/intro': { priority: '0.8', changefreq: 'monthly' },
   '/run': { priority: '0.7', changefreq: 'monthly' },
   '/contact': { priority: '0.6', changefreq: 'monthly' },
