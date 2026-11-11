@@ -48,8 +48,8 @@ withDefaults(defineProps<{
   showCtas: true,
   primaryCtaText: 'Get started',
   primaryCtaHref: 'https://cloud.velda.io',
-  secondaryCtaText: 'Talk to team',
-  secondaryCtaHref: '/book'
+  secondaryCtaText: 'Reserve capacity',
+  secondaryCtaHref: '/reserve'
 })
 </script>
 
