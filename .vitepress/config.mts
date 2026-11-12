@@ -13,7 +13,7 @@ export default defineConfig({
     "examples/**",
     "blog/README.md",
     "blog/_template.md",
-    "SEO_OPTIMIZATION_PLAN.md"
+    ".seo-plans/**"
   ],
   appearance: false,
   themeConfig: {

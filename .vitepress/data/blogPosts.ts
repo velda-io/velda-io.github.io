@@ -13,6 +13,27 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    "title": "NVIDIA Vera Rubin vs GB300: Complete AI Accelerator Comparison (2026)",
+    "slug": "nvidia-vera-rubin-vs-gb300-comparison",
+    "description": "In-depth comparison of NVIDIA Vera Rubin and GB300 Blackwell Ultra GPUs. Compare specifications, inference benchmarks, performance metrics, and pricing to choose the right AI accelerator for your workload.",
+    "excerpt": "NVIDIA Vera Rubin vs GB300: Compare next-gen and current-gen AI accelerators. Detailed specs, inference benchmarks, and performance analysis to help you choose the right GPU.",
+    "date": "2026-11-12",
+    "author": "Chuan Qiu",
+    "readingTime": "8 min",
+    "category": "Technical Blog",
+    "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=1200",
+    "tags": [
+      "artificial-intelligence",
+      "gpu-computing",
+      "nvidia",
+      "ai-infrastructure",
+      "machine-learning",
+      "hardware-comparison",
+      "inference-optimization",
+      "data-center"
+    ]
+  },
+  {
     "title": "Serverless GPU Compute in the Cloud | ML Team Comparison",
     "slug": "serverless-gpu-compute-in-the-cloud",
     "description": "A practical comparison of serverless GPU platforms for ML teams, from SDK-first and container-first stacks to Velda's environment-first model.",
