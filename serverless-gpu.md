@@ -1,24 +1,24 @@
 ---
 layout: page
 sidebar: false
-title: "Serverless GPU for ML Training | Distributed Training on H100, H200, B300"
-description: "Train machine learning models faster with serverless GPU infrastructure. Distributed training on NVIDIA H100, H200, and B300 GPUs. PyTorch, JAX, Ray support. No Kubernetes required."
-keywords: ["ML training GPU", "machine learning training", "distributed training", "serverless GPU", "H100 training", "H200 GPU", "B300 GPU", "PyTorch training", "GPU cloud", "AI training infrastructure", "LLM training", "model training"]
+title: "Serverless GPU for ML Training & Inference | H100, H200, B300"
+description: "Run ML training and inference on serverless GPU infrastructure. Distributed training and high-throughput inference on NVIDIA H100, H200, and B300 GPUs. PyTorch, JAX, Ray support. No Kubernetes required."
+keywords: ["serverless GPU", "ML training", "GPU inference", "distributed training", "H100", "H200", "B300", "AI training"]
 image: "https://velda.io/og-preview.png"
 markdownStyles: false
 head:
   - - meta
     - name: description
-      content: Train ML models on serverless GPU infrastructure with H100, H200, and B300 GPUs. Distributed training, batch inference, and model serving without Kubernetes complexity.
+      content: Run ML training and inference on serverless GPU infrastructure with H100, H200, and B300 GPUs. Distributed training, high-throughput inference, and batch processing without Kubernetes complexity.
   - - meta
     - property: og:title
-      content: Serverless GPU for ML Training | H100, H200, B300 | Velda
+      content: Serverless GPU for ML Training & Inference | H100, H200, B300 | Velda
   - - meta
     - property: og:description
-      content: Accelerate ML training with distributed GPU compute. PyTorch, JAX, Ray support on H100/H200/B300. No container builds or Kubernetes required.
+      content: Run ML training and inference with distributed GPU compute. PyTorch, JAX, Ray support on H100/H200/B300. No container builds or Kubernetes required.
   - - meta
     - name: keywords
-      content: ML training GPU, distributed training, H100 training, H200 GPU, B300 Blackwell, PyTorch GPU, serverless GPU, AI training, LLM training, model training cloud
+      content: serverless GPU, ML training, GPU inference, distributed training, H100, H200, B300, AI training
   - - link
     - rel: canonical
       href: https://velda.io/serverless-gpu
@@ -35,8 +35,8 @@ import HomeHeroInfo from './.vitepress/components/HomeHeroInfo.vue'
 <div class="mx-auto max-w-6xl px-4 pb-18 sm:px-6 md:px-16">
   <section class="mb-18 mt-2">
     <div class="mx-auto mb-8 max-w-3xl text-center">
-      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Built for ML training at scale</h2>
-      <p class="text-base sm:text-lg">Train models faster with distributed GPU compute. From single-GPU experiments to multi-node training runs on B300, H200, and H100 GPUs.</p>
+      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Built for ML training and inference at scale</h2>
+      <p class="text-base sm:text-lg">Train models and serve predictions with distributed GPU compute. From single-GPU experiments to multi-node training runs and high-throughput inference on B300, H200, and H100 GPUs.</p>
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
       <div class="rounded-xl border border-[var(--vp-c-divider)] bg-[var(--vp-c-bg-soft)] p-5">
@@ -55,8 +55,8 @@ import HomeHeroInfo from './.vitepress/components/HomeHeroInfo.vue'
   </section>
   <section class="mb-18">
     <div class="mx-auto mb-8 max-w-3xl text-center">
-      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Why ML teams choose Velda for training</h2>
-      <p class="text-base sm:text-lg">Accelerate your ML training workflow from single-GPU experiments to distributed multi-node training runs without infrastructure complexity.</p>
+      <h2 class="mb-3 text-3xl leading-tight font-bold sm:text-4xl">Why ML teams choose Velda for training and inference</h2>
+      <p class="text-base sm:text-lg">Accelerate your ML workflow from training to production inference without infrastructure complexity. Scale from single-GPU experiments to distributed training and high-throughput serving.</p>
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
       <article class="rounded-xl border border-[var(--vp-c-divider)] bg-white p-5.5 shadow-[0_6px_24px_rgba(17,24,39,0.04)]">

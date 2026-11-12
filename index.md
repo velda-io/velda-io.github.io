@@ -2,15 +2,23 @@
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
-title: Serverless GPU Cloud
+title: Velda - Serverless GPU Cloud | H100, H200, B300 for AI Training & Inference
+description: Serverless GPU cloud for AI training, inference, and batch workloads. Run ML models on H100, H200, and B300 GPUs instantly. No containers, no cluster management. Reserve capacity or pay-as-you-go.
+keywords: ["serverless GPU", "GPU cloud", "H100", "H200", "B300", "AI training", "AI inference", "GPU reservation"]
 # SEO and LinkedIn/Social media preview metadata
 head:
   - - meta
     - name: description
-      content: Velda - Serverless GPU Cloud without overhead of containers or cluster management. Run AI workloads instantly from your dev environment.
+      content: Serverless GPU cloud without container or cluster management overhead. Run AI training, inference, and batch jobs on H100, H200, and B300 GPUs instantly. Reserve capacity or pay-as-you-go.
+  - - meta
+    - name: keywords
+      content: serverless GPU, GPU cloud, H100, H200, B300, AI training, AI inference, distributed training, GPU reservation
   - - meta
     - property: og:title
-      content: VELDA - Serverless GPU Cloud
+      content: Velda - Serverless GPU Cloud for AI Training & Inference
+  - - meta
+    - property: og:description
+      content: Run AI training, inference, and batch jobs on H100, H200, and B300 GPUs without containers or cluster management. Reserve capacity or pay-as-you-go.
   - - meta
     - property: og:image
       content: https://velda.io/og-preview.png
@@ -25,16 +33,70 @@ head:
       content: summary_large_image
   - - meta
     - name: twitter:title
-      content: VELDA - Serverless GPU Cloud
+      content: Velda - Serverless GPU Cloud | H100, H200, B300
   - - meta
     - name: twitter:description
-      content: Velda - Serverless GPU Cloud without overhead of containers or cluster management. Run AI workloads instantly from your dev environment.
+      content: Serverless GPU cloud for AI training and inference. H100, H200, B300 GPUs without container overhead. Reserve or pay-as-you-go.
   - - meta
     - name: twitter:image
-      content: https://velda.io/logos.png
+      content: https://velda.io/og-preview.png
   - - link
     - rel: canonical
       href: https://velda.io
+  - - script
+    - type: application/ld+json
+      innerHTML: >
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Velda",
+          "url": "https://velda.io",
+          "logo": "https://velda.io/logo-h.png",
+          "description": "Serverless GPU cloud for AI and ML workloads without container or cluster management overhead",
+          "foundingDate": "2024",
+          "sameAs": [
+            "https://github.com/velda-io/velda",
+            "https://www.linkedin.com/company/velda-io/",
+            "https://x.com/velda_io"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Sales",
+            "url": "https://velda.io/contact"
+          }
+        }
+  - - script
+    - type: application/ld+json
+      innerHTML: >
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Velda",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Cloud",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free tier available with monthly credits"
+          },
+          "description": "Serverless GPU cloud platform for AI training, model inference, and batch processing on H100, H200, and B300 GPUs",
+          "url": "https://velda.io",
+          "screenshot": "https://velda.io/og-preview.png"
+        }
+  - - script
+    - type: application/ld+json
+      innerHTML: >
+        {
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          "name": "Velda in Action Demo",
+          "description": "See how Velda enables instant GPU access for AI workloads without container builds or cluster management",
+          "thumbnailUrl": "https://velda.io/video.jpg",
+          "uploadDate": "2024-09-01",
+          "contentUrl": "https://www.youtube.com/watch?v=fr58LREZ6vQ",
+          "embedUrl": "https://www.youtube.com/embed/fr58LREZ6vQ"
+        }
 markdownStyles: false
 ---
 <style scoped>

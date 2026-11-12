@@ -1,22 +1,22 @@
 ---
 title: Reserve NVIDIA B300 GPU Capacity | Next-Gen Blackwell Architecture
-description: Reserve NVIDIA B300 Blackwell GPU capacity for AI training and inference. Get up to 30x faster AI training with 192GB HBM3e memory. Flexible reservation terms from 1-60 months with spot credits for unused capacity.
-keywords: B300 GPU, NVIDIA B300, Blackwell GPU, B300 reservation, reserve B300 GPU, GB300 GPU, B300 pricing, B300 GPU cloud, AI training GPU, B300 vs H100, Blackwell architecture
+description: Reserve NVIDIA B300 Blackwell GPU capacity for AI training and inference. Get up to 30x faster AI training with 288GB HBM3e memory. Flexible reservation terms from 1-60 months with spot credits for unused capacity.
+keywords: B300 GPU, NVIDIA B300, Blackwell GPU, B300 reservation, reserve B300, B300 vs H100
 layout: page
 sidebar: false
 head:
   - - meta
     - name: description
-      content: Reserve NVIDIA B300 Blackwell GPU capacity with 192GB HBM3e memory. Perfect for large language models, AI training, and inference. Flexible terms, instant deployment, spot credits for unused capacity.
+      content: Reserve NVIDIA B300 Blackwell GPU capacity with 288GB HBM3e memory. Perfect for large language models, AI training, and inference. Flexible terms, instant deployment, spot credits for unused capacity.
   - - meta
     - name: keywords
-      content: B300 GPU reservation, NVIDIA B300, Blackwell GPU, reserve B300, GB300 GPU, B300 cloud GPU, B300 pricing, B300 specifications, AI training GPU, B300 vs H100, B300 memory bandwidth
+      content: B300 GPU, NVIDIA B300, Blackwell GPU, B300 reservation, reserve B300, B300 vs H100
   - - meta
     - property: og:title
       content: Reserve NVIDIA B300 GPU Capacity | Velda Blackwell Cloud
   - - meta
     - property: og:description
-      content: Reserve B300 Blackwell GPUs with 192GB HBM3e memory for AI workloads. Up to 30x faster training, flexible reservation terms, and spot credits for unused capacity.
+      content: Reserve B300 Blackwell GPUs with 288GB HBM3e memory for AI workloads. Up to 30x faster training, flexible reservation terms, and spot credits for unused capacity.
   - - meta
     - property: og:type
       content: website
@@ -34,7 +34,7 @@ head:
       content: Reserve NVIDIA B300 GPU | Blackwell Architecture
   - - meta
     - name: twitter:description
-      content: Reserve B300 Blackwell GPUs with 192GB HBM3e memory. Perfect for LLMs and AI training workloads.
+      content: Reserve B300 Blackwell GPUs with 288GB HBM3e memory. Perfect for LLMs and AI training workloads.
   - - meta
     - name: twitter:image
       content: https://velda.io/og-preview.png
@@ -48,7 +48,7 @@ head:
           "@context": "https://schema.org",
           "@type": "Product",
           "name": "NVIDIA B300 GPU Reservation",
-          "description": "Reserve NVIDIA B300 Blackwell GPU capacity with 192GB HBM3e memory for AI training and inference workloads",
+          "description": "Reserve NVIDIA B300 Blackwell GPU capacity with 288GB HBM3e memory for AI training and inference workloads",
           "brand": {
             "@type": "Brand",
             "name": "NVIDIA"
@@ -89,7 +89,7 @@ head:
               "name": "What is the NVIDIA B300 GPU?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "The NVIDIA B300 is a next-generation Blackwell architecture GPU featuring 192GB of HBM3e memory, designed for large-scale AI training and inference workloads. It offers significant performance improvements over H100 and H200 GPUs."
+                "text": "The NVIDIA B300 is a next-generation Blackwell architecture GPU featuring 288GB of HBM3e memory, designed for large-scale AI training and inference workloads. It offers significant performance improvements over H100 and H200 GPUs."
               }
             },
             {
@@ -128,12 +128,17 @@ import CtaButton from './.vitepress/components/CtaButton.vue'
 <h1>Reserve NVIDIA B300 GPU Capacity</h1>
 <p class="hero-subtitle">Next-Generation Blackwell Architecture for AI Training & Inference</p>
 <p class="hero-description">
-Secure access to NVIDIA's latest B300 Blackwell GPUs with 192GB HBM3e memory. 
+Secure access to NVIDIA's latest B300 Blackwell GPUs with 288GB HBM3e memory. 
 Perfect for large language models, AI training, and high-performance inference workloads.
 </p>
 <div class="cta-buttons">
 <CtaButton href="/reserve">Reserve Capacity</CtaButton>
 <CtaButton href="https://calendly.com/velda-io/30min" variant="secondary">Talk to Sales</CtaButton>
+</div>
+<div class="mt-6 flex gap-4 justify-center flex-wrap text-sm" style="color: var(--vp-c-text-2);">
+<a href="/pricing" style="color: #7b5cff; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">View All GPU Pricing →</a>
+<span>•</span>
+<a href="/serverless-gpu" style="color: #7b5cff; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">ML Training on Serverless GPU →</a>
 </div>
 </div>
 
@@ -148,7 +153,7 @@ Perfect for large language models, AI training, and high-performance inference w
 
 <div class="feature-card">
 <h3>💾 Massive Memory Capacity</h3>
-<p>192GB of HBM3e memory enables training of the largest models without compromising on batch size or model parameters.</p>
+<p>288GB of HBM3e memory enables training of the largest models without compromising on batch size or model parameters.</p>
 </div>
 
 <div class="feature-card">
@@ -181,7 +186,7 @@ Perfect for large language models, AI training, and high-performance inference w
 </tr>
 <tr>
 <td>GPU Memory</td>
-<td><strong>192GB HBM3e</strong></td>
+<td><strong>288GB HBM3e</strong></td>
 <td>141GB HBM3e</td>
 </tr>
 <tr>
@@ -298,7 +303,7 @@ Perfect for large language models, AI training, and high-performance inference w
 
 <div class="faq-item">
 <h3>How does B300 compare to H100 and H200?</h3>
-<p>B300 offers significant improvements: 36% more memory than H200 (192GB vs 141GB), 67% higher memory bandwidth (8TB/s vs 4.8TB/s), and up to 30x faster AI training performance for certain workloads.</p>
+<p>B300 offers significant improvements: 104% more memory than H200 (288GB vs 141GB), 67% higher memory bandwidth (8TB/s vs 4.8TB/s), and up to 30x faster AI training performance for certain workloads.</p>
 </div>
 
 <div class="faq-item">
