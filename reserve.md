@@ -1,6 +1,6 @@
 ---
-title: Reserve GPU Capacity - B300, H200, H100 | Flexible Terms & Spot Credits | Velda
-description: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI training, inference, and batch workloads. Flexible terms from 1-60 months with spot credits for unused capacity. Guaranteed availability.
+title: Reserve GPU Capacity - B300, H200, H100 | Flexible Terms & Usage Credits | Velda
+description: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI training, inference, and batch workloads. Flexible terms from 1-60 months with credits for unused capacity. Guaranteed availability.
 keywords: reserve GPU capacity, B300 reservation, H200 reservation, H100 reservation, GPU capacity planning, Blackwell GPU
 sidebar: false
 outline: false
@@ -8,7 +8,7 @@ layout: page
 head:
   - - meta
     - name: description
-      content: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI training, model inference, and batch processing. Flexible 1-60 month terms with guaranteed availability and spot credits.
+      content: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI training, model inference, and batch processing. Flexible 1-60 month terms with guaranteed availability and credits.
   - - meta
     - name: keywords
       content: B300 GPU reservation, reserve B300 GPU, Blackwell GPU reservation, NVIDIA B300, GB300 GPU, H200 reservation, reserve GPU capacity, AI GPU cloud, serverless GPU reservation, GPU capacity planning, B300 pricing
@@ -17,7 +17,7 @@ head:
       content: Reserve B300 & Blackwell GPU Capacity | Velda Serverless Cloud
   - - meta
     - property: og:description
-      content: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity. Flexible terms, spot credits for unused capacity, and instant deployment on serverless infrastructure.
+      content: Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity. Flexible terms, credits for unused capacity, and instant deployment on serverless infrastructure.
   - - meta
     - property: og:type
       content: website
@@ -35,7 +35,7 @@ head:
       content: Reserve B300 & Blackwell GPU Capacity | Velda
   - - meta
     - name: twitter:description
-      content: Reserve NVIDIA B300, GB300, H200 GPU capacity with flexible terms. Get spot credits for unused capacity.
+      content: Reserve NVIDIA B300, GB300, H200 GPU capacity with flexible terms. Get credits for unused capacity.
   - - meta
     - name: twitter:image
       content: https://velda.io/og-preview.png
@@ -50,7 +50,7 @@ head:
           "@type": "Service",
           "serviceType": "GPU Capacity Reservation",
           "name": "Velda GPU Reservation Service",
-          "description": "Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI workloads with flexible terms and spot credits for unused capacity",
+          "description": "Reserve NVIDIA B300, GB300, H200, and H100 GPU capacity for AI workloads with flexible terms and credits for unused capacity",
           "provider": {
             "@type": "Organization",
             "name": "Velda",
@@ -90,8 +90,7 @@ import ReserveCapacityForm from './.vitepress/components/ReserveCapacityForm.vue
     <div class="mt-12 mb-10 text-center">
       <h1 class="text-4xl xl:text-5xl font-bold mb-4">Reserve GPU Capacity</h1>
       <p class="text-xl text-color-[#575858] max-w-200 mx-auto mb-6">
-        Secure guaranteed access to B300, GB300, H200, and H100 GPUs for AI training, inference, and batch workloads. 
-        Flexible reservation terms with spot credits for unused capacity—no waste, maximum flexibility.
+        Lock in access to B300, GB300, H200, and H100 GPUs for your AI workloads with predictable pricing and zero waste.
       </p>
       <div class="flex gap-4 justify-center flex-wrap text-sm">
         <a href="/b300-gpu-reservation" class="text-[#0b63f6] hover:underline font-medium">Learn about B300 Blackwell GPUs →</a>
@@ -101,49 +100,43 @@ import ReserveCapacityForm from './.vitepress/components/ReserveCapacityForm.vue
         <a href="/pricing" class="text-[#0b63f6] hover:underline font-medium">View Pricing →</a>
       </div>
     </div>
-    <div class="mb-10 grid gap-4 grid-cols-1 md:grid-cols-3">
-      <div class="rounded-xl border border-[#d8d8d8] bg-white p-6 text-center">
-        <div class="text-3xl mb-2">✅</div>
-        <h3 class="text-lg font-semibold mb-2">Guaranteed Availability</h3>
-        <p class="text-sm text-color-[#575858]">Skip the waitlist. Your reserved capacity is always ready when you need it.</p>
+    <div class="grid gap-8 grid-cols-1 lg:grid-cols-[2fr_3fr] items-start">
+      <!-- Form Section - shows first on mobile -->
+      <div class="lg:sticky lg:top-8 lg:order-2">
+        <ReserveCapacityForm />
       </div>
-      <div class="rounded-xl border border-[#d8d8d8] bg-white p-6 text-center">
-        <div class="text-3xl mb-2">💰</div>
-        <h3 class="text-lg font-semibold mb-2">Spot Credits</h3>
-        <p class="text-sm text-color-[#575858]">Automatically receive spot credits for reserved capacity you don't use. Zero waste.</p>
-      </div>
-      <div class="rounded-xl border border-[#d8d8d8] bg-white p-6 text-center">
-        <div class="text-3xl mb-2">🔧</div>
-        <h3 class="text-lg font-semibold mb-2">Flexible Terms</h3>
-        <p class="text-sm text-color-[#575858]">Choose terms from 1 month to 5 years. Scale with your needs.</p>
-      </div>
-    </div>
-    <ReserveCapacityForm />
-    <div class="mt-12 rounded-xl border border-[#d8d8d8] bg-[#f7f9fb] p-8">
-      <h2 class="text-2xl font-bold mb-6">Why Reserve GPU Capacity with Velda?</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <div>
-          <h3 class="font-semibold mb-2 text-lg">🚀 Instant Deployment</h3>
-          <p class="text-color-[#575858]">Deploy workloads instantly with <code class="bg-white px-2 py-1 rounded text-sm">vrun</code>. No container builds, no cluster management. Just run.</p>
+      <!-- Benefits Section - shows after form on mobile, left side on desktop -->
+      <div class="space-y-6 lg:order-1">
+        <h2 class="text-xl font-normal mb-4 text-color-[#6b6b6b]">Why Reserve with Velda?</h2>
+        <div class="space-y-5">
+          <div>
+            <h3 class="font-normal mb-2 text-base flex items-start gap-2 text-color-[#6b6b6b]">
+              <span class="text-xl opacity-60">✅</span>
+              <span>Guaranteed & Instant</span>
+            </h3>
+            <p class="text-color-[#8b8b8b] ml-7 text-sm">Skip waitlists. Deploy instantly with <code class="bg-[#f0f0f0] px-2 py-1 rounded text-sm">vrun</code>—no container builds or cluster management.</p>
+          </div>
+          <div>
+            <h3 class="font-normal mb-2 text-base flex items-start gap-2 text-color-[#6b6b6b]">
+              <span class="text-xl opacity-60">💰</span>
+              <span>Zero Waste with Usage Credits</span>
+            </h3>
+            <p class="text-color-[#8b8b8b] ml-7 text-sm">Automatically receive credits for reserved capacity you don't use. Pay only for what you consume.</p>
+          </div>
+          <div>
+            <h3 class="font-normal mb-2 text-base flex items-start gap-2 text-color-[#6b6b6b]">
+              <span class="text-xl opacity-60">🔧</span>
+              <span>Flexible Terms & Pricing</span>
+            </h3>
+            <p class="text-color-[#8b8b8b] ml-7 text-sm">Choose from 1-60 month terms. Lock in rates and get significant savings over on-demand pricing.</p>
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold mb-2 text-lg">📊 Cost Predictability</h3>
-          <p class="text-color-[#575858]">Lock in rates with reserved capacity. Get significant savings over on-demand pricing for consistent workloads.</p>
+        <div class="mt-6 pt-6 border-t border-[#e8e8e8]">
+          <p class="text-sm text-color-[#8b8b8b]">
+            <span class="font-normal">Questions?</span> <a href="/contact" class="text-[#0b63f6] hover:underline">Contact our team</a> or 
+            <a href="https://calendly.com/velda-io/30min" class="text-[#0b63f6] hover:underline">schedule a call</a> to discuss your GPU requirements.
+          </p>
         </div>
-        <div>
-          <h3 class="font-semibold mb-2 text-lg">🎯 Priority Access</h3>
-          <p class="text-color-[#575858]">Get early access to new GPU generations like B300 Blackwell. Reserve now to be first in line.</p>
-        </div>
-        <div>
-          <h3 class="font-semibold mb-2 text-lg">🛡️ Enterprise Support</h3>
-          <p class="text-color-[#575858]">Premium support included with all reservations. Dedicated account management for large deployments.</p>
-        </div>
-      </div>
-      <div class="mt-6 pt-6 border-t border-[#d8d8d8]">
-        <p class="text-sm text-color-[#575858]">
-          <strong>Questions?</strong> <a href="/contact" class="text-[#0b63f6] hover:underline">Contact our team</a> or 
-          <a href="https://calendly.com/velda-io/30min" class="text-[#0b63f6] hover:underline">schedule a call</a> to discuss your GPU requirements.
-        </p>
       </div>
     </div>
   </div>

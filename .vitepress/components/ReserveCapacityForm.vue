@@ -5,22 +5,6 @@
     style="background-image: url('/bg-blog.svg'); background-size: cover; background-attachment: fixed;"
   ></div>
   <div class="reserve-capacity-container">
-    <div class="form-header">
-      <h1>Reserve GPU Capacity</h1>
-      <p class="form-description">
-        Reserve <strong>NVIDIA B300, GB300, H200, or H100 GPU capacity</strong> for your AI training and inference workloads.
-        Fill out the form below, or
-        <a href="https://calendly.com/velda-io/30min" target="_blank" rel="noopener" class="inline-link">book a meeting</a>
-        directly with our team.
-      </p>
-      <p class="form-description">
-        <strong>Get spot credits automatically</strong> for reserved compute you don't use. Flexible terms from 1 month to 5 years.
-      </p>
-      <p class="form-description">
-        <a href="/b300-gpu-reservation" class="inline-link">Learn more about B300 Blackwell GPUs →</a>
-      </p>
-    </div>
-
     <form action="https://api.staticforms.xyz/submit" method="POST" class="reserve-form">
       <input type="hidden" name="accessKey" value="sf_89d42fe5e0f70920f2a7d4dc">
       <input type="hidden" name="subject" value="GPU Capacity Reservation Request">
@@ -116,7 +100,7 @@
         <textarea
           id="details"
           name="Additional Details"
-          rows="4"
+          rows="3"
           placeholder="Tell us about your use case, expected workload, timeline, or any specific requirements..."
         ></textarea>
       </div>
@@ -137,26 +121,25 @@
 .reserve-capacity-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 32px 40px;
+  padding: 0;
 }
 
 .form-header {
   text-align: center;
-  margin-bottom: 40px;
-  padding-top: 60px;
+  margin-bottom: 16px;
 }
 
-.form-header h1 {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 16px;
+.form-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 6px;
   color: var(--vp-c-text-1);
 }
 
 .form-description {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--vp-c-text-2);
-  line-height: 1.625;
+  line-height: 1.5;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -174,7 +157,7 @@
 .reserve-form {
   background: var(--vp-c-bg-soft);
   border-radius: 12px;
-  padding: 32px;
+  padding: 24px;
   border: 1px solid var(--vp-c-divider);
   max-width: 700px;
   margin: 0 auto;
@@ -183,30 +166,30 @@
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .form-group label {
   display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
+  font-weight: 500;
+  margin-bottom: 5px;
   color: var(--vp-c-text-1);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 14px;
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
   transition: border-color 0.2s;
@@ -221,21 +204,22 @@
 }
 
 .form-group textarea {
-  min-height: 100px;
+  min-height: 60px;
+  resize: vertical;
 }
 
 .form-actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 16px;
 }
 
 .cta-button {
   flex: 1;
-  padding: 12px 28px;
+  padding: 10px 24px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   text-decoration: none;
   border: none;
@@ -265,25 +249,24 @@
 
 @media (max-width: 768px) {
   .reserve-capacity-container {
-    padding: 40px 20px 32px;
+    padding: 0;
   }
 
   .form-header {
-    padding-top: 40px;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
 
-  .form-header h1 {
-    font-size: 32px;
-    margin-bottom: 12px;
+  .form-header h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
   }
 
   .form-description {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .reserve-form {
-    padding: 24px 20px;
+    padding: 20px 16px;
   }
 
   .form-row {
